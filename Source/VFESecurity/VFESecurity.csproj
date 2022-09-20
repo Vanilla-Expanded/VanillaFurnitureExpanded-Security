@@ -18,7 +18,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Assemblies\</OutputPath>
+    <OutputPath>..\..\1.4\Assemblies\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -111,12 +111,10 @@
     <Compile Include="HarmonyPatches\Patch_VerbProperties.cs" />
     <Compile Include="HarmonyPatches\Patch_Verb.cs" />
     <Compile Include="HarmonyPatches\Patch_Tornado.cs" />
-    <Compile Include="HarmonyPatches\ThoughtWorker_PsychicDrone.cs" />
     <Compile Include="HediffGivers\HediffGiver_Dazzled.cs" />
     <Compile Include="ExtendedMoteMaker.cs" />
     <Compile Include="ModCompatibilityCheck.cs" />
     <Compile Include="StatParts\StatPart_AmmoCrate.cs" />
-    <Compile Include="StatParts\StatPart_PylonExposure.cs" />
     <Compile Include="StatParts\StatPart_ValueOffsetFactor.cs" />
     <Compile Include="Things\Building_BarbedWire.cs" />
     <Compile Include="Things\Building_TrapBear.cs" />
