@@ -1,5 +1,66 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
+  <ThingDef Name="VFES_Barrier" ParentName="BuildingBase">
+    <defName>VFES_Barrier</defName>
+    <label>barrier</label>
+    <description>A reinforced metal barricade held in place by a concrete frame. Provides an excellent amount of cover from ranged attacks.</description>
+    <graphicData>
+      <texPath>Things/Security/Barrier/Barrier_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Custom7</li>
+      </linkFlags>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Security/Barrier/Barrier_MenuIcon</uiIconPath>
+    <uiIconScale>0.9</uiIconScale>
+    <size>(1,1)</size>
+    <techLevel>Spacer</techLevel>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.65</fillPercent>
+    <castEdgeShadows>false</castEdgeShadows>
+    <pathCost>100</pathCost>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <stealable>false</stealable>
+    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <neverMultiSelect>true</neverMultiSelect>
+    <holdsRoof>false</holdsRoof>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <designationCategory>Security</designationCategory>
+    <repairEffect>ConstructMetal</repairEffect>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>10</costStuffCount>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>900</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-10</Beauty>
+    </statBases>
+    <staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <surfaceType>Item</surfaceType>
+    <canOverlapZones>false</canOverlapZones>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <isInert>true</isInert>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Linked/Sandbags_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <researchPrerequisites>
+      <li>VFES_MetalAlloysBarricades</li>
+    </researchPrerequisites>
+  </ThingDef>
 
   <!-- Deployable Barrier -->
   <ThingDef ParentName="VFES_Barrier">
@@ -28,13 +89,13 @@
     </statBases>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <costStuffCount>0</costStuffCount>
-    <stuffCategories Inherit="False"/>
+    <stuffCategories Inherit="False" />
     <costList>
       <Steel>10</Steel>
       <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <comps>
-      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>15</basePowerConsumption>
@@ -86,7 +147,7 @@
     <uiIconPath>Things/Building/Floor/TurretFloor_MenuIcon</uiIconPath>
     <uiIconScale>0.90</uiIconScale>
     <costStuffCount>0</costStuffCount>
-    <stuffCategories Inherit="False"/>
+    <stuffCategories Inherit="False" />
     <costList Inherit="False">
       <Steel>200</Steel>
       <ComponentIndustrial>6</ComponentIndustrial>
@@ -198,9 +259,9 @@
       <li Class="CompProperties_Mannable">
         <manWorkType>Violent</manWorkType>
       </li>
-      <li Class="CompProperties_Forbiddable"/>
-      <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Shots until out of ammo</fuelLabel>
         <fuelGizmoLabel>Ammo</fuelGizmoLabel>
@@ -303,5 +364,4 @@
       <speed>40</speed>
     </projectile>
   </ThingDef>
-
 </Defs>
