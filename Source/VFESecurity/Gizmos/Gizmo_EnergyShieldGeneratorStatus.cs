@@ -8,7 +8,7 @@ namespace VFESecurity
     {
         public Gizmo_EnergyShieldGeneratorStatus()
         {
-            order = -100;
+            Order = -100;
         }
 
         public override float GetWidth(float maxWidth)

@@ -1,7 +1,7 @@
-﻿using RimWorld;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -205,12 +205,14 @@ namespace VFESecurity
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            
+
             map.GetComponent<ListerThingsExtended>().listerShieldGens.Add(this);
             // Set up shield coverage
             coveredCells = new HashSet<IntVec3>(GenRadial.RadialCellsAround(PositionHeld, ShieldRadius, true));
             if (ShieldRadius < EdgeCellRadius + 1)
+            {
                 scanCells = coveredCells;
+            }
             else
             {
                 IEnumerable<IntVec3> interiorCells = GenRadial.RadialCellsAround(PositionHeld, ShieldRadius - EdgeCellRadius, true);
@@ -247,23 +249,29 @@ namespace VFESecurity
                         Energy = MaxEnergy * ExtendedBuildingProps.initialEnergyPercentage;
                 }
                 else
+                {
                     Energy += EnergyGainPerTick;
+                }
 
                 // If shield is active
                 if (active)
                 {
                     // Power consumption
                     if (PowerTraderComp != null)
-                        PowerTraderComp.PowerOutput = -PowerTraderComp.Props.basePowerConsumption;
+                        PowerTraderComp.PowerOutput = -PowerTraderComp.Props.PowerConsumption;
 
                     if ((ShieldRadius < EdgeCellRadius + 1 || Find.TickManager.TicksGame % 2 == 0) && Energy > 0)
                         EnergyShieldTick();
                 }
                 else if (PowerTraderComp != null)
+                {
                     PowerTraderComp.PowerOutput = -ExtendedBuildingProps.inactivePowerConsumption;
+                }
             }
             else if (PowerTraderComp != null)
+            {
                 PowerTraderComp.PowerOutput = -ExtendedBuildingProps.inactivePowerConsumption;
+            }
 
             base.Tick();
         }
@@ -319,7 +327,7 @@ namespace VFESecurity
             }
             ticksToRecharge = ExtendedBuildingProps.rechargeTicksWhenDepleted;
         }
-        
+
         private void UpdateCache()
         {
             for (int i = 0; i < affectedThings.Count; i++)
@@ -331,16 +339,26 @@ namespace VFESecurity
                     affectedThings[curKey] -= CacheUpdateInterval;
             }
 
-            active = ParentHolder is Map && CanFunction &&
-                (Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Any() ||
-                GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction) ||
-                Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any() ||
-                Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.DropPodIncoming).Any() || shieldBuffer > 0);
+            var map = Map;
 
-            if ((Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Any() || GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction) || Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any() || Map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.DropPodIncoming).Any()) && shieldBuffer < 15)
+            active = ParentHolder is Map && CanFunction &&
+                (Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Any()
+                || GenHostility.AnyHostileActiveThreatTo_NewTemp(MapHeld, Faction)
+                || map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any()
+                || map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.DropPodIncoming).Any()
+                || shieldBuffer > 0);
+
+            if ((Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Any()
+                || GenHostility.AnyHostileActiveThreatTo_NewTemp(MapHeld, Faction)
+                || map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any()
+                || map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.DropPodIncoming).Any()) && shieldBuffer < 15)
+            {
                 shieldBuffer = 15;
+            }
             else
+            {
                 shieldBuffer -= 1;
+            }
         }
     }
 }

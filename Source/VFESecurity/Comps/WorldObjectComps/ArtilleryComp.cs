@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
-using UnityEngine;
-using Verse;
-using Verse.AI;
-using Verse.AI.Group;
 using RimWorld;
 using RimWorld.Planet;
-using HarmonyLib;
+using Verse;
 
 namespace VFESecurity
 {
@@ -89,11 +81,15 @@ namespace VFESecurity
                 {
                     // Try and bombard player settlements
                     if (artilleryCooldownTicks > 0)
+                    {
                         artilleryCooldownTicks--;
+                    }
                     else if (Targets.Select(t => t.WorldObject).Cast<Settlement>().TryRandomElementByWeight(s => StorytellerUtility.DefaultThreatPointsNow(s.Map), out Settlement targetSettlement))
                     {
                         if (artilleryWarmupTicks < 0)
-                            artilleryWarmupTicks = ArtilleryDef.building.turretBurstWarmupTime.SecondsToTicks();
+                        {
+                            artilleryWarmupTicks = ArtilleryDef.building.turretBurstWarmupTime.min.SecondsToTicks();
+                        }
                         else
                         {
                             artilleryWarmupTicks--;
@@ -112,12 +108,16 @@ namespace VFESecurity
                                     artilleryCooldownTicks = ArtilleryDef.building.turretBurstCooldownTime.SecondsToTicks();
                                 }
                                 else
+                                {
                                     Log.ErrorOnce($"Tried to get shell for bombardment but got null instead (artilleryGunDef={ArtilleryGunDef}, factionDef={parent.Faction.def})", 8173352);
+                                }
                             }
                         }
                     }
                     else
+                    {
                         artilleryWarmupTicks = -1;
+                    }
 
                     // Reduce the duration of the bombardment
                     bombardmentDurationTicks--;

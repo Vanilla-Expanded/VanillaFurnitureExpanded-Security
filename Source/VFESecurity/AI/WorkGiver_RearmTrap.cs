@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
-using UnityEngine;
+using RimWorld;
 using Verse;
 using Verse.AI;
-using Verse.AI.Group;
-using RimWorld;
-using HarmonyLib;
 
 namespace VFESecurity
 {
-
     public class WorkGiver_RearmTrap : WorkGiver_Scanner
     {
-
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
         {
             return pawn.Map.designationManager.SpawnedDesignationsOfDef(DesignationDefOf.VFES_RearmTrap).Select(d => d.target.Thing);
@@ -66,7 +57,5 @@ namespace VFESecurity
             // Rearm trap
             return new Job(JobDefOf.VFES_RearmTrap, t);
         }
-
     }
-
 }

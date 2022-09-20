@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
-using UnityEngine;
+using HarmonyLib;
 using Verse;
 using Verse.AI;
-using Verse.AI.Group;
-using RimWorld;
-using HarmonyLib;
 
 namespace VFESecurity
 {
@@ -24,9 +19,9 @@ namespace VFESecurity
 
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                #if DEBUG
+#if DEBUG
                     Log.Message("Transpiler start: AttackTargetFinder.manual_BestAttackTarget (1 match)");
-                #endif
+#endif
 
                 var instructionList = instructions.ToList();
 
@@ -43,9 +38,9 @@ namespace VFESecurity
 
                     if (instruction.opcode == OpCodes.Ldfld && instruction.OperandIs(rangeInfo))
                     {
-                        #if DEBUG
+#if DEBUG
                             Log.Message("AttackTargetFinder.manual_BestAttackTarget match 1 of 1");
-                        #endif
+#endif
 
                         yield return instruction; // verb.verbProps.range
                         yield return new CodeInstruction(OpCodes.Ldloc_0); // anon1
@@ -67,9 +62,9 @@ namespace VFESecurity
 
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                #if DEBUG
+#if DEBUG
                     Log.Message("Transpiler start: AttackTargetFinder.BestShootTargetFromCurrentPosition (1 match)");
-                #endif
+#endif
 
                 var instructionList = instructions.ToList();
 
@@ -83,9 +78,9 @@ namespace VFESecurity
 
                     if (instruction.opcode == OpCodes.Ldfld && instruction.OperandIs(rangeInfo))
                     {
-                        #if DEBUG
+#if DEBUG
                             Log.Message("AttackTargetFinder.BestShootTargetFromCurrentPosition match 1 of 1");
-                        #endif
+#endif
 
                         yield return instruction; // verb.verbProps.range
                         yield return new CodeInstruction(OpCodes.Ldloc_0); // currentEffectiveVerb

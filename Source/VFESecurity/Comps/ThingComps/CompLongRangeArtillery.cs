@@ -1,7 +1,7 @@
-﻿using RimWorld;
-using RimWorld.Planet;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -105,7 +105,9 @@ namespace VFESecurity
                         ResetWarmupTicks();
                     }
                     else
+                    {
                         warmupTicksLeft--;
+                    }
                 }
             }
 
@@ -116,7 +118,7 @@ namespace VFESecurity
 
         private void ResetWarmupTicks()
         {
-            warmupTicksLeft = Mathf.Max(1, Turret.def.building.turretBurstWarmupTime.SecondsToTicks());
+            warmupTicksLeft = Mathf.Max(1, Turret.def.building.turretBurstWarmupTime.min.SecondsToTicks());
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
