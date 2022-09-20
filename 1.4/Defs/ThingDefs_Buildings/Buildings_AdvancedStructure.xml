@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <ThingDef Name="VFES_Barrier" ParentName="BuildingBase">
-    <defName>VFES_Barrier</defName>
-    <label>barrier</label>
-    <description>A reinforced metal barricade held in place by a concrete frame. Provides an excellent amount of cover from ranged attacks.</description>
+  <!-- Deployable Barrier -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_DeployableBarrier</defName>
+    <label>deployable barrier</label>
+    <thingClass>VFESecurity.Submersible</thingClass>
+    <description>A submersible barrier which acts as a normal floor tile when unpowered. Provides excellent cover from ranged attacks. It only takes half as much damage when submerged.</description>
     <graphicData>
-      <texPath>Things/Security/Barrier/Barrier_Atlas</texPath>
+      <texPath>Things/Security/BarrierDeployed/BarrierDeployed_south</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1,1)</drawSize>
-      <linkType>Basic</linkType>
-      <linkFlags>
-        <li>Custom7</li>
-      </linkFlags>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
         <cornerTR>Damage/Corner</cornerTR>
@@ -19,8 +17,7 @@
         <cornerBR>Damage/Corner</cornerBR>
       </damageData>
     </graphicData>
-    <uiIconPath>Things/Security/Barrier/Barrier_MenuIcon</uiIconPath>
-    <uiIconScale>0.9</uiIconScale>
+    <uiIconPath>Things/Security/BarrierDeployed/BarrierDeployed_south</uiIconPath>
     <size>(1,1)</size>
     <techLevel>Spacer</techLevel>
     <altitudeLayer>Building</altitudeLayer>
@@ -32,21 +29,9 @@
     <selectable>true</selectable>
     <stealable>false</stealable>
     <placingDraggableDimensions>1</placingDraggableDimensions>
-    <neverMultiSelect>true</neverMultiSelect>
     <holdsRoof>false</holdsRoof>
     <drawerType>MapMeshAndRealTime</drawerType>
     <designationCategory>Security</designationCategory>
-    <repairEffect>ConstructMetal</repairEffect>
-    <stuffCategories>
-      <li>Metallic</li>
-    </stuffCategories>
-    <costStuffCount>10</costStuffCount>
-    <statBases>
-      <MaxHitPoints>400</MaxHitPoints>
-      <WorkToBuild>900</WorkToBuild>
-      <Flammability>0.5</Flammability>
-      <Beauty>-10</Beauty>
-    </statBases>
     <staticSunShadowHeight>0.5</staticSunShadowHeight>
     <surfaceType>Item</surfaceType>
     <canOverlapZones>false</canOverlapZones>
@@ -60,36 +45,18 @@
     <researchPrerequisites>
       <li>VFES_MetalAlloysBarricades</li>
     </researchPrerequisites>
-  </ThingDef>
-
-  <!-- Deployable Barrier -->
-  <ThingDef ParentName="VFES_Barrier">
-    <defName>VFES_DeployableBarrier</defName>
-    <label>deployable barrier</label>
-    <thingClass>VFESecurity.Submersible</thingClass>
-    <description>A submersible barrier which acts as a normal floor tile when unpowered. Provides excellent cover from ranged attacks. It only takes half as much damage when submerged.</description>
-    <graphicData Inherit="False">
-      <texPath>Things/Security/BarrierDeployed/BarrierDeployed_south</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1,1)</drawSize>
-      <damageData>
-        <cornerTL>Damage/Corner</cornerTL>
-        <cornerTR>Damage/Corner</cornerTR>
-        <cornerBL>Damage/Corner</cornerBL>
-        <cornerBR>Damage/Corner</cornerBR>
-      </damageData>
-    </graphicData>
-    <uiIconPath>Things/Security/BarrierDeployed/BarrierDeployed_south</uiIconPath>
     <tickerType>Normal</tickerType>
     <neverMultiSelect>false</neverMultiSelect>
     <constructEffect>ConstructMetal</constructEffect>
     <repairEffect>ConstructMetal</repairEffect>
     <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>900</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-10</Beauty>
       <WorkToBuild>1900</WorkToBuild>
     </statBases>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <costStuffCount>0</costStuffCount>
-    <stuffCategories Inherit="False" />
     <costList>
       <Steel>10</Steel>
       <ComponentIndustrial>1</ComponentIndustrial>

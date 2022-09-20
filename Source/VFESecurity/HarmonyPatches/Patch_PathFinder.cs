@@ -1,4 +1,4 @@
-﻿/*#define DEBUG*/
+﻿#define DEBUG
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace VFESecurity
             public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
 #if DEBUG
-                    Log.Message("Transpiler start: PathFinder.FindPath (2 matches)");
+                Log.Message("Transpiler start: PathFinder.FindPath (2 matches)");
 #endif
 
                 var instructionList = instructions.ToList();
@@ -34,14 +34,14 @@ namespace VFESecurity
                     if (!done && instruction.opcode == OpCodes.Stloc_S && instruction.operand is LocalBuilder lb && lb.LocalIndex == 41)
                     {
 #if DEBUG
-                            Log.Message("PathFinder.FindPath match 1 of 2");
+                        Log.Message("PathFinder.FindPath match 1 of 2");
 #endif
 
                         var secondInstructionBehind = instructionList[i - 2];
                         if (secondInstructionBehind.opcode == OpCodes.Ldelem_I4)
                         {
 #if DEBUG
-                                Log.Message("PathFinder.FindPath match 2 of 2");
+                            Log.Message("PathFinder.FindPath match 2 of 2");
 #endif
 
                             yield return instruction; // num17 += array[num15]
