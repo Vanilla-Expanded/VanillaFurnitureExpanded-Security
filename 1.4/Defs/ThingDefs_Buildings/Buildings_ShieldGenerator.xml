@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
   <ThingDef Name="VFES_ShieldGeneratorBase" ParentName="BuildingBase" Abstract="True">
     <thingClass>VFESecurity.Building_Shield</thingClass>
     <comps>
-      <li Class="CompProperties_Forbiddable"/>
-      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Breakdownable" />
     </comps>
     <techLevel>Spacer</techLevel>
     <tickerType>Normal</tickerType>
@@ -60,7 +59,7 @@
         <basePowerConsumption>2900</basePowerConsumption>
         <shortCircuitInRain>false</shortCircuitInRain>
       </li>
-      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Flickable" />
     </comps>
     <statBases>
       <MaxHitPoints>250</MaxHitPoints>
@@ -68,7 +67,7 @@
       <Beauty>-20</Beauty>
       <Mass>50</Mass>
       <WorkToBuild>15000</WorkToBuild>
-      <VFES_EnergyShieldEnergyMax>11</VFES_EnergyShieldEnergyMax>
+      <VFES_EnergyShieldEnergyMax>36</VFES_EnergyShieldEnergyMax>
       <VFES_EnergyShieldRechargeRate>1.04</VFES_EnergyShieldRechargeRate>
       <VFES_EnergyShieldRadius>7.9</VFES_EnergyShieldRadius>
     </statBases>
@@ -109,7 +108,7 @@
       <Flammability>0.5</Flammability>
       <Beauty>-20</Beauty>
       <WorkToBuild>30000</WorkToBuild>
-      <VFES_EnergyShieldEnergyMax>7.7</VFES_EnergyShieldEnergyMax>
+      <VFES_EnergyShieldEnergyMax>24</VFES_EnergyShieldEnergyMax>
       <VFES_EnergyShieldRechargeRate>0.73</VFES_EnergyShieldRechargeRate>
       <VFES_EnergyShieldRadius>31.9</VFES_EnergyShieldRadius>
     </statBases>
@@ -130,7 +129,7 @@
         <basePowerConsumption>4800</basePowerConsumption>
         <shortCircuitInRain>false</shortCircuitInRain>
       </li>
-      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Flickable" />
     </comps>
     <fillPercent>0.5</fillPercent>
     <pathCost>150</pathCost>
