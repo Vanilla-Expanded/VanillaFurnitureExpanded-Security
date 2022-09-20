@@ -1,70 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
-  <!-- Chemfuel Barrel -->
-  <ThingDef ParentName="BuildingBase">
-    <defName>VFES_ChemfuelBarrel</defName>
-    <label>chemfuel barrel</label>
-    <description>A barrel full of chemfuel. Ignites upon getting shot, which results in a massive explosion.</description>
-    <graphicData>
-      <texPath>Things/Security/ChemfuelBarrel/ChemfuelBarrel_south</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <damageData>
-        <rect>(0.1,0,0.8,0.3)</rect>
-      </damageData>
-    </graphicData>
-    <techLevel>Industrial</techLevel>
-    <uiIconScale>0.8</uiIconScale>
-    <costList>
-      <Chemfuel>75</Chemfuel>
-    </costList>
-    <comps>
-      <li Class="CompProperties_Explosive">
-        <explosiveRadius>5.9</explosiveRadius>
-        <explosiveDamageType>Flame</explosiveDamageType>
-        <startWickHitPointsPercent>0.95</startWickHitPointsPercent>
-        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
-        <preExplosionSpawnChance>0.4</preExplosionSpawnChance>
-        <wickTicks>
-          <min>0</min>
-          <max>30</max>
-        </wickTicks>
-      </li>
-    </comps>
-    <fillPercent>0.4</fillPercent>
-    <specialDisplayRadius>5.9</specialDisplayRadius>
-    <uiIconOffset>(0,-0.14)</uiIconOffset>
-    <altitudeLayer>Building</altitudeLayer>
-    <drawerType>RealtimeOnly</drawerType>
-    <tickerType>Normal</tickerType>
-    <rotatable>false</rotatable>
-    <stealable>false</stealable>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories Inherit="False">
-      <li>BuildingsSecurity</li>
-    </thingCategories>
-    <statBases>
-      <Mass>10</Mass>
-      <MaxHitPoints>150</MaxHitPoints>
-      <WorkToBuild>1400</WorkToBuild>
-      <Flammability>2</Flammability>
-      <Beauty>-10</Beauty>
-      <TrapSpringChance>0.05</TrapSpringChance>
-    </statBases>
-    <designationCategory>Security</designationCategory>
-    <building>
-      <isTrap>true</isTrap>
-      <expandHomeArea>false</expandHomeArea>
-      <ai_chillDestination>false</ai_chillDestination>
-    </building>
-    <placeWorkers>
-      <li>PlaceWorker_NeverAdjacentTrap</li>
-    </placeWorkers>
-    <researchPrerequisites>
-      <li>BiofuelRefining</li>
-    </researchPrerequisites>
-  </ThingDef>
-
   <!-- Landmine -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Landmine</defName>
@@ -231,5 +166,4 @@
       <speed>250</speed>
     </projectile>
   </ThingDef>
-
 </Defs>
