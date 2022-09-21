@@ -6,7 +6,6 @@ using Verse;
 
 namespace VFESecurity
 {
-
     public class ArtilleryComp : WorldObjectComp
     {
         public int recentRetaliationTicks;
@@ -47,19 +46,20 @@ namespace VFESecurity
         {
             get
             {
-                if (parent.Faction == Faction.OfPlayer)
-                {
-                    foreach (var tile in ArtilleryComps.Where(a => a.targetedTile != GlobalTargetInfo.Invalid).Select(a => a.targetedTile).Distinct())
-                        yield return tile;
-                    yield break;
-                }
+                return ArtilleryComps.Where(a => a.targetedTile != GlobalTargetInfo.Invalid).Select(a => a.targetedTile).Distinct();
+            }
+        }
 
-                var settlementList = Find.WorldObjects.Settlements;
-                for (int i = 0; i < settlementList.Count; i++)
+        public IEnumerable<Map> PlayerMaps
+        {
+            get
+            {
+                var maps = Find.Maps;
+                for (int i = 0; i < maps.Count; i++)
                 {
-                    var settlement = settlementList[i];
-                    if (settlement.Faction == Faction.OfPlayer && Find.WorldGrid.TraversalDistanceBetween(parent.Tile, settlement.Tile) <= ArtilleryProps.worldTileRange)
-                        yield return new GlobalTargetInfo(settlement);
+                    var map = maps[i];
+                    if (map.ParentFaction == Faction.OfPlayer)
+                        yield return map;
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace VFESecurity
                     {
                         artilleryCooldownTicks--;
                     }
-                    else if (Targets.Select(t => t.WorldObject).Cast<Settlement>().TryRandomElementByWeight(s => StorytellerUtility.DefaultThreatPointsNow(s.Map), out Settlement targetSettlement))
+                    else if (PlayerMaps.TryRandomElementByWeight(m => StorytellerUtility.DefaultThreatPointsNow(m), out Map targetMap))
                     {
                         if (artilleryWarmupTicks < 0)
                         {
@@ -98,12 +98,11 @@ namespace VFESecurity
                                 var shell = ArtilleryStrikeUtility.GetRandomShellFor(ArtilleryGunDef, parent.Faction.def);
                                 if (shell != null)
                                 {
-                                    float missRadius = ArtilleryStrikeUtility.FinalisedMissRadius(ArtilleryGunDef.Verbs[0].ForcedMissRadius, ArtilleryProps.maxForcedMissRadiusFactor, parent.Tile, targetSettlement.Tile, ArtilleryProps.worldTileRange);
-                                    var map = targetSettlement.Map;
-                                    var strikeCells = ArtilleryStrikeUtility.PotentialStrikeCells(map, missRadius);
+                                    float missRadius = ArtilleryStrikeUtility.FinalisedMissRadius(ArtilleryGunDef.Verbs[0].ForcedMissRadius, ArtilleryProps.maxForcedMissRadiusFactor, parent.Tile, targetMap.Tile, ArtilleryProps.worldTileRange);
+                                    var strikeCells = ArtilleryStrikeUtility.PotentialStrikeCells(targetMap, missRadius);
                                     for (int i = 0; i < artilleryCount; i++)
                                     {
-                                        ArtilleryStrikeUtility.SpawnArtilleryStrikeSkyfaller(shell, map, strikeCells.RandomElement());
+                                        ArtilleryStrikeUtility.SpawnArtilleryStrikeSkyfaller(shell, targetMap, strikeCells.RandomElement());
                                     }
                                     artilleryCooldownTicks = ArtilleryDef.building.turretBurstCooldownTime.SecondsToTicks();
                                 }
@@ -171,7 +170,5 @@ namespace VFESecurity
         public HashSet<Thing> artillery = new HashSet<Thing>();
 
         private ThingDef cachedArtilleryDef;
-
     }
-
 }
