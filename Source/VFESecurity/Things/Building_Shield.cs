@@ -32,6 +32,7 @@ namespace VFESecurity
         private int lastAbsorbDamageTick;
         private int shieldBuffer = 0;
         private int ticksToRecharge;
+
         public float Energy
         {
             get => energy;
@@ -50,6 +51,7 @@ namespace VFESecurity
         public LocalTargetInfo TargetCurrentlyAimingAt => LocalTargetInfo.Invalid;
         public float TargetPriorityFactor => 1;
         public Thing Thing => this;
+
         public IEnumerable<Thing> ThingsWithinRadius
         {
             get
@@ -78,6 +80,7 @@ namespace VFESecurity
 
         private bool CanFunction => (PowerTraderComp == null || PowerTraderComp.PowerOn) && !this.IsBrokenDown();
         private float CurMaxEnergy => MaxEnergy * (active ? 1 : ExtendedBuildingProps.initialEnergyPercentage);
+
         private CompPowerTrader PowerTraderComp
         {
             get
@@ -90,6 +93,7 @@ namespace VFESecurity
                 return cachedPowerComp;
             }
         }
+
         public void AbsorbDamage(float amount, DamageDef def, Thing source)
         {
             AbsorbDamage(amount, def, (this.TrueCenter() - source.TrueCenter()).AngleFlat());
@@ -227,7 +231,7 @@ namespace VFESecurity
                 return true;
 
             // Attacker isn't using EMPs
-            if (!disabledFor.CurrentEffectiveVerb.IsEMP())
+            if (disabledFor != null && disabledFor.CurrentEffectiveVerb != null && !disabledFor.CurrentEffectiveVerb.IsEMP())
                 return true;
 
             // Return whether or not the shield can function
