@@ -1,4 +1,4 @@
-﻿#define DEBUG
+﻿/*#define DEBUG*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,27 +31,25 @@ namespace VFESecurity
                     var instruction = instructionList[i];
 
                     // Look for the section that checks the terrain grid pathCosts
-                    if (!done && instruction.opcode == OpCodes.Stloc_S && instruction.operand is LocalBuilder lb && lb.LocalIndex == 41)
+                    if (!done && instruction.opcode == OpCodes.Stloc_S && instruction.operand is LocalBuilder lb && lb.LocalIndex == 48)
                     {
 #if DEBUG
                         Log.Message("PathFinder.FindPath match 1 of 2");
 #endif
-
-                        var secondInstructionBehind = instructionList[i - 2];
-                        if (secondInstructionBehind.opcode == OpCodes.Ldelem_I4)
+                        if (instructionList[i - 1].opcode == OpCodes.Add && instructionList[i - 2].opcode == OpCodes.Ldelem_I4)
                         {
 #if DEBUG
                             Log.Message("PathFinder.FindPath match 2 of 2");
 #endif
 
-                            yield return instruction; // num17 += array[num15]
-                            yield return new CodeInstruction(OpCodes.Ldloc_S, 41); // num17
-                            yield return new CodeInstruction(OpCodes.Ldloc_S, 38); // num15
-                            yield return new CodeInstruction(OpCodes.Ldloc_3); // num
-                            yield return new CodeInstruction(OpCodes.Ldloc_S, 12); // topGrid
-                            yield return new CodeInstruction(OpCodes.Ldarg_3); // parms
-                            yield return new CodeInstruction(OpCodes.Call, adjustedTerrainCostInfo); // AdjustedTerrainCost(num17, num15, num, topGrid, parms)
-                            instruction = instruction.Clone(); // num
+                            yield return instruction;                                                   // num16 += array[num14];
+                            yield return new CodeInstruction(OpCodes.Ldloc_S, 48);                      // num16
+                            yield return new CodeInstruction(OpCodes.Ldloc_S, 45);                      // num14
+                            yield return new CodeInstruction(OpCodes.Ldloc_3);                          // num
+                            yield return new CodeInstruction(OpCodes.Ldloc_S, 12);                      // topGrid
+                            yield return new CodeInstruction(OpCodes.Ldarg_3);                          // parms
+                            yield return new CodeInstruction(OpCodes.Call, adjustedTerrainCostInfo);    // AdjustedTerrainCost(num16, num15, num, topGrid, parms)
+                            instruction = instruction.Clone();                                          // num
                         }
                     }
 
