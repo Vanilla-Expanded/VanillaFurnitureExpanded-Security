@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
-    <!-- ////////////////////// -->
-    <!-- ///   Barbed wire  /// -->
-    <!-- ////////////////////// -->
-
+	<!-- Barbed wire -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFES_BarbedWire</defName>
 		<label>barbed wire</label>
@@ -15,8 +11,12 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 			<linkType>Basic</linkType>
-			<linkFlags><li>Custom8</li></linkFlags>
-			<damageData><rect>(0,0,1,0.15)</rect></damageData>
+			<linkFlags>
+				<li>Custom8</li>
+			</linkFlags>
+			<damageData>
+				<rect>(0,0,1,0.15)</rect>
+			</damageData>
 		</graphicData>
 		<tickerType>Normal</tickerType>
 		<techLevel>Industrial</techLevel>
@@ -42,7 +42,9 @@
 			<TrapMeleeDamage>4</TrapMeleeDamage>
 			<TrapSpringChance>1</TrapSpringChance>
 		</statBases>
-		<stuffCategories><li>Metallic</li></stuffCategories>
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
 		<costStuffCount>10</costStuffCount>
 		<designationCategory>Security</designationCategory>
 		<building>
@@ -62,20 +64,16 @@
 			</li>
 		</damageMultipliers>
 		<repairEffect>ConstructMetal</repairEffect>
-		<researchPrerequisites><li>VFES_TrenchWarfare</li></researchPrerequisites>
+		<researchPrerequisites>
+			<li>VFES_TrenchWarfare</li>
+		</researchPrerequisites>
 		<modExtensions>
 			<li Class="VFESecurity.ExtendedBuildingProperties">
 				<trapDestroyOnSpringChance>0.2</trapDestroyOnSpringChance>
 			</li>
 		</modExtensions>
 	</ThingDef>
-
-
-
-    <!-- ////////////////////// -->
-    <!-- ///     Trench     /// -->
-    <!-- ////////////////////// -->
-
+	<!-- Trench -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFES_Trench</defName>
 		<label>trench</label>
@@ -84,22 +82,12 @@
 			<texPath>Things/Security/Trench/Trench_Atlas</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<linkType>Basic</linkType>
-			<linkFlags><li>Custom6</li></linkFlags>
-			<!--
-			<damageData>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-			</damageData>
-			-->
+			<linkFlags>
+				<li>Custom6</li>
+			</linkFlags>
 		</graphicData>
 		<techLevel>Industrial</techLevel>
 		<uiIconPath>Things/Security/Trench/Trench_MenuIcon</uiIconPath>
-		<!--
-		<stuffCategories><li>Woody</li></stuffCategories>
-    	<costStuffCount>10</costStuffCount>
-		-->
 		<comps>
 			<li Class="VFESecurity.CompProperties_TerrainSetter">
 				<terrainDef>VFES_TrenchTerrain</terrainDef>
@@ -133,7 +121,7 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<blockLight>false</blockLight>
 		<canOverlapZones>false</canOverlapZones>
-    	<constructEffect>ConstructDirt</constructEffect>
+		<constructEffect>ConstructDirt</constructEffect>
 		<repairEffect>ConstructDirt</repairEffect>
 		<building>
 			<isInert>true</isInert>
@@ -148,15 +136,11 @@
 				<multiplier>2</multiplier>
 			</li>
 		</damageMultipliers>
-		<researchPrerequisites><li>VFES_TrenchWarfare</li></researchPrerequisites>
+		<researchPrerequisites>
+			<li>VFES_TrenchWarfare</li>
+		</researchPrerequisites>
 	</ThingDef>
-
-
-
-    <!-- ////////////////////// -->
-    <!-- ///    Platform    /// -->
-    <!-- ////////////////////// -->
-
+	<!-- Platform -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>VFES_Platform</defName>
 		<label>platform</label>
@@ -165,17 +149,12 @@
 			<texPath>Things/Security/Platform/Platform_Atlas</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<linkType>Basic</linkType>
-			<linkFlags><li>Custom9</li></linkFlags>
+			<linkFlags>
+				<li>Custom9</li>
+			</linkFlags>
 		</graphicData>
 		<techLevel>Industrial</techLevel>
 		<uiIconPath>Things/Security/Platform/Platform_MenuIcon</uiIconPath>
-		<!--
-		<stuffCategories>
-      		<li>Woody</li>
-      		<li>Stony</li>
-    	</stuffCategories>
-		<costStuffCount>10</costStuffCount>
-		-->
 		<comps>
 			<li Class="VFESecurity.CompProperties_TerrainSetter">
 				<terrainDef>VFES_PlatformTerrain</terrainDef>
@@ -209,7 +188,7 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<blockLight>false</blockLight>
 		<canOverlapZones>false</canOverlapZones>
-    	<constructEffect>ConstructWood</constructEffect>
+		<constructEffect>ConstructWood</constructEffect>
 		<repairEffect>ConstructWood</repairEffect>
 		<building>
 			<isInert>true</isInert>
@@ -224,15 +203,11 @@
 				<multiplier>2</multiplier>
 			</li>
 		</damageMultipliers>
-		<researchPrerequisites><li>VFES_TrenchWarfare</li></researchPrerequisites>
+		<researchPrerequisites>
+			<li>VFES_TrenchWarfare</li>
+		</researchPrerequisites>
 	</ThingDef>
-
-
-
-    <!-- ////////////////////// -->
-    <!-- ///   Ammo crate   /// -->
-    <!-- ////////////////////// -->
-
+	<!-- Ammo crate -->
 	<ThingDef ParentName="FurnitureBase">
 		<defName>VFES_AmmoCrate</defName>
 		<label>ammo crate</label>
@@ -256,9 +231,13 @@
 			<li Class="CompProperties_Explosive">
 				<explosiveRadius>3.9</explosiveRadius>
 				<explosiveDamageType>Bomb</explosiveDamageType>
-				<wickTicks><min>20</min><max>60</max></wickTicks>
+				<wickTicks>
+					<min>20</min>
+					<max>60</max>
+				</wickTicks>
 			</li>
 		</comps>
+		<rotatable>false</rotatable>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Mass>15</Mass>
@@ -272,17 +251,22 @@
 			<defaultStorageSettings>
 				<priority>Important</priority>
 				<filter>
-					<categories><li>MortarShells</li></categories>
+					<categories>
+						<li>MortarShells</li>
+					</categories>
 				</filter>
 			</defaultStorageSettings>
 		</building>
-		<inspectorTabs><li>ITab_Storage</li></inspectorTabs>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
 		<staticSunShadowHeight>0.3</staticSunShadowHeight>
 		<surfaceType>Item</surfaceType>
 		<canOverlapZones>false</canOverlapZones>
 		<specialDisplayRadius>2.9</specialDisplayRadius>
-		<researchPrerequisites><li>Fabrication</li></researchPrerequisites>
+		<researchPrerequisites>
+			<li>Fabrication</li>
+		</researchPrerequisites>
 		<designationCategory>Security</designationCategory>
 	</ThingDef>
-
 </Defs>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
   <!-- Military Turret -->
   <ThingDef Name="VFES_Turret_MilitaryTurret" ParentName="BuildingBase">
     <defName>VFES_Turret_MilitaryTurret</defName>
@@ -45,13 +44,13 @@
         <explosiveDamageType>Bomb</explosiveDamageType>
         <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
       </li>
-      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Forbiddable" />
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>120</basePowerConsumption>
       </li>
-      <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Shots until barrel change</fuelLabel>
         <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
@@ -174,13 +173,13 @@
     </statBases>
     <tickerType>Normal</tickerType>
     <comps>
-      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Forbiddable" />
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>250</basePowerConsumption>
       </li>
-      <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Glower">
         <glowRadius>3</glowRadius>
         <glowColor>(240,240,228,0)</glowColor>
@@ -207,7 +206,6 @@
     <specialDisplayRadius>24.9</specialDisplayRadius>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
-      <!-- <li>PlaceWorker_ShowTurretRadius</li> -->
     </placeWorkers>
     <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
     <researchPrerequisites>
@@ -287,16 +285,16 @@
       <li Class="CompProperties_Explosive">
         <!-- 1.9 explosive radius when empty; 5.9 when full -->
         <explosiveRadius>1.9</explosiveRadius>
-        <explosiveExpandPerFuel>0.2</explosiveExpandPerFuel>        <!-- Factoring in square rooting -->
+        <explosiveExpandPerFuel>0.2</explosiveExpandPerFuel> <!-- Factoring in square rooting -->
         <explosiveDamageType>Flame</explosiveDamageType>
       </li>
-      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Forbiddable" />
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>100</basePowerConsumption>
       </li>
-      <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Remaining fuel</fuelLabel>
         <fuelGizmoLabel>Remaining fuel</fuelGizmoLabel>
@@ -369,18 +367,18 @@
     </weaponTags>
     <verbs>
       <li>
-				<verbClass>Verb_Shoot</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>VFES_Bullet_FlameTurret</defaultProjectile>
-				<ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
-				<warmupTime>1.25</warmupTime>
-				<range>10.9</range>
-				<burstShotCount>1</burstShotCount>
-				<soundCast>VFES_Shot_Flamethrower</soundCast>
-				<soundCastTail>GunTail_Light</soundCastTail>
-				<muzzleFlashScale>14</muzzleFlashScale>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>VFES_Bullet_FlameTurret</defaultProjectile>
+        <ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+        <warmupTime>1.25</warmupTime>
+        <range>10.9</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>VFES_Shot_Flamethrower</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
         <consumeFuelPerShot>10</consumeFuelPerShot>
-			</li>
+      </li>
     </verbs>
   </ThingDef>
 
@@ -456,8 +454,8 @@
         <explosiveDamageType>Bomb</explosiveDamageType>
         <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
       </li>
-      <li Class="CompProperties_Forbiddable"/>
-      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Refuelable">
         <fuelLabel>Shots until barrel change</fuelLabel>
         <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
@@ -553,5 +551,4 @@
       </li>
     </verbs>
   </ThingDef>
-
 </Defs>

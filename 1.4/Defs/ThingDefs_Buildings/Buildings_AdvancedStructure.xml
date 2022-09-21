@@ -42,19 +42,15 @@
         <texPath>Things/Building/Linked/Sandbags_Blueprint_Atlas</texPath>
       </blueprintGraphicData>
     </building>
-    <researchPrerequisites>
-      <li>VFES_MetalAlloysBarricades</li>
-    </researchPrerequisites>
     <tickerType>Normal</tickerType>
     <neverMultiSelect>false</neverMultiSelect>
     <constructEffect>ConstructMetal</constructEffect>
     <repairEffect>ConstructMetal</repairEffect>
     <statBases>
       <MaxHitPoints>400</MaxHitPoints>
-      <WorkToBuild>900</WorkToBuild>
+      <WorkToBuild>1900</WorkToBuild>
       <Flammability>0.5</Flammability>
       <Beauty>-10</Beauty>
-      <WorkToBuild>1900</WorkToBuild>
     </statBases>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <costList>
@@ -88,7 +84,7 @@
       </li>
     </comps>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
-    <researchPrerequisites Inherit="False">
+    <researchPrerequisites>
       <li>VFES_ConcealedDefenses</li>
     </researchPrerequisites>
   </ThingDef>
