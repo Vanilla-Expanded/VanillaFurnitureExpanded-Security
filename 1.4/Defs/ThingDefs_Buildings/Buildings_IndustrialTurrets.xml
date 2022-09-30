@@ -233,6 +233,7 @@
         <range>24.9</range>
         <muzzleFlashScale>0</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
+      	<drawAimPie>false</drawAimPie>      
       </li>
     </verbs>
     <modExtensions>

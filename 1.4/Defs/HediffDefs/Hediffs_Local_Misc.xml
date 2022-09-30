@@ -12,6 +12,12 @@
         <partEfficiencyOffset>-0.7</partEfficiencyOffset>
       </li>
     </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>60</disappearsAfterTicks>
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+    </comps>
   </HediffDef>
 
 </Defs>
