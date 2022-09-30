@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -40,7 +40,9 @@ namespace VFESecurity
             {
                 energy = Mathf.Clamp(value, 0, CurMaxEnergy);
                 if (energy == 0)
+                {
                     Notify_EnergyDepleted();
+                }
             }
         }
 
@@ -60,7 +62,9 @@ namespace VFESecurity
                 {
                     var thingList = cell.GetThingList(MapHeld);
                     for (int i = 0; i < thingList.Count; i++)
+                    {
                         yield return thingList[i];
+                    }
                 }
             }
         }
@@ -73,7 +77,9 @@ namespace VFESecurity
                 {
                     var thingList = cell.GetThingList(MapHeld);
                     for (int i = 0; i < thingList.Count; i++)
+                    {
                         yield return thingList[i];
+                    }
                 }
             }
         }
@@ -103,8 +109,8 @@ namespace VFESecurity
         {
             SoundDefOf.EnergyShield_AbsorbDamage.PlayOneShot(new TargetInfo(Position, Map, false));
             impactAngleVect = Vector3Utility.HorizontalVectorFromAngle(angle);
-            Vector3 loc = this.TrueCenter() + impactAngleVect.RotatedBy(180f) * (ShieldRadius / 2);
-            float flashSize = Mathf.Min(10f, 2f + amount / 10f);
+            var loc = this.TrueCenter() + (impactAngleVect.RotatedBy(180f) * (ShieldRadius / 2));
+            float flashSize = Mathf.Min(10f, 2f + (amount / 10f));
             FleckMaker.Static(this.TrueCenter(), Map, FleckDefOf.ExplosionFlash, 12);
             int dustCount = (int)flashSize;
             for (int i = 0; i < dustCount; i++)
@@ -116,7 +122,9 @@ namespace VFESecurity
 
             // try to do short circuit
             if (Rand.Chance(energyLoss * ExtendedBuildingProps.shortCircuitChancePerEnergyLost))
+            {
                 GenExplosion.DoExplosion(this.OccupiedRect().RandomCell, Map, 1.9f, DamageDefOf.Flame, null);
+            }
 
             lastAbsorbDamageTick = Find.TickManager.TicksGame;
         }
@@ -137,7 +145,7 @@ namespace VFESecurity
             if (active && Energy > 0)
             {
                 float size = ShieldRadius * 2 * Mathf.Lerp(0.9f, 1.1f, Energy / MaxEnergy);
-                Vector3 pos = this.Position.ToVector3Shifted();
+                var pos = Position.ToVector3Shifted();
                 pos.y = AltitudeLayer.MoteOverhead.AltitudeFor();
 
                 int ticksSinceAbsorbDamage = Find.TickManager.TicksGame - lastAbsorbDamageTick;
@@ -149,7 +157,7 @@ namespace VFESecurity
                 }
 
                 float angle = Rand.Range(0, 45);
-                Vector3 s = new Vector3(size, 1f, size);
+                var s = new Vector3(size, 1f, size);
                 Matrix4x4 matrix = default;
                 matrix.SetTRS(pos, Quaternion.AngleAxis(angle, Vector3.up), s);
 
@@ -181,7 +189,9 @@ namespace VFESecurity
             }
 
             foreach (var gizmo in base.GetGizmos())
+            {
                 yield return gizmo;
+            }
         }
 
         public override string GetInspectString()
@@ -190,7 +200,9 @@ namespace VFESecurity
 
             // Inactive
             if (!active)
+            {
                 inspectBuilder.AppendLine("InactiveFacility".Translate().CapitalizeFirst());
+            }
 
             inspectBuilder.AppendLine(base.GetInspectString());
 
@@ -201,7 +213,9 @@ namespace VFESecurity
         {
             // EMP - direct
             if (dinfo.Def == DamageDefOf.EMP)
+            {
                 Energy = 0;
+            }
 
             base.PreApplyDamage(ref dinfo, out absorbed);
         }
@@ -219,7 +233,7 @@ namespace VFESecurity
             }
             else
             {
-                IEnumerable<IntVec3> interiorCells = GenRadial.RadialCellsAround(PositionHeld, ShieldRadius - EdgeCellRadius, true);
+                var interiorCells = GenRadial.RadialCellsAround(PositionHeld, ShieldRadius - EdgeCellRadius, true);
                 scanCells = new HashSet<IntVec3>(coveredCells.Where(c => !interiorCells.Contains(c)));
             }
         }
@@ -228,11 +242,15 @@ namespace VFESecurity
         {
             // No energy
             if (Energy == 0)
+            {
                 return true;
+            }
 
             // Attacker isn't using EMPs
             if (disabledFor != null && disabledFor.CurrentEffectiveVerb != null && !disabledFor.CurrentEffectiveVerb.IsEMP())
+            {
                 return true;
+            }
 
             // Return whether or not the shield can function
             return !CanFunction;
@@ -241,7 +259,9 @@ namespace VFESecurity
         public override void Tick()
         {
             if (this.IsHashIntervalTick(CacheUpdateInterval))
+            {
                 UpdateCache();
+            }
 
             if (CanFunction)
             {
@@ -250,7 +270,9 @@ namespace VFESecurity
                 {
                     ticksToRecharge--;
                     if (ticksToRecharge == 0)
+                    {
                         Energy = MaxEnergy * ExtendedBuildingProps.initialEnergyPercentage;
+                    }
                 }
                 else
                 {
@@ -262,10 +284,14 @@ namespace VFESecurity
                 {
                     // Power consumption
                     if (PowerTraderComp != null)
+                    {
                         PowerTraderComp.PowerOutput = -PowerTraderComp.Props.PowerConsumption;
+                    }
 
                     if ((ShieldRadius < EdgeCellRadius + 1 || Find.TickManager.TicksGame % 2 == 0) && Energy > 0)
+                    {
                         EnergyShieldTick();
+                    }
                 }
                 else if (PowerTraderComp != null)
                 {
@@ -289,15 +315,17 @@ namespace VFESecurity
         {
             // EMP - on shield
             if (damageDef == DamageDefOf.EMP)
+            {
                 return 4;
+            }
 
             return 1;
         }
 
         private void EnergyShieldTick()
         {
-            HashSet<Thing> thingsWithinRadius = new HashSet<Thing>(ThingsWithinRadius);
-            HashSet<Thing> thingsWithinScanArea = new HashSet<Thing>(ThingsWithinScanArea);
+            var thingsWithinRadius = new HashSet<Thing>(ThingsWithinRadius);
+            var thingsWithinScanArea = new HashSet<Thing>(ThingsWithinScanArea);
             foreach (var thing in thingsWithinScanArea)
             {
                 // Try and block projectiles from outside
@@ -307,7 +335,10 @@ namespace VFESecurity
                     {
                         // Explosives are handled separately
                         if (!(proj is Projectile_Explosive))
+                        {
                             AbsorbDamage(proj.DamageAmount, proj.def.projectile.damageDef, proj.ExactRotation.eulerAngles.y);
+                        }
+
                         proj.Position += Rot4.FromAngleFlat((Position - proj.Position).AngleFlat).Opposite.FacingCell;
                         NonPublicFields.Projectile_usedTarget.SetValue(proj, new LocalTargetInfo(proj.Position));
                         NonPublicMethods.Projectile_ImpactSomething(proj);
@@ -326,7 +357,7 @@ namespace VFESecurity
             FleckMaker.Static(this.TrueCenter(), Map, FleckDefOf.ExplosionFlash, 12);
             for (int i = 0; i < 6; i++)
             {
-                Vector3 loc = this.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360)) * Rand.Range(0.3f, 0.6f);
+                var loc = this.TrueCenter() + (Vector3Utility.HorizontalVectorFromAngle(Rand.Range(0, 360)) * Rand.Range(0.3f, 0.6f));
                 FleckMaker.ThrowDustPuff(loc, Map, Rand.Range(0.8f, 1.2f));
             }
             ticksToRecharge = ExtendedBuildingProps.rechargeTicksWhenDepleted;
@@ -338,22 +369,26 @@ namespace VFESecurity
             {
                 var curKey = affectedThings.Keys.ToList()[i];
                 if (affectedThings[curKey] <= 0)
+                {
                     affectedThings.Remove(curKey);
+                }
                 else
+                {
                     affectedThings[curKey] -= CacheUpdateInterval;
+                }
             }
 
             var map = Map;
 
             active = ParentHolder is Map && CanFunction &&
                 (Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Any()
-                || GenHostility.AnyHostileActiveThreatTo_NewTemp(MapHeld, Faction)
+                || GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction)
                 || map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any()
                 || map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.DropPodIncoming).Any()
                 || shieldBuffer > 0);
 
             if ((Find.World.GetComponent<WorldArtilleryTracker>().bombardingWorldObjects.Any()
-                || GenHostility.AnyHostileActiveThreatTo_NewTemp(MapHeld, Faction)
+                || GenHostility.AnyHostileActiveThreatTo(MapHeld, Faction)
                 || map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.Tornado).Any()
                 || map.listerThings.ThingsOfDef(RimWorld.ThingDefOf.DropPodIncoming).Any()) && shieldBuffer < 15)
             {
