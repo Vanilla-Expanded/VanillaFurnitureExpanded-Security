@@ -49,7 +49,7 @@
       <li>PlaceWorker_NeverAdjacentTrap</li>
     </placeWorkers>
     <researchPrerequisites>
-      <li>VFES_TrenchWarfare</li>
+      <li>VWE_TrenchWarfare</li>
     </researchPrerequisites>
   </ThingDef>
 

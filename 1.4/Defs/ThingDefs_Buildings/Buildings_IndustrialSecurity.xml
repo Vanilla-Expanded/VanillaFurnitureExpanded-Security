@@ -65,7 +65,7 @@
 		</damageMultipliers>
 		<repairEffect>ConstructMetal</repairEffect>
 		<researchPrerequisites>
-			<li>VFES_TrenchWarfare</li>
+			<li>VWE_TrenchWarfare</li>
 		</researchPrerequisites>
 		<modExtensions>
 			<li Class="VFESecurity.ExtendedBuildingProperties">
@@ -137,7 +137,7 @@
 			</li>
 		</damageMultipliers>
 		<researchPrerequisites>
-			<li>VFES_TrenchWarfare</li>
+			<li>VWE_TrenchWarfare</li>
 		</researchPrerequisites>
 	</ThingDef>
 	<!-- Platform -->
@@ -204,7 +204,7 @@
 			</li>
 		</damageMultipliers>
 		<researchPrerequisites>
-			<li>VFES_TrenchWarfare</li>
+			<li>VWE_TrenchWarfare</li>
 		</researchPrerequisites>
 	</ThingDef>
 	<!-- Ammo crate -->

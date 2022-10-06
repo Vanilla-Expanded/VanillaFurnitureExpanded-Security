@@ -19,21 +19,20 @@
   <researchViewY>2.75</researchViewY>
 	</ResearchProjectDef>
 
-	<!-- Industrial -->
-	<ResearchProjectDef ParentName="VFES_ResearchBase">
-		<defName>VFES_TrenchWarfare</defName>
+	<ResearchProjectDef>
+		<defName>VWE_TrenchWarfare</defName>
 		<label>trench warfare</label>
-		<description>Adapt a trench warfare doctrine with a selection of weapons for close-quarters combat, as well as the ability to dig trenches.</description>
-		<baseCost>900</baseCost>
+		<description>Adapt a trench warfare doctrine with a selection of weapons for close-quarters combat.</description>
+		<baseCost>700</baseCost>
+		<tab>VanillaExpanded</tab>
 		<techLevel>Industrial</techLevel>
 		<prerequisites>
-			<li>Mortars</li>
-			<li>GasOperation</li>
+			<li>Mortars</li>	
 		</prerequisites>
-		<researchViewX>2</researchViewX>
-		<researchViewY>0</researchViewY>
+  <researchViewX>4.00</researchViewX>
+  <researchViewY>0.70</researchViewY>
 	</ResearchProjectDef>
-
+	
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
 		<defName>VFES_Artillery</defName>
 		<label>artillery</label>
