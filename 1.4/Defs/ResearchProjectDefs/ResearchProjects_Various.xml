@@ -60,22 +60,6 @@
   <researchViewY>0.75</researchViewY>
 	</ResearchProjectDef>
 
-
-	<ResearchProjectDef ParentName="VFES_ResearchBase">
-		<defName>VFES_MetalAlloysBarricades</defName>
-		<label>metal alloy barricades</label>
-		<description>Construct reinforced metal barricades.</description>
-		<baseCost>800</baseCost>
-		<techLevel>Industrial</techLevel>
-		<prerequisites>
-			<li>MicroelectronicsBasics</li>
-		</prerequisites>
-		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-  <researchViewX>5.00</researchViewX>
-  <researchViewY>2.45</researchViewY>
-	</ResearchProjectDef>
-
-
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
 		<defName>VFES_ConcealedDefenses</defName>
 		<label>concealed defenses</label>
@@ -84,24 +68,10 @@
 		<techLevel>Industrial</techLevel>
 		<prerequisites>
 			<li>GunTurrets</li>
-			<li>VFES_MetalAlloysBarricades</li>
 		</prerequisites>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
   <researchViewX>6.00</researchViewX>
   <researchViewY>3.10</researchViewY>
-	</ResearchProjectDef>
-
-	<ResearchProjectDef ParentName="VFES_ResearchBase">
-		<defName>VFES_MissileBarrage</defName>
-		<label>missile turret</label>
-		<description>Adapt explosive technology in a form of surface-to-surface missile launcher.</description>
-		<baseCost>3000</baseCost>
-		<techLevel>Industrial</techLevel>
-		<prerequisites>
-			<li>HeavyTurrets</li>
-		</prerequisites>
-  <researchViewX>5.00</researchViewX>
-  <researchViewY>3.00</researchViewY>
 	</ResearchProjectDef>
 
 	<!-- Spacer -->
@@ -112,7 +82,6 @@
 		<baseCost>1600</baseCost>
 		<techLevel>Spacer</techLevel>
 		<prerequisites>
-			<li>VFES_MetalAlloysBarricades</li>
 			<li>ChargedShot</li>
 		</prerequisites>
 		<requiredResearchFacilities>
