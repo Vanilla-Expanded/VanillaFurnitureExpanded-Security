@@ -67,7 +67,7 @@
         <fuelMultiplier>2</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <outOfFuelMessage>Cannot shoot: Needs new barrels</outOfFuelMessage>
+        <outOfFuelMessage>Needs new barrels</outOfFuelMessage>
         <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
       </li>
     </comps>
@@ -312,7 +312,7 @@
         <fuelMultiplier>1</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <outOfFuelMessage>Cannot shoot: Needs chemfuel</outOfFuelMessage>
+        <outOfFuelMessage>Needs chemfuel</outOfFuelMessage>
         <fuelIconPath>Things/Item/Resource/Chemfuel</fuelIconPath>
       </li>
     </comps>
@@ -473,7 +473,7 @@
         <fuelMultiplier>0.5</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <outOfFuelMessage>Cannot shoot: Needs new barrel</outOfFuelMessage>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
         <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
       </li>
     </comps>

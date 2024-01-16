@@ -241,7 +241,7 @@
         <fuelMultiplier>10</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
-        <outOfFuelMessage>Cannot shoot: Out of ammo</outOfFuelMessage>
+        <outOfFuelMessage>Out of ammo</outOfFuelMessage>
         <fuelIconPath>UI/Overlays/FuelAmmo</fuelIconPath>
       </li>
     </comps>
