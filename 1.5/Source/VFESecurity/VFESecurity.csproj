@@ -70,7 +70,7 @@
     <Compile Include="AI\JobDriver_RearmTrap.cs" />
     <Compile Include="AI\WorkGiver_RearmTrap.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_AIBase.cs" />
-    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Outpost.cs" />
+    <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Site.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Insectoid.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_Settlement.cs" />
     <Compile Include="ArrivalActions\ArtilleryStrikeArrivalAction_PeaceTalks.cs" />

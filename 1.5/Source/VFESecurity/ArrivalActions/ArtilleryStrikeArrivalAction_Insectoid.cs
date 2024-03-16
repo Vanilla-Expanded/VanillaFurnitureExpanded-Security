@@ -32,7 +32,7 @@ namespace VFESecurity
             this.sourceMap = sourceMap;
         }
 
-        protected override int BaseSize => MapSize;
+        protected override int BaseSize => MapSize.x;
 
         // Not really destroy in this context
         protected override float DestroyChancePerCellInRect => 0.008f;

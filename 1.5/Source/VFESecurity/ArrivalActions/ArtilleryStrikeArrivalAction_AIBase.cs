@@ -23,7 +23,7 @@ namespace VFESecurity
             get;
         }
 
-        protected abstract int MapSize
+        protected abstract IntVec3 MapSize
         {
             get;
         }
@@ -48,7 +48,7 @@ namespace VFESecurity
                 {
                     PreStrikeAction();
                     bool destroyed = false;
-                    var mapRect = new CellRect(0, 0, MapSize, MapSize);
+                    var mapRect = new CellRect(0, 0, MapSize.x, MapSize.z);
                     var baseRect = new CellRect(GenMath.RoundRandom(mapRect.Width / 2f) - GenMath.RoundRandom(BaseSize / 2f), GenMath.RoundRandom(mapRect.Height / 2f) - GenMath.RoundRandom(BaseSize / 2f), BaseSize, BaseSize);
                     var strikeList = harmfulStrikes.ToList();
                     for (int i = 0; i < strikeList.Count; i++)

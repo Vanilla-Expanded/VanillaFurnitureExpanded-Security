@@ -48,6 +48,21 @@ namespace VFESecurity
 
         public override Vector3 DrawPos => Vector3.Slerp(Start, End, travelledPct);
 
+        public override float ExpandingIconRotation
+        {
+            get
+            {
+                Vector2 vector = GenWorldUI.WorldToUIPosition(Start);
+                Vector2 vector2 = GenWorldUI.WorldToUIPosition(End);
+                float num = Mathf.Atan2(vector2.y - vector.y, vector2.x - vector.x) * 57.29578f;
+                if (num > 180f)
+                {
+                    num -= 180f;
+                }
+                return num + 45f;
+            }
+        }
+
         private IEnumerable<ActiveArtilleryStrike> ArtilleryStrikes => innerContainer.Cast<ActiveArtilleryStrike>();
 
         public override string Label

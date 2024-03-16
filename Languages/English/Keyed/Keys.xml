@@ -17,6 +17,7 @@
     <VFESecurity.TargetPeaceTalks>Target peace talks</VFESecurity.TargetPeaceTalks>
     <VFESecurity.TargetSettlement>Target settlement</VFESecurity.TargetSettlement>
     <VFESecurity.TargetOutpost>Target outpost</VFESecurity.TargetOutpost>
+    <VFESecurity.TargetSite>Target site</VFESecurity.TargetSite>
     <VFESecurity.TargetWorldTileEmpty>Target area (will have no effect)</VFESecurity.TargetWorldTileEmpty>
     <VFESecurity.TargetWorldFlyingObject>Cannot target flying objects.</VFESecurity.TargetWorldFlyingObject>
     <VFESecurity.TargetWorldTileSameTile>Cannot target the same tile.</VFESecurity.TargetWorldTileSameTile>

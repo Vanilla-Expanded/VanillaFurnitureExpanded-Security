@@ -5,13 +5,13 @@ using Verse;
 
 namespace VFESecurity
 {
-    public class ArtilleryStrikeArrivalAction_Outpost : ArtilleryStrikeArrivalAction_AIBase
+    public class ArtilleryStrikeArrivalAction_Site : ArtilleryStrikeArrivalAction_AIBase
     {
-        public ArtilleryStrikeArrivalAction_Outpost()
+        public ArtilleryStrikeArrivalAction_Site()
         {
         }
 
-        public ArtilleryStrikeArrivalAction_Outpost(WorldObject worldObject)
+        public ArtilleryStrikeArrivalAction_Site(WorldObject worldObject)
         {
             this.worldObject = worldObject;
         }
@@ -20,7 +20,7 @@ namespace VFESecurity
 
         protected override bool CanDoArriveAction => Site != null && Site.Spawned;
 
-        protected override int MapSize => Site.Map.Size.x;
+        protected override IntVec3 MapSize => Site.Map != null ? Site.Map.Size : Site.PreferredMapSize;
 
         protected override int BaseSize => 16;
 

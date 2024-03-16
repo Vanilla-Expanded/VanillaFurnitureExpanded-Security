@@ -20,7 +20,7 @@ namespace VFESecurity
 
         protected override bool CanDoArriveAction => Settlement != null && Settlement.Spawned && Settlement.Faction != Faction.OfPlayer;
 
-        protected override int MapSize => GameInitData.DefaultMapSize;
+        protected override IntVec3 MapSize => new IntVec3(250, 1, 250);
 
         protected override int BaseSize => 36;
 
@@ -33,6 +33,7 @@ namespace VFESecurity
 
         protected override void StrikeAction(ActiveArtilleryStrike strike, CellRect mapRect, CellRect baseRect, ref bool destroyed)
         {
+
             var radialCells = GenRadial.RadialCellsAround(mapRect.RandomCell, strike.shellDef.projectile.explosionRadius, true);
             int cellsInRect = radialCells.Count(c => baseRect.Contains(c));
 

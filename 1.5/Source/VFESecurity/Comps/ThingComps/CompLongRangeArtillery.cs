@@ -267,44 +267,54 @@ namespace VFESecurity
         public IEnumerable<FloatMenuOption> FloatMenuOptionsFor(int tile)
         {
             bool anything = false;
-            var worldObjects = Find.WorldObjects.AllWorldObjects;
+            var worldObjects = Find.WorldObjects.ObjectsAt(tile).ToList();
             for (int i = 0; i < worldObjects.Count; i++)
             {
                 var worldObject = worldObjects[i];
-                if (worldObject.Tile == tile)
+                anything = true;
+                if (worldObject is MapParent mapParent && mapParent.HasMap)
                 {
-                    if (worldObject != null)
+                    yield return new FloatMenuOption("VFESecurity.TargetMap".Translate(), delegate
                     {
-                        if (worldObject is MapParent mapParent && mapParent.HasMap)
+                        var selectedComps = SelectedComps.ToList();
+                        Find.WorldTargeter.StopTargeting();
+                        Current.Game.CurrentMap = mapParent.Map;
+                        Find.CameraDriver.JumpToCurrentMapLoc(mapParent.Map.Center);
+                        Find.Targeter.BeginTargeting(new TargetingParameters
                         {
-                            yield return new FloatMenuOption("VFESecurity.TargetMap".Translate(), () => SetTargetedTile(worldObject));
-                            anything = true;
-                        }
-
-                        // Peace talks - cause badwill and potentially cause a raid
-                        if (worldObject is PeaceTalks talks)
+                            canTargetLocations = true,
+                        }, delegate (LocalTargetInfo x)
                         {
-                            yield return new FloatMenuOption("VFESecurity.TargetPeaceTalks".Translate(), () => SetTargetedTile(worldObject));
-                            anything = true;
-                        }
-
-                        // Settlement - cause badwill, potentially cause an artillery retaliation and potentially destroy
-                        if (worldObject is Settlement settlement && settlement.Faction != Faction.OfPlayer)
+                            SetTargetedTile(worldObject, x, selectedComps);
+                        }, highlightAction: delegate (LocalTargetInfo x)
                         {
-                            yield return new FloatMenuOption("VFESecurity.TargetSettlement".Translate(), () => SetTargetedTile(worldObject));
-                            anything = true;
-                        }
-
-                        if (worldObject is Site site)
-                        {
-                            // Bandit camp - potentially destroy
-                            if (site.parts.Any(p => p.def == SitePartDefOf.BanditCamp))
+                            if (x.IsValid)
                             {
-                                yield return new FloatMenuOption("VFESecurity.TargetOutpost".Translate(), () => SetTargetedTile(worldObject));
-                                anything = true;
+                                GenDraw.DrawTargetHighlight(x);
                             }
-                        }
-                    }
+                        }, null, onGuiAction: delegate (LocalTargetInfo x)
+                        {
+                            Texture2D icon = (Texture2D)Turret.def.building.turretTopMat.mainTexture;
+                            GenUI.DrawMouseAttachment(icon);
+                        }, onUpdateAction: delegate (LocalTargetInfo x)
+                        {
+                            DrawTargetHighlightField(x, mapParent);
+                        });
+                    });
+                }
+                // Peace talks - cause badwill and potentially cause a raid
+                else if (worldObject is PeaceTalks talks)
+                {
+                    yield return new FloatMenuOption("VFESecurity.TargetPeaceTalks".Translate(), () => SetTargetedTile(worldObject));
+                }
+                // Settlement - cause badwill, potentially cause an artillery retaliation and potentially destroy
+                else if (worldObject is Settlement settlement && settlement.Faction != Faction.OfPlayer)
+                {
+                    yield return new FloatMenuOption("VFESecurity.TargetSettlement".Translate(), () => SetTargetedTile(worldObject));
+                }
+                else
+                {
+                    yield return new FloatMenuOption("VFESecurity.TargetSite".Translate(), () => SetTargetedTile(worldObject));
                 }
             }
 
@@ -314,17 +324,36 @@ namespace VFESecurity
             }
         }
 
-        public void SetTargetedTile(GlobalTargetInfo t)
+        private void DrawTargetHighlightField(LocalTargetInfo x, MapParent mapParent)
+        {
+            var verb = Turret.AttackVerb;
+            float num = verb.GetProjectile().projectile.explosionRadius + verb.GetProjectile().projectile.explosionRadiusDisplayPadding;
+            float forcedMissRadius = verb.verbProps.ForcedMissRadius;
+            if (forcedMissRadius > 0f && verb.verbProps.burstShotCount > 1)
+            {
+                num += forcedMissRadius;
+            }
+            GenDraw.DrawFieldEdges(GenRadial.RadialCellsAround(x.Cell, num, useCenter: true)
+                .Where(cell => cell.InBounds(mapParent.Map)).ToList(), verb.verbProps.explosionRadiusRingColor);
+        }
+
+        public void SetTargetedTile(GlobalTargetInfo t, LocalTargetInfo cell = default, List<CompLongRangeArtillery> compList = null)
         {
             CameraJumper.TryHideWorld();
-
-            var compList = SelectedComps.ToList();
+            if (compList is null)
+            {
+                compList = SelectedComps.ToList();
+            }
             for (int i = 0; i < compList.Count; i++)
             {
                 var comp = compList[i];
                 comp.Turret.ResetForcedTarget();
                 comp.Turret.ResetCurrentTarget();
                 comp.targetedTile = t;
+                if (cell != default)
+                {
+                    comp.targetedCell = cell;
+                }
                 SoundDefOf.TurretAcquireTarget.PlayOneShot(new TargetInfo(comp.parent.Position, comp.parent.Map, false));
                 comp.ResetWarmupTicks();
             }
@@ -333,6 +362,7 @@ namespace VFESecurity
         public void ResetForcedTarget()
         {
             targetedTile = GlobalTargetInfo.Invalid;
+            targetedCell = LocalTargetInfo.Invalid;
             ResetWarmupTicks();
         }
 
@@ -344,7 +374,7 @@ namespace VFESecurity
                 if (worldObject != null)
                 {
                     if (worldObject is MapParent mapParent && mapParent.HasMap)
-                        return new ArtilleryStrikeArrivalAction_Map(mapParent);
+                        return new ArtilleryStrikeArrivalAction_Map(mapParent, targetedCell.Cell);
 
                     // Peace talks - cause badwill and potentially cause a raid
                     if (worldObject is PeaceTalks talks)
@@ -363,9 +393,7 @@ namespace VFESecurity
 
                     if (worldObject is Site site)
                     {
-                        // Bandit camp - potentially destroy
-                        if (site.parts.Any(p => p.def == SitePartDefOf.BanditCamp))
-                            return new ArtilleryStrikeArrivalAction_Outpost(site);
+                        return new ArtilleryStrikeArrivalAction_Site(site);
                     }
                 }
 
@@ -425,10 +453,12 @@ namespace VFESecurity
         {
             Scribe_Values.Look<int>(ref warmupTicksLeft, "warmupTicksLeft");
             Scribe_TargetInfo.Look(ref targetedTile, "targetedTile");
+            Scribe_TargetInfo.Look(ref targetedCell, "targetedCell");
             base.PostExposeData();
         }
 
         public int warmupTicksLeft;
         public GlobalTargetInfo targetedTile = GlobalTargetInfo.Invalid;
+        public LocalTargetInfo targetedCell = LocalTargetInfo.Invalid;
     }
 }
