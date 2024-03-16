@@ -20,7 +20,7 @@ namespace VFESecurity
 
         public override int DraggableDimensions => 2;
 
-        protected override DesignationDef Designation => DesignationDefOf.VFES_RearmTrap;
+        public override DesignationDef Designation => DesignationDefOf.VFES_RearmTrap;
 
         public override AcceptanceReport CanDesignateCell(IntVec3 loc)
         {

@@ -38,14 +38,14 @@ namespace VFESecurity
             rearmableComp = GetComp<CompRearmable>();
         }
 
-        protected override void SpringSub(Pawn p)
+        public override void SpringSub(Pawn p)
         {
             if (rearmableComp.armed)
             {
                 SoundDefOf.TrapSpring.PlayOneShot(new TargetInfo(Position, Map));
                 rearmableComp.armed = false;
                 Map.mapDrawer.SectionAt(Position).RegenerateAllLayers();
-                if (!def.building.trapDestroyOnSpring && (bool)NonPublicFields.Building_Trap_autoRearm.GetValue(this))
+                if (!def.building.trapDestroyOnSpring && this.autoRearm)
                     Map.designationManager.AddDesignation(new Designation(this, DesignationDefOf.VFES_RearmTrap));
                 if (p == null || !AffectableBodySizeRange.Includes(p.BodySize))
                     return;

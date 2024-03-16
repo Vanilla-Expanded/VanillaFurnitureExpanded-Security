@@ -8,7 +8,7 @@ namespace VFESecurity
     {
         private ProjectileProperties ProjectileProps => (def.GetModExtension<ExtendedProjectileProperties>() ?? ExtendedProjectileProperties.defaultValues).projectile2;
 
-        protected override void Impact(Thing hitThing, bool blockedByShield = false)
+        public override void Impact(Thing hitThing, bool blockedByShield = false)
         {
             var usedTargetInfo = hitThing ?? new TargetInfo(usedTarget.Cell, Map);
             DoExplosion(usedTargetInfo);

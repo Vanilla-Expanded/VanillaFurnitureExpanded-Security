@@ -36,7 +36,7 @@ namespace VFESecurity
             if (cellsInRect > 0 && Rand.Chance(cellsInRect * DestroyChancePerCellInRect))
             {
                 QuestUtility.SendQuestTargetSignals(Site.questTags, QuestUtility.QuestTargetSignalPart_AllEnemiesDefeated, Site.Named("SUBJECT"));
-                NonPublicFields.Site_allEnemiesDefeatedSignalSent.SetValue(Site, true);
+                Site.allEnemiesDefeatedSignalSent = true;
                 Find.WorldObjects.Remove(worldObject);
                 destroyed = true;
             }

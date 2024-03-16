@@ -55,12 +55,12 @@ namespace VFESecurity
             base.Tick();
         }
 
-        protected override void DrawAt(Vector3 drawLoc, bool flip = false)
+        public override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
             base.DrawAt(drawLoc, flip);
         }
 
-        protected override void LeaveMap()
+        public override void LeaveMap()
         {
             if (alreadyLeft)
             {

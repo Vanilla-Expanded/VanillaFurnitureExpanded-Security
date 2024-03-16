@@ -13,8 +13,6 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -36,6 +34,16 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer">
+      <Version>2.2.1</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Lib.Harmony" Version="2.*">
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <Publicize Include="Assembly-CSharp" />
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -141,9 +149,6 @@
     <Compile Include="HarmonyPatches\Patch_TurretTop.cs" />
     <Compile Include="HarmonyPatches\Patch_WorldObjectsHolder.cs" />
     <Compile Include="HarmonyPatches\Patch_Thing.cs" />
-    <Compile Include="Reflection\NonPublicFields.cs" />
-    <Compile Include="Reflection\NonPublicProperties.cs" />
-    <Compile Include="Reflection\NonPublicMethods.cs" />
     <Compile Include="StaticConstructorClass.cs" />
     <Compile Include="Utilities\ArtilleryStrikeUtility.cs" />
     <Compile Include="Utilities\TrenchUtility.cs" />
@@ -161,16 +166,6 @@
     <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorldObjects\TravellingArtilleryStrike.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Krafs.Publicizer">
-      <Version>2.2.1</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Lib.Harmony">
-      <Version>2.2.2</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

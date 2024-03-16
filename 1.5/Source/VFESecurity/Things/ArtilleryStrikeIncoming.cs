@@ -54,7 +54,7 @@ namespace VFESecurity
             base.Tick();
         }
 
-        protected override void HitRoof()
+        public override void HitRoof()
         {
             if (Map.roofGrid.RoofAt(Position) is RoofDef roof && roof.isThickRoof)
             {
@@ -65,11 +65,11 @@ namespace VFESecurity
             base.HitRoof();
         }
 
-        protected override void Impact()
+        public override void Impact()
         {
             var projectile = (Projectile)ThingMaker.MakeThing(artilleryShellDef);
             GenSpawn.Spawn(projectile, Position, Map);
-            NonPublicMethods.Projectile_ImpactSomething(projectile);
+            projectile.ImpactSomething();
             base.Impact();
         }
 

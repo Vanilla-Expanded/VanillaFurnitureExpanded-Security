@@ -17,7 +17,6 @@ namespace VFESecurity
 
     public static class ShieldGeneratorUtility
     {
-
         public static bool AffectsShields(this DamageDef damageDef)
         {
             return damageDef.isExplosive || damageDef == DamageDefOf.EMP;
@@ -47,8 +46,8 @@ namespace VFESecurity
         {
             if (!proj.def.projectile.flyOverhead)
                 return true;
-            return !shieldGen.coveredCells.Contains(((Vector3)NonPublicFields.Projectile_origin.GetValue(proj)).ToIntVec3()) && 
-                (int)NonPublicFields.Projectile_ticksToImpact.GetValue(proj) / (float)NonPublicProperties.Projectile_get_StartingTicksToImpact(proj) <= 0.5f;
+            return !shieldGen.coveredCells.Contains(proj.origin.ToIntVec3()) &&
+                proj.ticksToImpact / proj.StartingTicksToImpact <= 0.5f;
         }
 
         //---added--- inspired by Frontier Security's method (distributed under an open-source non-profit license)

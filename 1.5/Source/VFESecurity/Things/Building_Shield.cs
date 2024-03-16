@@ -137,9 +137,9 @@ namespace VFESecurity
             base.DeSpawn(mode);
         }
 
-        
 
-        protected override void DrawAt(Vector3 drawLoc, bool flip = false)
+
+        public override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
             base.DrawAt(drawLoc, flip);
 
@@ -333,7 +333,7 @@ namespace VFESecurity
                 // Try and block projectiles from outside
                 if (thing is Projectile proj && proj.BlockableByShield(this))
                 {
-                    if (NonPublicFields.Projectile_launcher.GetValue(proj) is Thing launcher && !thingsWithinRadius.Contains(launcher))
+                    if (proj.launcher is Thing launcher && !thingsWithinRadius.Contains(launcher))
                     {
                         // Explosives are handled separately
                         if (!(proj is Projectile_Explosive))
@@ -342,8 +342,8 @@ namespace VFESecurity
                         }
 
                         proj.Position += Rot4.FromAngleFlat((Position - proj.Position).AngleFlat).Opposite.FacingCell;
-                        NonPublicFields.Projectile_usedTarget.SetValue(proj, new LocalTargetInfo(proj.Position));
-                        NonPublicMethods.Projectile_ImpactSomething(proj);
+                        proj.usedTarget = new LocalTargetInfo(proj.Position);
+                        proj.ImpactSomething();
                     }
                 }
 

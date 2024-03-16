@@ -24,7 +24,7 @@ namespace VFESecurity
             return base.CanHitTarget(targ);
         }
 
-        protected override bool TryCastShot()
+        public override bool TryCastShot()
         {
             if (prevMote != null)
             {

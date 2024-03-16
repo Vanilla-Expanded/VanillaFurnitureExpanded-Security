@@ -20,7 +20,7 @@ namespace VFESecurity
 
         private static readonly FloatRange DamageRandomFactorRange = new FloatRange(0.8f, 1.2f);
 
-        protected override void SpringSub(Pawn p)
+        public override void SpringSub(Pawn p)
         {
             SoundDefOf.TrapSpring.PlayOneShot(new TargetInfo(base.Position, base.Map, false));
             if (p == null)

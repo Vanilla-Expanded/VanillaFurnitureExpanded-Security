@@ -38,7 +38,7 @@ namespace VFESecurity
         private CompMannable MannableComp => parent.GetComp<CompMannable>();
 
         public bool CanLaunch => (PowerComp == null || PowerComp.PowerOn) && (RefuelableComp == null || RefuelableComp.HasFuel) && (ChangeableProjectile == null || ChangeableProjectile.Loaded)
-            && (MannableComp == null || MannableComp.MannedNow) && (int)NonPublicFields.Building_TurretGun_burstCooldownTicksLeft.GetValue(Turret) <= 0 && !parent.OccupiedRect().Cells.Any(c => c.Roofed(parent.Map));
+            && (MannableComp == null || MannableComp.MannedNow) && Turret.burstCooldownTicksLeft <= 0 && !parent.OccupiedRect().Cells.Any(c => c.Roofed(parent.Map));
 
         private int CurAngle => targetedTile != GlobalTargetInfo.Invalid ? (int)Find.WorldGrid.GetDirection8WayFromTo(parent.Map.Tile, targetedTile.Tile) * 45 : -1;
 
@@ -94,9 +94,9 @@ namespace VFESecurity
             // Automatically attack if there is a forced target
             if (targetedTile != GlobalTargetInfo.Invalid)
             {
-                var turretTop = (TurretTop)NonPublicFields.Building_TurretGun_top.GetValue(Turret);
-                NonPublicProperties.TurretTop_set_CurRotation(turretTop, CurAngle);
-                NonPublicFields.TurretTop_ticksUntilIdleTurn.SetValue(turretTop, Rand.RangeInclusive(150, 350));
+                var turretTop = Turret.Top;
+                turretTop.CurRotation = CurAngle;
+                turretTop.ticksUntilIdleTurn = Rand.RangeInclusive(150, 350);
                 if (CanLaunch)
                 {
                     if (warmupTicksLeft == 0)
@@ -322,8 +322,8 @@ namespace VFESecurity
             for (int i = 0; i < compList.Count; i++)
             {
                 var comp = compList[i];
-                NonPublicMethods.Building_TurretGun_ResetForcedTarget(comp.Turret);
-                NonPublicMethods.Building_TurretGun_ResetCurrentTarget(comp.Turret);
+                comp.Turret.ResetForcedTarget();
+                comp.Turret.ResetCurrentTarget();
                 comp.targetedTile = t;
                 SoundDefOf.TurretAcquireTarget.PlayOneShot(new TargetInfo(comp.parent.Position, comp.parent.Map, false));
                 comp.ResetWarmupTicks();
@@ -408,7 +408,7 @@ namespace VFESecurity
                         RefuelableComp.ConsumeFuel(verb.verbProps.consumeFuelPerShot);
                 }
             }
-            NonPublicMethods.Building_TurretGun_BurstComplete(Turret);
+            Turret.BurstComplete();
 
             var artilleryStrikeLeaving = (ArtilleryStrikeLeaving)SkyfallerMaker.MakeSkyfaller(ThingDefOf.VFES_ArtilleryStrikeLeaving, activeArtilleryStrike);
             artilleryStrikeLeaving.startCell = parent.Position;

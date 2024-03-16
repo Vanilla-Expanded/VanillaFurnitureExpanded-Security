@@ -16,7 +16,7 @@ namespace VFESecurity
             return pawn.Reserve(job.targetA, job, errorOnFailed: errorOnFailed);
         }
 
-        protected override IEnumerable<Toil> MakeNewToils()
+        public override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDespawnedOrNull(TrapInd);
             this.FailOnThingMissingDesignation(TrapInd, DesignationDefOf.VFES_RearmTrap);
