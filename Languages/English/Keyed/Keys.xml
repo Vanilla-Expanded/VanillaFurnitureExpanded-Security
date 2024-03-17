@@ -51,5 +51,8 @@
     <VFESecurity.DesignatorRearmTraps>Rearm</VFESecurity.DesignatorRearmTraps>
     <VFESecurity.DesignatorRearmTraps_Description>Mark unarmed rearmable traps to be rearmed by your colonists.</VFESecurity.DesignatorRearmTraps_Description>
     <VFESecurity.MessageMustDesignateRearmables>Must designate unarmed rearmable traps.</VFESecurity.MessageMustDesignateRearmables>
+    <VFESecurity.ArtileryHitMessage>Artillery shell has hit the {0} location. ({1} destruction).</VFESecurity.ArtileryHitMessage>
+    <VFESecurity.ArtileryDestruction>{0} destruction from artillery</VFESecurity.ArtileryDestruction>
+    <VFESecurity.ArtileryHitDestroyedMessage>Artillery shell has destroyed the {0} location.</VFESecurity.ArtileryHitDestroyedMessage>
 
 </LanguageData>

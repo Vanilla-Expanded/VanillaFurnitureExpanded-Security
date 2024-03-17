@@ -8,6 +8,9 @@ namespace VFESecurity
 {
     public class ArtilleryComp : WorldObjectComp
     {
+        public float damageTaken;
+        public int MaxDamageToDestroy => 200;
+        public float DestructionPct => damageTaken / MaxDamageToDestroy;
         public int recentRetaliationTicks;
 
         private const int BombardmentStartDelay = GenTicks.TicksPerRealSecond * 5;
@@ -58,7 +61,7 @@ namespace VFESecurity
                 for (int i = 0; i < maps.Count; i++)
                 {
                     var map = maps[i];
-                    if (map.ParentFaction == Faction.OfPlayer)
+                    if (map.ParentFaction == Faction.OfPlayer && map.IsPocketMap is false)
                         yield return map;
                 }
             }
@@ -152,6 +155,15 @@ namespace VFESecurity
             base.PostPostRemove();
         }
 
+        public override string CompInspectStringExtra()
+        {
+            if (damageTaken > 0)
+            {
+                return "VFESecurity.ArtileryDestruction".Translate(DestructionPct.ToStringPercent());
+            }
+            return base.CompInspectStringExtra();
+        }
+
         public override void PostExposeData()
         {
             Scribe_Values.Look(ref artilleryCount, "artilleryCount", -1);
@@ -159,6 +171,7 @@ namespace VFESecurity
             Scribe_Values.Look(ref artilleryCooldownTicks, "artilleryCooldownTicks");
             Scribe_Values.Look(ref bombardmentDurationTicks, "bombardmentDurationTicks");
             Scribe_Values.Look(ref recentRetaliationTicks, "recentRetaliationTicks");
+            Scribe_Values.Look(ref damageTaken, "damageTaken");
             Scribe_Collections.Look(ref artillery, "artillery", LookMode.Reference);
             base.PostExposeData();
         }

@@ -5,40 +5,46 @@ using Verse;
 
 namespace VFESecurity
 {
-    public class ArtilleryStrikeArrivalAction_Site : ArtilleryStrikeArrivalAction_AIBase
+    public class ArtilleryStrikeArrivalAction_Site : ArtilleryStrikeArrivalAction_MapParent
     {
         public ArtilleryStrikeArrivalAction_Site()
         {
         }
 
-        public ArtilleryStrikeArrivalAction_Site(WorldObject worldObject)
+        public ArtilleryStrikeArrivalAction_Site(MapParent worldObject)
         {
-            this.worldObject = worldObject;
+            this.mapParent = worldObject;
         }
 
-        protected Site Site => worldObject as Site;
+        protected Site Site => mapParent as Site;
 
         protected override bool CanDoArriveAction => Site != null && Site.Spawned;
 
-        protected override IntVec3 MapSize => Site.Map != null ? Site.Map.Size : Site.PreferredMapSize;
-
-        protected override int BaseSize => 16;
-
-        protected override float DestroyChancePerCellInRect => 0.02f;
-
-        protected override void StrikeAction(ActiveArtilleryStrike strike, CellRect mapRect, CellRect baseRect, ref bool destroyed)
+        protected override void PostStrikeAction(bool destroyed)
         {
-            Log.Message(Site.AllComps.ToStringSafeEnumerable());
-            var radialCells = GenRadial.RadialCellsAround(mapRect.RandomCell, strike.shellDef.projectile.explosionRadius, true);
-            int cellsInRect = radialCells.Count(c => baseRect.Contains(c));
-
-            // Destroy outpost and give reward
-            if (cellsInRect > 0 && Rand.Chance(cellsInRect * DestroyChancePerCellInRect))
+            base.PostStrikeAction(destroyed);
+            if (destroyed)
             {
                 QuestUtility.SendQuestTargetSignals(Site.questTags, QuestUtility.QuestTargetSignalPart_AllEnemiesDefeated, Site.Named("SUBJECT"));
                 Site.allEnemiesDefeatedSignalSent = true;
-                Find.WorldObjects.Remove(worldObject);
-                destroyed = true;
+                if (Find.WorldObjects.Contains(mapParent))
+                {
+                    Find.WorldObjects.Remove(mapParent);
+                }
+                var quests = Find.QuestManager.QuestsListForReading.Where(x => x.ended is false
+                    && x.QuestLookTargets.Contains(mapParent)).ToList();
+                foreach (var quest in quests)
+                {
+                    var part = quest.PartsListForReading.OfType<QuestPart_NoWorldObject>().FirstOrDefault();
+                    if (part != null)
+                    {
+                        part.Complete();
+                    }
+                    else
+                    {
+                        quest.End(QuestEndOutcome.Unknown);
+                    }
+                }
             }
         }
     }

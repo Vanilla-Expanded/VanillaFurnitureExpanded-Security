@@ -19,10 +19,11 @@ namespace VFESecurity
 
         public override void ExposeData()
         {
+            base.ExposeData();
             Scribe_Values.Look(ref missRadius, "missRadius");
             Scribe_Defs.Look(ref shellDef, "shellDef");
             Scribe_Values.Look(ref shellCount, "count");
-            base.ExposeData();
+            Scribe_References.Look(ref manningPawn, "manningPawn");
         }
 
         public override void Tick()
@@ -32,9 +33,8 @@ namespace VFESecurity
         public float missRadius;
         public ThingDef shellDef;
         public int shellCount;
+        public Pawn manningPawn;
 
         public float Speed => shellDef.projectile.speed;
-
     }
-
 }

@@ -1,9 +1,10 @@
 ﻿using RimWorld;
+using RimWorld.Planet;
+using System.Collections.Generic;
 using Verse;
 
 namespace VFESecurity
 {
-
     [StaticConstructorOnStartup]
     public static class StaticConstructorClass
     {
@@ -20,9 +21,20 @@ namespace VFESecurity
                     tDef.projectileWhenLoaded = ThingDefOf.VFES_Artillery_Rock;
                 }
             }
+            var worldObjectDefs = DefDatabase<WorldObjectDef>.AllDefsListForReading;
+            foreach (var worldObjectDef in worldObjectDefs)
+            {
+                if (typeof(Site).IsAssignableFrom(worldObjectDef.worldObjectClass))
+                {
+                    var compProps = worldObjectDef.comps?.FirstOrDefault(x => x is WorldObjectCompProperties_Artillery);
+                    if (compProps is null)
+                    {
+                        worldObjectDef.comps ??= new List<WorldObjectCompProperties>();
+                        worldObjectDef.comps.Add(new WorldObjectCompProperties_Artillery());
+                    }
+                }
+            }
         }
-
-
     }
 
 }

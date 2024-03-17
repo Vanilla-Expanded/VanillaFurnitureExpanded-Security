@@ -55,7 +55,6 @@ namespace VFESecurity
                             num *= verb.verbProps.GetForceMissFactorFor(equipmentSource, pawn);
                         }
                         IntVec3 forcedMissTarget = GetForcedMissTarget(cell, num);
-                        Log.Message("GetForcedMissTarget " + num + " - forcedMissTarget: " + forcedMissTarget);
                         ArtilleryStrikeUtility.SpawnArtilleryStrikeSkyfaller(strike.shellDef, map, forcedMissTarget);
                     }
                 }

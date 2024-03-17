@@ -418,7 +418,7 @@ namespace VFESecurity
             // Make active artillery strike thing
             var activeArtilleryStrike = (ActiveArtilleryStrike)ThingMaker.MakeThing(ThingDefOf.VFES_ActiveArtilleryStrike);
             activeArtilleryStrike.missRadius = ArtilleryStrikeUtility.FinalisedMissRadius(Turret.CurrentEffectiveVerb.verbProps.ForcedMissRadius, Props.maxForcedMissRadiusFactor, parent.Tile, destinationTile, Props.worldTileRange);
-
+            activeArtilleryStrike.manningPawn = Turret.TryGetComp<CompMannable>().ManningPawn;
             // Simulate an attack
             if (ChangeableProjectile != null)
             {
