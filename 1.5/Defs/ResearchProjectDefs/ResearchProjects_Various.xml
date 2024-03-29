@@ -17,6 +17,16 @@
 		</prerequisites>
   <researchViewX>0.00</researchViewX>
   <researchViewY>2.75</researchViewY>
+  <generalRules>
+  <rulesStrings>
+    <li>subject->masters of siege</li>
+    <li>subject_story->revived ancient methods for breaching the stoutest defenses</li>
+    <li>subject_story->crafted engines of war that thunder across fields, striking fear into foes</li>
+    <li>subject_story->engineered trebuchets and battering rams from sturdy timber and iron</li>
+    <li>subject_story->led sieges that would become legendary, their tactics studied for ages</li>
+    <li>subject_gerund->laying siege to the future by rediscovering the past</li>
+  </rulesStrings>
+</generalRules>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -31,6 +41,16 @@
 		</prerequisites>
   <researchViewX>4.00</researchViewX>
   <researchViewY>0.70</researchViewY>
+  <generalRules>
+  <rulesStrings>
+    <li>subject->digging in</li>
+    <li>subject_story->adopted the grim tactics of entrenched battles, shaping landscapes into mazes of mud and death</li>
+    <li>subject_story->innovated with rapid entrenching tools and techniques for swift fortification</li>
+    <li>subject_story->balanced the horror of no-man's-land with the safety of well-prepared defenses</li>
+    <li>subject_story->transformed warfare with the introduction of close-quarters combat within the earth's embrace</li>
+    <li>subject_gerund->embracing the earth for protection and strategy</li>
+  </rulesStrings>
+</generalRules>
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -44,6 +64,16 @@
 		</prerequisites>
   <researchViewX>5.00</researchViewX>
   <researchViewY>1.25</researchViewY>
+  <generalRules>
+  <rulesStrings>
+    <li>subject->kings of the battlefield</li>
+    <li>subject_story->mastered the art of long-range bombardment, shaping the course of engagements from afar</li>
+    <li>subject_story->crafted cannons and howitzers that roar, laying waste to enemy formations with precision</li>
+    <li>subject_story->innovated mobile artillery units, bringing firepower where it's needed most</li>
+    <li>subject_story->pioneered predictive targeting techniques, foreseeing the evolution of warfare</li>
+    <li>subject_gerund->dominating the field with superior firepower</li>
+  </rulesStrings>
+</generalRules>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -58,6 +88,16 @@
 		</prerequisites>
   <researchViewX>5.00</researchViewX>
   <researchViewY>0.75</researchViewY>
+  <generalRules>
+  <rulesStrings>
+    <li>subject->automated guardians</li>
+    <li>subject_story->ushered in a new era of defense with the deployment of self-operating sentry guns</li>
+    <li>subject_story->merged artificial intelligence with lethal efficiency, setting a new standard for perimeter security</li>
+    <li>subject_story->designed systems that remain ever-vigilant, providing unwavering protection against threats</li>
+    <li>subject_story->integrated advanced targeting systems to minimize collateral damage</li>
+    <li>subject_gerund->watching over the silent fields with unblinking eyes</li>
+  </rulesStrings>
+</generalRules>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -72,6 +112,16 @@
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
   <researchViewX>6.00</researchViewX>
   <researchViewY>3.10</researchViewY>
+  <generalRules>
+  <rulesStrings>
+    <li>subject->hidden strength</li>
+    <li>subject_story->mastered the art of concealment, making fortifications vanish before the enemy's eyes</li>
+    <li>subject_story->innovated with submersible turrets and traps, revealing strength at the moment of surprise</li>
+    <li>subject_story->designed defenses that blend seamlessly with the environment, striking unseen</li>
+    <li>subject_story->created a network of hidden armaments, ensuring security through invisibility</li>
+    <li>subject_gerund->camouflaging power in plain sight</li>
+  </rulesStrings>
+</generalRules>
 	</ResearchProjectDef>
 
 	<!-- Spacer -->
@@ -90,6 +140,16 @@
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
   <researchViewX>6.00</researchViewX>
   <researchViewY>2.45</researchViewY>
+  <generalRules>
+  <rulesStrings>
+    <li>subject->charged dominion</li>
+    <li>subject_story->harnessed the raw energy of pulse technology to fortify defenses</li>
+    <li>subject_story->developed charge cannons that maintain relentless assaults on invaders</li>
+    <li>subject_story->integrated pulse tech into defensive strategies, setting a new era of warfare</li>
+    <li>subject_story->balanced the ebb and flow of battle with steady, unyielding firepower</li>
+    <li>subject_gerund->energizing the future of defense with pulse-charged might</li>
+  </rulesStrings>
+</generalRules>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -108,6 +168,16 @@
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
   <researchViewX>8.00</researchViewX>
   <researchViewY>2.50</researchViewY>
+  <generalRules>
+  <rulesStrings>
+    <li>subject->precision unleashed</li>
+    <li>subject_story->adapted the devastating power of spacecraft armaments for ground warfare</li>
+    <li>subject_story->engineered railguns to deliver unmatched velocity and destruction</li>
+    <li>subject_story->redefined the art of siege with technology torn from the stars</li>
+    <li>subject_story->ushered in a new age where the clash of titans is decided by the silent whisper of magnetic acceleration</li>
+    <li>subject_gerund->bridging worlds with the thunder of railguns</li>
+  </rulesStrings>
+</generalRules>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -126,6 +196,16 @@
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
   <researchViewX>8.00</researchViewX>
   <researchViewY>2.00</researchViewY>
+  <generalRules>
+  <rulesStrings>
+    <li>subject->the silent storm</li>
+    <li>subject_story->crafted weapons that speak in the language of lightning, silencing the mechanical behemoths of war</li>
+    <li>subject_story->melded the might of electromagnetic pulses with strategic defense</li>
+    <li>subject_story->paved the way for victory in silence, stunning adversaries with invisible force</li>
+    <li>subject_story->mastered the dance of electrons to protect and paralyze</li>
+    <li>subject_gerund->commanding the battlefield with the whisper of currents</li>
+  </rulesStrings>
+</generalRules>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="VFES_ResearchBase">
@@ -144,6 +224,16 @@
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
   <researchViewX>8.00</researchViewX>
   <researchViewY>1.50</researchViewY>
+  <generalRules>
+  <rulesStrings>
+    <li>subject->force fields forged</li>
+    <li>subject_story->unveiled the secrets of repulsor tech, casting domes of protection across the land</li>
+    <li>subject_story->engineered bastions of safety, where energy shields deflect the fury of war</li>
+    <li>subject_story->merged the ancient dreams of invincibility with the tangible touch of science</li>
+    <li>subject_story->ensured peace within the storm, under the watchful gaze of shimmering barriers</li>
+    <li>subject_gerund->weaving the fabric of defense with threads of pure energy</li>
+  </rulesStrings>
+</generalRules>
 	</ResearchProjectDef>
 
 </Defs>
