@@ -59,12 +59,12 @@
             <li>Steel</li>
           </thingDefs>
         </fuelFilter>
-        <fuelCapacity>240</fuelCapacity>
+        <fuelCapacity>120</fuelCapacity>
         <initialFuelPercent>1</initialFuelPercent>
-        <autoRefuelPercent>0.75</autoRefuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <minimumFueledThreshold>1</minimumFueledThreshold>
-        <fuelMultiplier>2</fuelMultiplier>
+        <fuelMultiplier>1.0</fuelMultiplier>
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Needs new barrels</outOfFuelMessage>
@@ -78,9 +78,9 @@
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>90</costStuffCount>
+    <costStuffCount>30</costStuffCount>
     <costList>
-      <Steel>80</Steel>
+      <Steel>90</Steel>
       <ComponentIndustrial>5</ComponentIndustrial>
     </costList>
     <designationCategory>Security</designationCategory>
@@ -109,10 +109,10 @@
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
     <statBases>
-      <AccuracyTouch>0.63</AccuracyTouch>
-      <AccuracyShort>0.58</AccuracyShort>
-      <AccuracyMedium>0.37</AccuracyMedium>
-      <AccuracyLong>0.20</AccuracyLong>
+      <AccuracyTouch>0.73</AccuracyTouch>
+      <AccuracyShort>0.68</AccuracyShort>
+      <AccuracyMedium>0.47</AccuracyMedium>
+      <AccuracyLong>0.30</AccuracyLong>
       <RangedWeapon_Cooldown>6.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
