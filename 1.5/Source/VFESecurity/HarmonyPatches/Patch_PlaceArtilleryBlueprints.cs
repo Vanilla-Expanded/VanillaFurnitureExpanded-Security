@@ -26,10 +26,17 @@ namespace VFESecurity
                 {
                     yield break;
                 }
-                StuffCategoryDef stuffDef = thingDef.stuffCategories.RandomElement();
-                var potentialStuff = DefDatabase<ThingDef>.AllDefs.Where(d => d.stuffProps?.categories.Contains(stuffDef) ?? false);
-                ThingDef stuff = potentialStuff.RandomElementByWeight(d => 1 / (d.BaseMarketValue * (d.smallVolume ? 20 : 1)));
-                yield return GenConstruct.PlaceBlueprintForBuild(thingDef, intVec, map, random, ___faction, stuff);
+                if (thingDef.MadeFromStuff && thingDef.stuffCategories != null && thingDef.stuffCategories.Any())
+                {
+                    StuffCategoryDef stuffDef = thingDef.stuffCategories.RandomElement();
+                    var potentialStuff = DefDatabase<ThingDef>.AllDefs.Where(d => d.stuffProps?.categories.Contains(stuffDef) ?? false);
+                    ThingDef stuff = potentialStuff.RandomElementByWeight(d => 1 / (d.BaseMarketValue * (d.smallVolume ? 20 : 1)));
+                    yield return GenConstruct.PlaceBlueprintForBuild(thingDef, intVec, map, random, ___faction, stuff);
+                }
+                else
+                {
+                    yield return GenConstruct.PlaceBlueprintForBuild(thingDef, intVec, map, random, ___faction, GenStuff.DefaultStuffFor(thingDef));
+                }
                 points -= 60f;
             }
         }
