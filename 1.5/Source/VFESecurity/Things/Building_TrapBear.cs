@@ -50,16 +50,21 @@ namespace VFESecurity
                 if (p == null || !AffectableBodySizeRange.Includes(p.BodySize))
                     return;
 
-                float damage = this.GetStatValue(RimWorld.StatDefOf.TrapMeleeDamage, true) * DamageRandomFactorRange.RandomInRange;
-                float armourPen = damage * VerbProperties.DefaultArmorPenetrationPerDamage;
                 var partHeight = p.BodySize >= LowerHeightBodySizeThreshold ? BodyPartHeight.Bottom : BodyPartHeight.Undefined;
-                BodyPartRecord hitPart = p.health.hediffSet.GetRandomNotMissingPart(DamageDefOf.Stab, partHeight);
-
-                var dinfo = new DamageInfo(DamageDefOf.Stab, damage, armourPen, instigator: this, hitPart: hitPart);
-                var damResult = p.TakeDamage(dinfo);
-                var logEntry = new BattleLogEntry_DamageTaken(p, RulePackDefOf.DamageEvent_TrapSpike);
-                Find.BattleLog.Add(logEntry);
-                damResult.AssociateWithLog(logEntry);
+                for (int i = 0; (float)i < 5f; i++)
+                {
+                    float damage = this.GetStatValue(RimWorld.StatDefOf.TrapMeleeDamage, true) * DamageRandomFactorRange.RandomInRange;
+                    float armourPen = damage * VerbProperties.DefaultArmorPenetrationPerDamage;
+                    BodyPartRecord hitPart = p.health.hediffSet.GetRandomNotMissingPart(DamageDefOf.Stab, partHeight);
+                    var dinfo = new DamageInfo(DamageDefOf.Stab, damage, armourPen, instigator: this, hitPart: hitPart);
+                    var damResult = p.TakeDamage(dinfo);
+                    if (i == 0)
+                    {
+                        BattleLogEntry_DamageTaken battleLogEntry_DamageTaken = new BattleLogEntry_DamageTaken(p, RulePackDefOf.DamageEvent_TrapSpike);
+                        Find.BattleLog.Add(battleLogEntry_DamageTaken);
+                        damResult.AssociateWithLog(battleLogEntry_DamageTaken);
+                    }
+                }
             }
         }
 
