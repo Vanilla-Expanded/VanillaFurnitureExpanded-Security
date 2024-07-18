@@ -55,11 +55,15 @@ namespace VFESecurity
         private static float AdjustedRangeFromTerrain(float range, IntVec3 pos, Map map)
         {
             float original = range;
-            var terrain = map.terrainGrid.TerrainAt(pos);
-            var terrainDefExtension = TerrainDefExtension.Get(terrain);
-            if (terrainDefExtension.rangeFactor != 1)
-                range *= terrainDefExtension.rangeFactor;
-            return original - Mathf.RoundToInt(original - range);
+            var terrain = map?.terrainGrid?.TerrainAt(pos);
+            if (terrain != null)
+            {
+                var terrainDefExtension = TerrainDefExtension.Get(terrain);
+                if (terrainDefExtension?.rangeFactor != 1)
+                    range *= terrainDefExtension.rangeFactor;
+                return original - Mathf.RoundToInt(original - range);
+            }
+            return original;
         }
 
     }
