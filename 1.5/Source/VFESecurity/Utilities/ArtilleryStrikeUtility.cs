@@ -22,7 +22,7 @@ namespace VFESecurity
 
         public static void SetCache()
         {
-            allowedEnemyShellDefs = DefDatabase<ThingDef>.AllDefsListForReading.Where(t => t.IsShell && t.projectileWhenLoaded.projectile.damageDef.harmsHealth).ToList();
+            allowedEnemyShellDefs = DefDatabase<ThingDef>.AllDefsListForReading.Where(t => t.IsShell && (t.projectileWhenLoaded?.projectile?.damageDef?.harmsHealth ?? false)).ToList();
         }
 
         public static ThingDef GetRandomShellFor(ThingDef artilleryGunDef, FactionDef faction)
