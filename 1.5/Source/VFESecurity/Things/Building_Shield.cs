@@ -46,7 +46,7 @@ namespace VFESecurity
             }
         }
 
-        public float EnergyGainPerTick => this.GetStatValue(StatDefOf.VFES_EnergyShieldRechargeRate) / 60;
+        public float EnergyGainPerTick => this.GetStatValue(StatDefOf.VFES_EnergyShieldRechargeRate) / 60f;
         public ExtendedBuildingProperties ExtendedBuildingProps => def.GetModExtension<ExtendedBuildingProperties>() ?? ExtendedBuildingProperties.defaultValues;
         public float MaxEnergy => this.GetStatValue(StatDefOf.VFES_EnergyShieldEnergyMax);
         public float ShieldRadius => this.GetStatValue(StatDefOf.VFES_EnergyShieldRadius);
@@ -264,7 +264,6 @@ namespace VFESecurity
             {
                 UpdateCache();
             }
-
             if (CanFunction)
             {
                 // Recharge shield
@@ -280,7 +279,6 @@ namespace VFESecurity
                 {
                     Energy += EnergyGainPerTick;
                 }
-
                 // If shield is active
                 if (active)
                 {

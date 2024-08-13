@@ -51,14 +51,14 @@ namespace VFESecurity
         }
 
         //---added--- inspired by Frontier Security's method (distributed under an open-source non-profit license)
-        public static bool CheckPodHostility(DropPodIncoming dropPod)  //this is me. Didn't want to zap trader deliveries or allies
+        public static bool CheckPodHostility(Building_Shield shield, DropPodIncoming dropPod)  //this is me. Didn't want to zap trader deliveries or allies
         {
             var innerContainer = dropPod.Contents.innerContainer;
             for (int i = 0; i < innerContainer.Count; i++)
             {
                 if (innerContainer[i] is Pawn pawn)
                 {
-                    if (GenHostility.IsActiveThreatToPlayer(pawn) || pawn.RaceProps.IsMechanoid)
+                    if (pawn.HostileTo(shield.Faction))
                     {
                         return true;
                     }

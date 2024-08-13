@@ -27,28 +27,24 @@ namespace VFESecurity
                     var thingDefExtension = __instance.def.GetModExtension<ThingDefExtension>() ?? ThingDefExtension.defaultValues;
                     ShieldGeneratorUtility.CheckIntercept(__instance, __instance.Map, thingDefExtension.shieldDamageIntercepted, DamageDefOf.Blunt, 
                         () => __instance.OccupiedRect().Cells, 
-                        () => thingDefExtension.shieldDamageIntercepted > -1 
-                        && (__instance is not DropPodIncoming dropPodIncoming 
-                        || ShieldGeneratorUtility.CheckPodHostility(dropPodIncoming)),
-                    postIntercept: s => 
+                        () => thingDefExtension.shieldDamageIntercepted > -1,
+                    preIntercept: (Building_Shield x) => __instance is not DropPodIncoming dropPodIncoming
+                        || ShieldGeneratorUtility.CheckPodHostility(x, dropPodIncoming),
+                    postIntercept: s =>
                     {
                         if (s.Energy > 0)
                         {
                             switch (__instance)
                             {
                                 case DropPodIncoming dropPod:
-                                    if (ShieldGeneratorUtility.CheckPodHostility(dropPod))
+                                    var innerContainer = dropPod.Contents.innerContainer;
+                                    for (int i = 0; i < innerContainer.Count; i++)
                                     {
-                                        var innerContainer = dropPod.Contents.innerContainer;
-                                        for (int i = 0; i < innerContainer.Count; i++)
-                                        {
-                                            var thing = innerContainer[i];
-                                            if (thing is Pawn pawn)
-                                                ShieldGeneratorUtility.KillPawn(pawn, dropPod.Position, dropPod.Map);
-                                        }
-                                        dropPod.Destroy();
-                                        return;
+                                        var thing = innerContainer[i];
+                                        if (thing is Pawn pawn)
+                                            ShieldGeneratorUtility.KillPawn(pawn, dropPod.Position, dropPod.Map);
                                     }
+                                    dropPod.Destroy();
                                     return;
                                 case FlyShipLeaving _:
                                     return;
@@ -59,8 +55,7 @@ namespace VFESecurity
                                     }
                             }
                         }
-                            
-                });
+                    });
                 }
             }
         }
