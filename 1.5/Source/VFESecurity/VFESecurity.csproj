@@ -95,6 +95,7 @@
     <Compile Include="Defs\SitePartDefOf.cs" />
     <Compile Include="Defs\WorkGiverDefOf.cs" />
     <Compile Include="Designators\Designator_RearmTrap.cs" />
+    <Compile Include="HarmonyPatches\LordToil_Siege_SetAsBuilder_Patch.cs" />
     <Compile Include="HarmonyPatches\Patch_Building.cs" />
     <Compile Include="HarmonyPatches\Patch_Building_Trap.cs" />
     <Compile Include="HarmonyPatches\Patch_CastPositionFinder.cs" />
