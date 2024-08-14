@@ -29,52 +29,6 @@ namespace VFESecurity
             }
 
         }
-
-        [HarmonyPatch(typeof(Verb), nameof(Verb.TryFindShootLineFromTo))]
-        public static class TryFindShootLineFromTo
-        {
-
-            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-            {
-                #if DEBUG
-                    Log.Message("Transpiler start: Verb.TryFindShootLineFromTo (1 match)");
-                #endif
-
-                var instructionList = instructions.ToList();
-
-                var rangeInfo = AccessTools.Field(typeof(VerbProperties), nameof(VerbProperties.range));
-
-                var finaliseAdjustedRangeInfo = AccessTools.Method(typeof(TryFindShootLineFromTo), nameof(FinaliseAdjustedRange));
-
-                for (int i = 0; i < instructionList.Count; i++)
-                {
-                    var instruction = instructionList[i];
-
-                    if (instruction.opcode == OpCodes.Ldfld && instruction.OperandIs(rangeInfo))
-                    {
-                        #if DEBUG
-                            Log.Message("Verb.TryFindShootLineFromTo match 1 of 1");
-                        #endif
-
-                        yield return instruction; // this.verbProps.range
-                        yield return new CodeInstruction(OpCodes.Ldarg_0); // this
-                        yield return new CodeInstruction(OpCodes.Ldarg_1); // root
-
-                        instruction = new CodeInstruction(OpCodes.Call, finaliseAdjustedRangeInfo); // FinaliseAdjustedRange(this.verbProps.range, this, root)
-                    }
-
-                    yield return instruction;
-                }
-            }
-
-            private static float FinaliseAdjustedRange(float original, Verb instance, IntVec3 root)
-            {
-                return TrenchUtility.FinalAdjustedRangeFromTerrain(original, instance.verbProps.minRange, root, instance.caster.Map);
-            }
-
-        }
-
-
     }
 
 }

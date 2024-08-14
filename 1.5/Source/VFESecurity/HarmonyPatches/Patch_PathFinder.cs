@@ -31,20 +31,21 @@ namespace VFESecurity
                     var instruction = instructionList[i];
 
                     // Look for the section that checks the terrain grid pathCosts
-                    if (!done && instruction.opcode == OpCodes.Stloc_S && instruction.operand is LocalBuilder lb && lb.LocalIndex == 48)
+                    if (!done && instruction.opcode == OpCodes.Stloc_S && instruction.operand is LocalBuilder lb
+                        && lb.LocalIndex == 46)
                     {
 #if DEBUG
                         Log.Message("PathFinder.FindPath match 1 of 2");
 #endif
-                        if (instructionList[i - 1].opcode == OpCodes.Add && instructionList[i - 2].opcode == OpCodes.Ldelem_I4)
+                        if (instructionList[i - 1].opcode == OpCodes.Add && instructionList[i - 3].opcode == OpCodes.Ldelem_I4)
                         {
 #if DEBUG
                             Log.Message("PathFinder.FindPath match 2 of 2");
 #endif
 
                             yield return instruction;                                                   // num16 += array[num14];
-                            yield return new CodeInstruction(OpCodes.Ldloc_S, 48);                      // num16
-                            yield return new CodeInstruction(OpCodes.Ldloc_S, 45);                      // num14
+                            yield return new CodeInstruction(OpCodes.Ldloc_S, 46);                      // num16
+                            yield return new CodeInstruction(OpCodes.Ldloc_S, 43);                      // num14
                             yield return new CodeInstruction(OpCodes.Ldloc_3);                          // num
                             yield return new CodeInstruction(OpCodes.Ldloc_S, 12);                      // topGrid
                             yield return new CodeInstruction(OpCodes.Ldarg_3);                          // parms
@@ -57,7 +58,7 @@ namespace VFESecurity
                 }
             }
 
-            private static int AdjustedTerrainCost(int cost, int nextIndex, int curIndex, TerrainDef[] terrainGrid, TraverseParms parms)
+            private static float AdjustedTerrainCost(float cost, int nextIndex, int curIndex, TerrainDef[] terrainGrid, TraverseParms parms)
             {
                 if (parms.pawn != null)
                 {
@@ -70,7 +71,7 @@ namespace VFESecurity
                         {
                             cost += (nextTerrainDefExtension.pathCostEntering - nextTerrain.pathCost);
                         }
-
+                
                         var curTerrainDefExtension = TerrainDefExtension.Get(curTerrain);
                         if (curTerrainDefExtension.pathCostLeaving > -1)
                         {

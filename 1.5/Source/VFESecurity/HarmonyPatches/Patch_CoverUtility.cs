@@ -45,11 +45,10 @@ namespace VFESecurity
                     {
                         var terrain = terrainSetter.terrainDef;
                         var terrainDefExtension = TerrainDefExtension.Get(terrain);
-                        __result.Add(new CoverInfo(thing, terrainDefExtension.coverEffectiveness));
-                        /*if (terrainDefExtension.coverEffectiveness > 0)
+                        if (terrainDefExtension.coverEffectiveness != 0)
                         {
                             __result.Add(new CoverInfo(thing, terrainDefExtension.coverEffectiveness));
-                        }*/
+                        }
                     }
                 }
             }
@@ -70,11 +69,10 @@ namespace VFESecurity
                     {
                         var terrain = terrainSetter.terrainDef;
                         var terrainDefExtension = TerrainDefExtension.Get(terrain);
-                        __result += (1 - __result) * terrainDefExtension.coverEffectiveness;
-                        /*if (terrainDefExtension.coverEffectiveness > 0)
+                        if (terrainDefExtension.coverEffectiveness > 0)
                         {
                             __result += (1 - __result) * terrainDefExtension.coverEffectiveness;
-                        }*/
+                        }
                     }
                 }
             }

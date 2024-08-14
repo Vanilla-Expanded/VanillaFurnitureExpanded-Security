@@ -62,12 +62,12 @@ namespace VFESecurity
                                 Log.Message("PathGrid.CalculatedCostAt match 3 of 3");
 #endif
 
-                            yield return instruction; // terrainDef.pathCost
+                            yield return instruction; // terrain.pathCost
                             yield return prevInstruction.Clone(); // terrain
                             yield return new CodeInstruction(OpCodes.Ldarg_3); // prevCell
                             yield return new CodeInstruction(OpCodes.Ldarg_0); // this
                             yield return new CodeInstruction(OpCodes.Ldfld, mapInfo); // this.map
-                            instruction = new CodeInstruction(OpCodes.Call, finalTerrainPathCostInfo); // FinalTerrainPathCost(terrainDef.pathCost, terrain, prevCell, this.map)
+                            instruction = new CodeInstruction(OpCodes.Call, finalTerrainPathCostInfo); // FinalTerrainPathCost(terrain.pathCost, terrain, prevCell, this.map)
                         }
                     }
 
@@ -85,12 +85,18 @@ namespace VFESecurity
                         // Entering terrain
                         var terrainDefExtension = TerrainDefExtension.Get(terrain);
                         if (terrainDefExtension.pathCostEntering > -1)
+                        {
+                            Log.Message("terrainDefExtension.pathCostEntering: " + terrainDefExtension.pathCostEntering);
                             return terrainDefExtension.pathCostEntering;
+                        }
 
                         // Exiting terrain
                         var prevTerrainDefExtension = TerrainDefExtension.Get(prevTerrain);
                         if (prevTerrainDefExtension.pathCostLeaving > -1)
+                        {
+                            Log.Message("prevTerrainDefExtension.pathCostLeaving: " + prevTerrainDefExtension.pathCostLeaving);
                             return prevTerrainDefExtension.pathCostLeaving;
+                        }
                     }
                 }
                 return original;
