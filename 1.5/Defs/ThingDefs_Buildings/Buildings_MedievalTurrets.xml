@@ -91,7 +91,6 @@
     <researchPrerequisites>
       <li>VFES_SiegeEquipment</li>
     </researchPrerequisites>
-    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
     <placeWorkers>
       <li>PlaceWorker_ShowTurretRadius</li>
       <li>PlaceWorker_TurretTop</li>
