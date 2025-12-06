@@ -56,7 +56,7 @@
   <ResearchProjectDef ParentName="VFES_ResearchBase">
     <defName>VFES_Artillery</defName>
     <label>artillery</label>
-    <description>Learn how to construct field artillery capable of bombarding distant targets within a location's region on the world.</description>
+    <description>Learn to construct field artillery capable of bombarding distant targets.</description>
     <baseCost>1600</baseCost>
     <techLevel>Industrial</techLevel>
     <prerequisites>
@@ -72,30 +72,6 @@
         <li>subject_story->innovated mobile artillery units, bringing firepower where it's needed most</li>
         <li>subject_story->pioneered predictive targeting techniques, foreseeing the evolution of warfare</li>
         <li>subject_gerund->dominating the field with superior firepower</li>
-      </rulesStrings>
-    </generalRules>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="VFES_ResearchBase">
-    <defName>VFES_SentryGuns</defName>
-    <label>sentry guns</label>
-    <description>Craft self-powered, reliable sentry guns to be utilised in the field.</description>
-    <baseCost>1200</baseCost>
-    <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>GunTurrets</li>
-      <li>GasOperation</li>
-    </prerequisites>
-    <researchViewX>5.00</researchViewX>
-    <researchViewY>0.75</researchViewY>
-    <generalRules>
-      <rulesStrings>
-        <li>subject->automated guardians</li>
-        <li>subject_story->ushered in a new era of defense with the deployment of self-operating sentry guns</li>
-        <li>subject_story->merged artificial intelligence with lethal efficiency, setting a new standard for perimeter security</li>
-        <li>subject_story->designed systems that remain ever-vigilant, providing unwavering protection against threats</li>
-        <li>subject_story->integrated advanced targeting systems to minimize collateral damage</li>
-        <li>subject_gerund->watching over the silent fields with unblinking eyes</li>
       </rulesStrings>
     </generalRules>
   </ResearchProjectDef>
@@ -128,7 +104,7 @@
   <ResearchProjectDef ParentName="VFES_ResearchBase">
     <defName>VFES_PulseChargedDefenses</defName>
     <label>pulse-charged defenses</label>
-    <description>Develop advanced charge cannons capable of keeping consistent firing speed.</description>
+    <description>Develop advanced charge cannons for consistent firing speed.</description>
     <baseCost>1600</baseCost>
     <techLevel>Spacer</techLevel>
     <prerequisites>
@@ -182,8 +158,8 @@
 
   <ResearchProjectDef ParentName="VFES_ResearchBase">
     <defName>VFES_EMPCannon</defName>
-    <label>EMP cannon</label>
-    <description>Develop EMP cannons, useful throughout the galaxy with it's ability to stun mechanoids.</description>
+    <label>electromagnetic pulse</label>
+    <description>Develop EMP traps and tesla blasters capable of stunning mechanoids.</description>
     <baseCost>1600</baseCost>
     <techLevel>Spacer</techLevel>
     <prerequisites>
@@ -211,7 +187,7 @@
   <ResearchProjectDef ParentName="VFES_ResearchBase">
     <defName>VFES_RepulsorTechnology</defName>
     <label>repulsor technology</label>
-    <description>Build shield generators that project energy fields capable of repelling projectiles.</description>
+    <description>Build ultratech shield generators that project energy fields to repel projectiles.</description>
     <baseCost>6000</baseCost>
     <techLevel>Ultra</techLevel>
     <prerequisites>
