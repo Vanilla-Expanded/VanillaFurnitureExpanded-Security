@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef Name="VFES_BuildingConcealedBase" ParentName="BuildingBase" Abstract="True">
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <tickerType>Normal</tickerType>
+    <researchPrerequisites>
+      <li>VFES_ConcealedDefenses</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <designationCategory>Security</designationCategory>
+  </ThingDef>
+
+  <ThingDef ParentName="VFES_BuildingConcealedBase">
+    <defName>VFES_Turret_Concealed</defName>
+    <label>concealed turret</label>
+    <description>A compact automatic turret equipped with retractable armor plating and a submersion mechanism. It is capable of submerging into the ground, becoming impossible to target. Requires steel to refurbish its barrel after heavy use. May explode when damaged. Its dumb AI brain can't be directly controlled, so beware of friendly fire.</description>
+    <thingClass>VFESecurity.Building_ConcealedTurret</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>NewThings/Security/ConcealedTurret/ConcealedTurret_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>NewThings/Security/ConcealedTurret/ConcealedTurret_MenuIcon</uiIconPath>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>110</MaxHitPoints>
+      <Flammability>0.6</Flammability>
+      <WorkToBuild>2400</WorkToBuild>
+      <Mass>9.5</Mass>
+      <Beauty>-15</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>1.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>90</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>90</fuelCapacity>
+        <fuelMultiplier>1.33</fuelMultiplier>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+      <li Class="VFESecurity.CompProperties_Concealed">
+        <submergeSeconds>1</submergeSeconds>
+        <deploySeconds>1</deploySeconds>
+        <cooldownSeconds>10</cooldownSeconds>
+        <submergedGraphic>
+          <texPath>NewThings/Security/ConcealedTurret/ConcealedTurret_Concealed</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </submergedGraphic>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <pathCost>50</pathCost>
+    <fillPercent>0.45</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationHotKey>Misc2</designationHotKey>
+    <building>
+      <combatPower>50</combatPower>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>VFES_Gun_ConcealedTurret</turretGunDef>
+      <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>VFES_Bullet_ConcealedTurret</defName>
+    <label>concealed turret bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <stoppingPower>0.5</stoppingPower>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>VFES_Gun_ConcealedTurret</defName>
+    <label>concealed turret gun</label>
+    <description>A simple automatic gun made to be mounted on a turret.</description>
+    <graphicData>
+      <texPath>NewThings/Security/ConcealedTurret/ConcealedTurret_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <destroyOnDrop>true</destroyOnDrop>
+    <tradeability>None</tradeability>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <AccuracyTouch>0.80</AccuracyTouch>
+      <AccuracyShort>0.72</AccuracyShort>
+      <AccuracyMedium>0.50</AccuracyMedium>
+      <AccuracyLong>0.28</AccuracyLong>
+      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>VFES_Bullet_ConcealedTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>26.9</range>
+        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="VFES_BuildingConcealedBase">
+    <defName>VFES_ConcealedBarrier</defName>
+    <label>concealed barrier</label>
+    <description>A retractable, waist-high barrier for use as cover from incoming shots. It provides strong cover while deployed and is almost invisible when submerged. Barricades will block certain kinds of animals the same way that fences do. Requires power.</description>
+    <thingClass>VFESecurity.Building_ConcealedBarrier</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>NewThings/Security/ConcealedBarrier/ConcealedBarrier</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <pathCost>42</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <canOverlapZones>false</canOverlapZones>
+    <fillPercent>0.60</fillPercent>
+    <statBases>
+      <MaxHitPoints>350</MaxHitPoints>
+      <WorkToBuild>600</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>0.3</Flammability>
+      <Beauty>-1</Beauty>
+    </statBases>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>10</basePowerConsumption>
+      </li>
+      <li Class="VFESecurity.CompProperties_Concealed">
+        <submergeSeconds>1</submergeSeconds>
+        <deploySeconds>1</deploySeconds>
+        <cooldownSeconds>10</cooldownSeconds>
+        <submergedGraphic>
+          <texPath>NewThings/Security/ConcealedBarrier/ConcealedBarrier_Concealed</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </submergedGraphic>
+      </li>
+    </comps>
+    <building>
+      <isFence>true</isFence>
+      <ai_chillDestination>false</ai_chillDestination>
+      <isInert>true</isInert>
+    </building>
+    <selectable>true</selectable>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+  </ThingDef>
+
+</Defs>

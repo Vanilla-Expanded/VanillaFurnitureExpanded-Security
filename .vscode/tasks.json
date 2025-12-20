@@ -13,7 +13,7 @@
             "command": "dotnet",
             "args": [
                 "build",
-                "${workspaceFolder}/1.6/Source/VFESecurity/VFESecurity.csproj"
+                "${workspaceFolder}/1.6/Source/VFESecurity.csproj"
             ],
             "problemMatcher": "$msCompile",
             "group": {
