@@ -6,5 +6,10 @@
   <VFES_Submerge>Submerge</VFES_Submerge>
   <VFES_SubmergeDesc>Submerge the structure into the ground, making it much harder for it to take damage.</VFES_SubmergeDesc>
   <VFES_OnCooldown>On cooldown: {0}</VFES_OnCooldown>
+  <VFES_DesignatorRearmTraps>Rearm Traps</VFES_DesignatorRearmTraps>
+  <VFES_DesignatorRearmTraps_Description>Designate traps to be rearmed by colonists.</VFES_DesignatorRearmTraps_Description>
+  <VFES_MessageMustDesignateRearmables>Must designate rearmable traps.</VFES_MessageMustDesignateRearmables>
+  <VFES_Armed>Armed</VFES_Armed>
+  <VFES_NeedsRearming>Needs rearming</VFES_NeedsRearming>
 
 </LanguageData>
