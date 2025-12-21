@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <WorldObjectDef>
+    <defName>VFES_ArtilleryProjectile</defName>
+    <label>artillery shot</label>
+    <worldObjectClass>VFESecurity.WorldObject_ArtilleryProjectile</worldObjectClass>
+    <expandingIcon>true</expandingIcon>
+    <texture>Things/Projectile/Bullet_Big</texture>
+    <useDynamicDrawer>true</useDynamicDrawer>
+    <expandMore>true</expandMore>
+  </WorldObjectDef>
+</Defs>

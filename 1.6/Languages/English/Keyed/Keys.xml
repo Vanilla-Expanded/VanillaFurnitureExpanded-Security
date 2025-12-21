@@ -12,6 +12,17 @@
   <VFES_Armed>Armed</VFES_Armed>
   <VFES_NeedsRearming>Needs rearming</VFES_NeedsRearming>
   <VFES_SecondaryFuel>Secondary fuel</VFES_SecondaryFuel>
-  <VFES_CommandToggleAllowAutoRefuelSecondary>Toggle auto-refuel ammunition</VFES_CommandToggleAllowAutoRefuelSecondary>  
+  <VFES_CommandToggleAllowAutoRefuelSecondary>Toggle auto-refuel ammunition</VFES_CommandToggleAllowAutoRefuelSecondary>
+  <VFES_ManSecondary> (secondary)</VFES_ManSecondary>
+  <VFES_SetWorldTarget>Set world target</VFES_SetWorldTarget>
+  <VFES_SetWorldTargetDesc>Set the target on the world map for the artillery to fire at. Shots fired over the world map are less accurate. Can only fire at revealed locations.</VFES_SetWorldTargetDesc>
+  <VFES_NeedsManned>Needs to be manned.</VFES_NeedsManned>
+  <VFES_ArtilleryNeedsVisibleMap>Artillery needs to target a visible, explored map.</VFES_ArtilleryNeedsVisibleMap>
+  <VFES_ArtilleryOutOfRange>Target is out of range.</VFES_ArtilleryOutOfRange>
+  <VFES_ArtilleryInvalidFiringMode>Artillery cannot fire in this direction.</VFES_ArtilleryInvalidFiringMode>
+  <VFES_ArtilleryInvalidGroundToSpace>Artillery cannot fire from planet to space.</VFES_ArtilleryInvalidGroundToSpace>
+  <VFES_ArtilleryInvalidSpaceToSpace>Artillery cannot fire from space to space.</VFES_ArtilleryInvalidSpaceToSpace>
+  <VFES_ArtilleryInvalidSpaceToGround>Artillery cannot fire from space to ground.</VFES_ArtilleryInvalidSpaceToGround>
+  <VFES_ArtilleryInvalidGroundToGround>Artillery cannot fire from ground to ground</VFES_ArtilleryInvalidGroundToGround>
 
 </LanguageData>

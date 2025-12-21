@@ -17,4 +17,11 @@
         <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
     </JobDef>
 
+    <JobDef>
+        <defName>VFES_ManSecondary</defName>
+        <driverClass>VFESecurity.JobDriver_ManSecondary</driverClass>
+        <reportString>manning TargetA.</reportString>
+        <casualInterruptible>false</casualInterruptible>
+    </JobDef>
+
 </Defs>

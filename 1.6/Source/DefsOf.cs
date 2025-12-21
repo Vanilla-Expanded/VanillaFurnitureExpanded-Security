@@ -15,5 +15,7 @@ namespace VFESecurity
         public static ThingDef VFES_Turret_AntiAir;
         public static ThingDef VFES_Turret_TeslaBlaster;
         public static ThingDef Gun_MiniTurret;
+        public static JobDef VFES_ManSecondary;
+        public static WorldObjectDef VFES_ArtilleryProjectile;
     }
 }
