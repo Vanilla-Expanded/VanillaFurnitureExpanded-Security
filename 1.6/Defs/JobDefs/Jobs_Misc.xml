@@ -9,4 +9,12 @@
         <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
     </JobDef>
 
+    <JobDef>
+        <defName>VFES_RefuelSecondary</defName>
+        <driverClass>VFESecurity.JobDriver_RefuelSecondary</driverClass>
+        <reportString>refueling TargetA with ammunition.</reportString>
+        <suspendable>false</suspendable>
+        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+
 </Defs>

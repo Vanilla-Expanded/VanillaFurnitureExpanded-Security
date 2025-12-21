@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
-  <!-- Bear Trap -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_BearTrap</defName>
     <label>bear trap</label>

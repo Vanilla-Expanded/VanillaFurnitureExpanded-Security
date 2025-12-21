@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ThingDef ParentName="BuildingBase">
@@ -166,6 +166,147 @@
       <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
       <soundAmbient>MortarRound_Ambient</soundAmbient>
     </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Turret_TeslaBlaster</defName>
+    <label>tesla blaster</label>
+    <description>A cutting-edge utility turret designed to counter mechanoid advances. Four capacitors are charged to release a bolt of electricity that is carefully modulated by the internal targeting system before release. Upon impact, the power surge affects the unit's power module and siphons off any reserves before seeking to jump to a nearby machine, gradually weakening. This can occur twice before the initially modulated current becomes too similar to hosts, upon which safety overrides ground the excess power. Will only target mechanoids.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <techLevel>Spacer</techLevel>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>NewThings/Security/TurretRailgun_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.27,0.25,0.27)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>NewThings/Security/TurretTeslaBlaster/TurretTeslaBlaster_MenuIcon</uiIconPath>
+    <uiIconScale>0.90</uiIconScale>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(2,2)</size>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>20000</WorkToBuild>
+      <Mass>8</Mass>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>400</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Plasteel>120</Plasteel>
+      <Steel>60</Steel>
+      <ComponentSpacer>8</ComponentSpacer>
+    </costList>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <building>
+      <combatPower>45</combatPower>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_TeslaBlaster</turretGunDef>
+      <turretBurstCooldownTime>5.0</turretBurstCooldownTime>
+      <turretTopDrawSize>3</turretTopDrawSize>
+      <turretTopOffset>(0, 0.1)</turretTopOffset>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>VFES_EMPCannon</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_TeslaBlaster</defName>
+    <label>tesla blaster bolt</label>
+    <thingClass>VEF.Weapons.TeslaProjectile</thingClass>
+    <graphicData>
+      <texPath>Projectile/Lightning</texPath>
+      <graphicClass>Graphic_Flicker</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Smoke</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>150</speed>
+      <armorPenetrationBase>0</armorPenetrationBase>
+    </projectile>
+    <modExtensions>
+      <li Class="VEF.Weapons.TeslaChainingProps">
+        <addFire>false</addFire>
+        <bounceRange>6</bounceRange>
+        <maxBounceCount>3</maxBounceCount>
+        <damageDef>EMP</damageDef>
+        <targetFriendly>false</targetFriendly>
+        <maxLifetime>60</maxLifetime>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_TeslaBlaster</defName>
+    <label>tesla blaster</label>
+    <description>A specialized electrical weapon designed to be mounted on a turret.</description>
+    <graphicData>
+      <texPath>NewThings/Security/TurretTeslaBlaster/TurretTeslaBlaster_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>1.0</AccuracyTouch>
+      <AccuracyShort>1.0</AccuracyShort>
+      <AccuracyMedium>1.0</AccuracyMedium>
+      <AccuracyLong>1.0</AccuracyLong>
+      <RangedWeapon_Cooldown>5.0</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>Bullet_TeslaBlaster</defaultProjectile>
+        <warmupTime>4.0</warmupTime>
+        <range>32.9</range>
+        <minRange>9.9</minRange>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
   </ThingDef>
 
 </Defs>

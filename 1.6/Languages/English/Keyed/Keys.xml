@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
   <VFES_Deploy>Deploy</VFES_Deploy>
@@ -11,5 +11,7 @@
   <VFES_MessageMustDesignateRearmables>Must designate rearmable traps.</VFES_MessageMustDesignateRearmables>
   <VFES_Armed>Armed</VFES_Armed>
   <VFES_NeedsRearming>Needs rearming</VFES_NeedsRearming>
+  <VFES_SecondaryFuel>Secondary fuel</VFES_SecondaryFuel>
+  <VFES_CommandToggleAllowAutoRefuelSecondary>Toggle auto-refuel ammunition</VFES_CommandToggleAllowAutoRefuelSecondary>  
 
 </LanguageData>

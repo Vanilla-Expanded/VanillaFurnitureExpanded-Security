@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Turret_AutomatedMortar</defName>
+    <label>automated mortar</label>
+    <description>An automated mortar that launches high-explosive shells. While it can inflict devastating damage, the mortar's inherent inaccuracy makes it more useful for attacking large fortifications than groups of enemies in the field. Due to a delicate firing mechanism, it's only calibrated to fire high-explosive shells.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>NewThings/Security/TurretAutoMortar/TurretAutoMortar_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4,4)</drawSize>
+      <damageData>
+        <rect>(0.38,0.2,0.56375,0.8)</rect>
+        <cornerTL>Damage/Corner</cornerTL>
+      </damageData>
+      <shadowData>
+        <offset>(-0.13,-0.87,-0.1)</offset>
+        <volume>(0.5,0.4,1.05)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>NewThings/Security/TurretAutoMortar/TurretAutoMortar_MenuIcon</uiIconPath>
+    <uiIconScale>0.9</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <size>(2,2)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <tickerType>Normal</tickerType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>4.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+      <li Class="VFESecurity.CompProperties_Refuelable_DualFuel">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Needs new reinforced barrel</outOfFuelMessage>
+        <fuelFilter>
+          <thingDefs>
+            <li>ReinforcedBarrel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelIsMortarBarrel>true</fuelIsMortarBarrel>
+        <fuelCapacity>20</fuelCapacity>
+        <fuelMultiplier>20</fuelMultiplier>
+        <initialFuelPercent>1</initialFuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialAllowAutoRefuel>true</initialAllowAutoRefuel>
+        <autoRefuelPercent>0</autoRefuelPercent>
+        <fuelIconPath>Things/Item/Resource/ReinforcedBarrel/ReinforcedBarrel</fuelIconPath>
+        <secondaryFuelLabel>Ammunition</secondaryFuelLabel>
+        <secondaryFuelGizmoLabel>Shells loaded</secondaryFuelGizmoLabel>
+        <outOfSecondaryFuelMessage>No shells</outOfSecondaryFuelMessage>
+        <secondaryFuelFilter>
+          <thingDefs>
+            <li>Shell_HighExplosive</li>
+          </thingDefs>
+        </secondaryFuelFilter>
+        <secondaryFuelCapacity>5</secondaryFuelCapacity>
+        <initialSecondaryFuelPercent>0</initialSecondaryFuelPercent>
+        <autoRefuelSecondaryPercent>0.5</autoRefuelSecondaryPercent>
+        <targetSecondaryFuelLevelConfigurable>true</targetSecondaryFuelLevelConfigurable>
+        <initialConfigurableSecondaryTargetFuelLevel>5</initialConfigurableSecondaryTargetFuelLevel>
+        <minimumSecondaryFueledThreshold>1</minimumSecondaryFueledThreshold>
+        <initialAllowAutoRefuelSecondary>true</initialAllowAutoRefuelSecondary>
+        <showAllowAutoRefuelSecondaryToggle>true</showAllowAutoRefuelSecondaryToggle>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>4000</WorkToBuild>
+      <Mass>35</Mass>
+      <ShootingAccuracyTurret>0.9</ShootingAccuracyTurret>
+      <Beauty>-25</Beauty>
+    </statBases>
+    <costListForDifficulty>
+      <difficultyVar>classicMortars</difficultyVar>
+      <invert>true</invert>
+      <costList>
+        <ReinforcedBarrel>1</ReinforcedBarrel>
+        <ComponentSpacer>2</ComponentSpacer>
+      </costList>
+      <costStuffCount>50</costStuffCount>
+    </costListForDifficulty>
+    <costList>
+      <Steel>150</Steel>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <costStuffCount>75</costStuffCount>
+    <building>
+      <combatPower>220</combatPower>
+      <turretGunDef>Gun_AutomatedMortar</turretGunDef>
+      <turretBurstWarmupTime>18.0</turretBurstWarmupTime>
+      <turretBurstCooldownTime>14.0</turretBurstCooldownTime>
+      <turretInitialCooldownTime>120</turretInitialCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <li>PlaceWorker_TurretTop</li>
+    </placeWorkers>
+    <designationHotKey>Misc4</designationHotKey>
+    <researchPrerequisites>
+      <li>Mortars</li>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseArtilleryWeapon">
+    <defName>Gun_AutomatedMortar</defName>
+    <label>automated mortar</label>
+    <graphicData>
+      <texPath>NewThings/Security/TurretAutoMortar/TurretAutoMortar_Top</texPath>
+    </graphicData>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>Bullet_Shell_HighExplosive</defaultProjectile>
+        <forcedMissRadius>7</forcedMissRadius>
+        <forcedMissRadiusClassicMortars>10</forcedMissRadiusClassicMortars>
+        <ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+        <warmupTime>18</warmupTime>
+        <minRange>29.9</minRange>
+        <range>500</range>
+        <isMortar>true</isMortar>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Mortar_LaunchA</soundCast>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <requireLineOfSight>false</requireLineOfSight>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <thingDefs>
+            <li>Shell_HighExplosive</li>
+          </thingDefs>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <thingDefs>
+            <li>Shell_HighExplosive</li>
+          </thingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+  </ThingDef>
+
+</Defs>

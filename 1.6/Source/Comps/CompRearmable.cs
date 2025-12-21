@@ -4,6 +4,18 @@ using Verse.Sound;
 
 namespace VFESecurity
 {
+    public class CompProperties_Rearmable : CompProperties
+    {
+        public CompProperties_Rearmable()
+        {
+            compClass = typeof(CompRearmable);
+        }
+
+        public bool initiallyArmed;
+        public GraphicData unarmedGraphicData;
+        public int workToRearm;
+        public SoundDef rearmSound;
+    }
     public class CompRearmable : ThingComp
     {
         public CompProperties_Rearmable Props => (CompProperties_Rearmable)props;

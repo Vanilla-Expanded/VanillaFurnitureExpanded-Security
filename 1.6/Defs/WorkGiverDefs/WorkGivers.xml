@@ -23,4 +23,18 @@
         <priorityInType>70</priorityInType>
     </WorkGiverDef>
 
+    <WorkGiverDef>
+        <defName>VFES_RefuelSecondary</defName>
+        <label>refuel ammunition</label>
+        <giverClass>VFESecurity.WorkGiver_RefuelSecondary</giverClass>
+        <workType>Hauling</workType>
+        <priorityInType>70</priorityInType>
+        <verb>refuel</verb>
+        <gerund>refueling</gerund>
+        <requiredCapacities>
+            <li>Manipulation</li>
+        </requiredCapacities>
+        <prioritizeSustains>true</prioritizeSustains>
+    </WorkGiverDef>
+
 </Defs>
