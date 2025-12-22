@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef Name="VFES_RepulsorBase" ParentName="BuildingBase" Abstract="True">
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <techLevel>Ultra</techLevel>
+    <tickerType>Normal</tickerType>
+    <drawOffscreen>true</drawOffscreen>
+    <passability>PassThroughOnly</passability>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>VFES_RepulsorTechnology</li>
+    </researchPrerequisites>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <pathCost>42</pathCost>
+  </ThingDef>
+
+  <ThingDef ParentName="VFES_RepulsorBase">
+    <defName>VFES_SmallRepulsor</defName>
+    <label>small repulsor</label>
+    <description>An ultratech device that projects a potent energy field around itself to protect everything inside, but consumes a huge amount of power when active. Works through walls.\n\nRepulsors only activate when there's an active threat present such as a raid or an artillery bombardment. Otherwise, they stay in an inactive state and consume much less power.\n\nCan set surrounding area on fire if enough damage is absorbed in a short period of time.</description>
+    <graphicData>
+      <texPath>NewThings/Security/SmallRepulsor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.6, 0.3)</volume>
+        <offset>(0.0, 0.0, -0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0,0.75,1.0,0.5)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0.3</Flammability>
+      <Beauty>-20</Beauty>
+      <Mass>20</Mass>
+      <WorkToBuild>8000</WorkToBuild>
+      <VEF_EnergyShieldEnergyMaxBuilding>36</VEF_EnergyShieldEnergyMaxBuilding>
+      <VEF_EnergyShieldRechargeRateBuilding>1.04</VEF_EnergyShieldRechargeRateBuilding>
+      <VEF_EnergyShieldRadiusBuilding>5.9</VEF_EnergyShieldRadiusBuilding>
+    </statBases>
+    <size>(1,1)</size>
+    <costList>
+      <Plasteel>50</Plasteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+        <wickTicks>240</wickTicks>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>2900</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+      <li Class="VEF.Apparels.CompProperties_ShieldField">
+        <activeAlways>false</activeAlways>
+        <initialEnergyPercentage>0.2</initialEnergyPercentage>
+        <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
+        <shortCircuitChancePerEnergyLost>0.01</shortCircuitChancePerEnergyLost>
+        <inactivePowerConsumption>300</inactivePowerConsumption>
+        <shieldRadiusStat>VEF_EnergyShieldRadiusBuilding</shieldRadiusStat>
+        <shieldEnergyMaxStat>VEF_EnergyShieldEnergyMaxBuilding</shieldEnergyMaxStat>
+        <rechargeRateStat>VEF_EnergyShieldRechargeRateBuilding</rechargeRateStat>
+      </li>
+    </comps>
+    <fillPercent>0.25</fillPercent>
+    <specialDisplayRadius>5.9</specialDisplayRadius>
+  </ThingDef>
+
+  <ThingDef ParentName="VFES_RepulsorBase">
+    <defName>VFES_LargeRepulsor</defName>
+    <label>large repulsor</label>
+    <description>A large, ultratech device that projects an extremely vast energy field around itself to protect everything inside, but consumes a huge amount of power when active. Works through walls.\n\nRepulsors only activate when there's an active threat present such as a raid or an artillery bombardment. Otherwise, they stay in an inactive state and consume much less power.\n\nCan set surrounding area on fire if enough damage is absorbed in a short period of time.</description>
+    <graphicData>
+      <texPath>NewThings/Security/LargeRepulsor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4, 4)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.6, 0.3)</volume>
+        <offset>(0.0, 0.0, -0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0,0.75,1.0,0.5)</rect>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0.3</Flammability>
+      <Beauty>-20</Beauty>
+      <WorkToBuild>8000</WorkToBuild>
+      <Mass>45</Mass>
+      <VEF_EnergyShieldEnergyMaxBuilding>28</VEF_EnergyShieldEnergyMaxBuilding>
+      <VEF_EnergyShieldRechargeRateBuilding>0.73</VEF_EnergyShieldRechargeRateBuilding>
+      <VEF_EnergyShieldRadiusBuilding>16.9</VEF_EnergyShieldRadiusBuilding>
+    </statBases>
+    <size>(3,3)</size>
+    <costList>
+      <Plasteel>50</Plasteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>9.9</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+        <wickTicks>240</wickTicks>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>5000</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+      <li Class="VEF.Apparels.CompProperties_ShieldField">
+        <activeAlways>false</activeAlways>
+        <initialEnergyPercentage>0.2</initialEnergyPercentage>
+        <rechargeTicksWhenDepleted>3200</rechargeTicksWhenDepleted>
+        <shortCircuitChancePerEnergyLost>0.01</shortCircuitChancePerEnergyLost>
+        <inactivePowerConsumption>300</inactivePowerConsumption>
+        <shieldRadiusStat>VEF_EnergyShieldRadiusBuilding</shieldRadiusStat>
+        <shieldEnergyMaxStat>VEF_EnergyShieldEnergyMaxBuilding</shieldEnergyMaxStat>
+        <rechargeRateStat>VEF_EnergyShieldRechargeRateBuilding</rechargeRateStat>
+      </li>
+    </comps>
+    <fillPercent>0.4</fillPercent>
+    <specialDisplayRadius>16.9</specialDisplayRadius>
+  </ThingDef>
+
+</Defs>
