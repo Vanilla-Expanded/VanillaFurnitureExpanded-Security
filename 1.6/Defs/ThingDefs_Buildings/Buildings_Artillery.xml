@@ -48,7 +48,7 @@
         <explosiveRadius>4.9</explosiveRadius>
         <explosiveDamageType>Bomb</explosiveDamageType>
       </li>
-      <li Class="VFESecurity.CompProperties_Refuelable_DualFuel">
+      <li Class="VEF.Buildings.CompProperties_Refuelable_DualFuel">
         <fuelLabel>Shots until barrel change</fuelLabel>
         <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
         <outOfFuelMessage>Needs new reinforced barrel</outOfFuelMessage>

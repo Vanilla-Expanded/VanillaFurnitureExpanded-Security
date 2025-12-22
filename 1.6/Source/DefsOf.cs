@@ -10,7 +10,6 @@ namespace VFESecurity
         public static ThingDef VFES_Bullet_Catapult;
         public static DesignationDef VFES_RearmTrap;
         [DefAlias("VFES_RearmTrap")] public static JobDef VFES_RearmTrap_Job;
-        public static JobDef VFES_RefuelSecondary;
         public static RecordDef VFES_TrapsRearmed;
         public static ThingDef VFES_Turret_AntiAir;
         public static ThingDef VFES_Turret_TeslaBlaster;
