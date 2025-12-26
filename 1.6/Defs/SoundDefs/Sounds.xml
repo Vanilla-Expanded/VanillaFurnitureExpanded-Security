@@ -51,4 +51,51 @@
     </subSounds>
   </SoundDef>
 
+  <SoundDef>
+    <defName>VFES_Shot_Ballista</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Things/VWE_Shot_Crossbow</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>90.70111</min>
+          <max>97.30627</max>
+        </volumeRange>
+        <pitchRange>
+          <min>1.0976015</min>
+          <max>1.0769372</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>VFES_Shot_Flamethrower</defName>
+    <context>MapOnly</context>
+    <eventNames />
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Things/VWE_Shot_Flamethrower</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>56.7826</min>
+          <max>56.7827</max>
+        </volumeRange>
+        <pitchRange>
+          <min>1</min>
+          <max>1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
 </Defs>

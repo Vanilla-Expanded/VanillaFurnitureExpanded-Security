@@ -30,7 +30,7 @@
   </ResearchProjectDef>
 
   <ResearchProjectDef>
-    <defName>VWE_TrenchWarfare</defName>
+    <defName>VFES_TrenchWarfare</defName>
     <label>trench warfare</label>
     <description>Adapt a trench warfare doctrine with a selection of weapons for close-quarters combat.</description>
     <baseCost>700</baseCost>
@@ -49,29 +49,6 @@
         <li>subject_story->balanced the horror of no-man's-land with the safety of well-prepared defenses</li>
         <li>subject_story->transformed warfare with the introduction of close-quarters combat within the earth's embrace</li>
         <li>subject_gerund->embracing the earth for protection and strategy</li>
-      </rulesStrings>
-    </generalRules>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="VFES_ResearchBase">
-    <defName>VFES_Artillery</defName>
-    <label>artillery</label>
-    <description>Learn to construct field artillery capable of bombarding distant targets.</description>
-    <baseCost>1600</baseCost>
-    <techLevel>Industrial</techLevel>
-    <prerequisites>
-      <li>Mortars</li>
-    </prerequisites>
-    <researchViewX>5.00</researchViewX>
-    <researchViewY>1.25</researchViewY>
-    <generalRules>
-      <rulesStrings>
-        <li>subject->kings of the battlefield</li>
-        <li>subject_story->mastered the art of long-range bombardment, shaping the course of engagements from afar</li>
-        <li>subject_story->crafted cannons and howitzers that roar, laying waste to enemy formations with precision</li>
-        <li>subject_story->innovated mobile artillery units, bringing firepower where it's needed most</li>
-        <li>subject_story->pioneered predictive targeting techniques, foreseeing the evolution of warfare</li>
-        <li>subject_gerund->dominating the field with superior firepower</li>
       </rulesStrings>
     </generalRules>
   </ResearchProjectDef>
@@ -96,34 +73,6 @@
         <li>subject_story->designed defenses that blend seamlessly with the environment, striking unseen</li>
         <li>subject_story->created a network of hidden armaments, ensuring security through invisibility</li>
         <li>subject_gerund->camouflaging power in plain sight</li>
-      </rulesStrings>
-    </generalRules>
-  </ResearchProjectDef>
-
-  <!-- Spacer -->
-  <ResearchProjectDef ParentName="VFES_ResearchBase">
-    <defName>VFES_PulseChargedDefenses</defName>
-    <label>pulse-charged defenses</label>
-    <description>Develop advanced charge cannons for consistent firing speed.</description>
-    <baseCost>1600</baseCost>
-    <techLevel>Spacer</techLevel>
-    <prerequisites>
-      <li>ChargedShot</li>
-    </prerequisites>
-    <requiredResearchFacilities>
-      <li>MultiAnalyzer</li>
-    </requiredResearchFacilities>
-    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <researchViewX>6.00</researchViewX>
-    <researchViewY>2.45</researchViewY>
-    <generalRules>
-      <rulesStrings>
-        <li>subject->charged dominion</li>
-        <li>subject_story->harnessed the raw energy of pulse technology to fortify defenses</li>
-        <li>subject_story->developed charge cannons that maintain relentless assaults on invaders</li>
-        <li>subject_story->integrated pulse tech into defensive strategies, setting a new era of warfare</li>
-        <li>subject_story->balanced the ebb and flow of battle with steady, unyielding firepower</li>
-        <li>subject_gerund->energizing the future of defense with pulse-charged might</li>
       </rulesStrings>
     </generalRules>
   </ResearchProjectDef>
