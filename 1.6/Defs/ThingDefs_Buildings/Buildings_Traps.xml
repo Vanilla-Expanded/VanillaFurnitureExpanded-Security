@@ -6,7 +6,7 @@
     <description>Two heavy metal jaws held open under tension, connected to a pressure-sensitive trigger. When stepped on, the jaws snap shut with high force, inflicting severe damage. Since it is hidden in the surrounding terrain, it cannot be placed adjacent to other traps. When triggered, it can be re-armed.</description>
     <thingClass>VFESecurity.Building_TrapBear</thingClass>
     <graphicData>
-      <texPath>Things/Security/BearTrap/BearTrapArmed</texPath>
+      <texPath>NewThings/Security/TrapBear/TrapBearArmed</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <damageData>
         <rect>(0,0,1,0.15)</rect>
@@ -26,7 +26,7 @@
       <li Class="VFESecurity.CompProperties_Rearmable">
         <initiallyArmed>true</initiallyArmed>
         <unarmedGraphicData>
-          <texPath>Things/Security/BearTrap/BearTrapDisarmed</texPath>
+          <texPath>NewThings/Security/TrapBear/TrapBearTripped</texPath>
           <graphicClass>Graphic_Single</graphicClass>
           <shaderType>Cutout</shaderType>
         </unarmedGraphicData>

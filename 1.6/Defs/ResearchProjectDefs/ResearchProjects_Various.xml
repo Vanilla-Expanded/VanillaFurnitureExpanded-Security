@@ -30,7 +30,7 @@
   </ResearchProjectDef>
 
   <ResearchProjectDef>
-    <defName>VFES_TrenchWarfare</defName>
+    <defName>VWE_TrenchWarfare</defName>
     <label>trench warfare</label>
     <description>Adapt a trench warfare doctrine with a selection of weapons for close-quarters combat.</description>
     <baseCost>700</baseCost>

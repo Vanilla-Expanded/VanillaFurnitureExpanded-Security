@@ -105,7 +105,7 @@
       <MaxHitPoints>500</MaxHitPoints>
       <Flammability>0.3</Flammability>
       <Beauty>-20</Beauty>
-      <WorkToBuild>8000</WorkToBuild>
+      <WorkToBuild>22000</WorkToBuild>
       <Mass>45</Mass>
       <VEF_EnergyShieldEnergyMaxBuilding>28</VEF_EnergyShieldEnergyMaxBuilding>
       <VEF_EnergyShieldRechargeRateBuilding>0.73</VEF_EnergyShieldRechargeRateBuilding>
@@ -113,8 +113,9 @@
     </statBases>
     <size>(3,3)</size>
     <costList>
-      <Plasteel>50</Plasteel>
-      <ComponentSpacer>4</ComponentSpacer>
+      <Plasteel>80</Plasteel>
+      <Steel>120</Steel>
+      <ComponentSpacer>6</ComponentSpacer>
     </costList>
     <comps>
       <li Class="CompProperties_Explosive">
@@ -141,6 +142,7 @@
     </comps>
     <fillPercent>0.4</fillPercent>
     <specialDisplayRadius>16.9</specialDisplayRadius>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
   </ThingDef>
 
 </Defs>

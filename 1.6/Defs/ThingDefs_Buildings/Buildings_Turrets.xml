@@ -16,7 +16,7 @@
     <tickerType>Normal</tickerType>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
-      <texPath>Things/Building/Catapult/TurretCatapult_Base</texPath>
+      <texPath>NewThings/Security/TurretCatapult/TurretCatapult_Base</texPath>
       <drawSize>(3.1,3.1)</drawSize>
       <damageData>
         <rect>(0.38,0.2,0.56375,0.8)</rect>
@@ -29,7 +29,7 @@
     </graphicData>
     <techLevel>Medieval</techLevel>
     <altitudeLayer>Building</altitudeLayer>
-    <uiIconPath>Things/Building/Catapult/TurretCatapult_MenuIcon</uiIconPath>
+    <uiIconPath>NewThings/Security/TurretCatapult/TurretCatapult_MenuIcon</uiIconPath>
     <uiIconScale>0.85</uiIconScale>
     <size>(3,3)</size>
     <rotatable>true</rotatable>
@@ -93,7 +93,7 @@
     <description>A ballistic device used to launch a projectile a great distance without the aid of gunpowder or other propellants.</description>
     <recoilPower>3</recoilPower>
     <graphicData>
-      <texPath>Things/Building/Catapult/TurretCatapult_Top</texPath>
+      <texPath>NewThings/Security/TurretCatapult/TurretCatapult_Top</texPath>
     </graphicData>
     <statBases>
       <AccuracyTouch>0.5</AccuracyTouch>
@@ -1319,7 +1319,6 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_LMG</defaultProjectile>
         <warmupTime>0</warmupTime>
-        <minRange>8.9</minRange>
         <range>30.9</range>
         <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
         <burstShotCount>12</burstShotCount>
