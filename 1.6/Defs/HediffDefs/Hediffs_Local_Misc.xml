@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef>
+    <defName>VFES_TrenchTerrain</defName>
+    <label>in a trench</label>
+    <description>this person is standing in a trench or other defensive structure.</description>
+    <hediffClass>VFESecurity.HediffDependsOnBuilding</hediffClass>
+    <stages>
+      <li>
+        <becomeVisible>false</becomeVisible>
+        <statOffsets>
+          <VEF_RangedDodgeChance>0.3</VEF_RangedDodgeChance>
+        </statOffsets>
+        <statFactors>
+          <VEF_VerbRangeFactor>0.7</VEF_VerbRangeFactor>
+        </statFactors>
+        <damageFactors>
+          <Bomb>0.5</Bomb>
+        </damageFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>VFES_PlatformTerrain</defName>
+    <label>on a platform</label>
+    <description>this person is standing on a platform or other structure.</description>
+    <hediffClass>VFESecurity.HediffDependsOnBuilding</hediffClass>
+    <stages>
+      <li>
+        <becomeVisible>false</becomeVisible>
+        <statOffsets>
+          <VEF_RangedDodgeChance>-0.3</VEF_RangedDodgeChance>
+        </statOffsets>
+        <statFactors>
+          <VEF_VerbRangeFactor>1.3</VEF_VerbRangeFactor>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

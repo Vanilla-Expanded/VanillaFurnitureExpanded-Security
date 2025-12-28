@@ -1064,6 +1064,7 @@
         <offset>(0,0,-0.05)</offset>
       </shadowData>
     </graphicData>
+    <techLevel>Industrial</techLevel>
     <uiIconPath>NewThings/Security/TurretAutocannonDouble/TurretAutocannonDouble_MenuIcon</uiIconPath>
     <uiIconScale>0.95</uiIconScale>
     <minifiedDef>MinifiedThing</minifiedDef>
@@ -1187,6 +1188,295 @@
     </verbs>
   </ThingDef>
 
+  <!-- HMG complex -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Complex_Hmg</defName>
+    <label>HMG complex</label>
+    <description>A heavy machine gun mounted on sandbags to grant cover. Needs to be manned in order to fire. Requires steel to refurbish its barrel after heavy use.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Linked/Sandbags_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Sandbags</li>
+      </linkFlags>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <uiIconPath>NewThings/Security/ComplexHMGTurret/ComplexHMGTurret_MenuIcon</uiIconPath>
+    <uiIconScale>0.95</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>true</rotatable>
+    <size>(1,1)</size>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0.0</Flammability>
+      <WorkToBuild>7500</WorkToBuild>
+      <Mass>300</Mass>
+      <Beauty>-10</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+        <planetLayerWhitelist>
+          <li>Surface</li>
+        </planetLayerWhitelist>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>160</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <fuelMultiplier>1</fuelMultiplier>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.55</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
+    <costList>
+      <Steel>90</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>VFES_ComplexHmg_Top</turretGunDef>
+      <turretBurstCooldownTime>2</turretBurstCooldownTime>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>VWE_TrenchWarfare</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>VFES_ComplexHmg_Top</defName>
+    <label>minigun</label>
+    <description>A self-loading minigun designed to be attached to a turret.</description>
+    <graphicData>
+      <texPath>NewThings/Security/ComplexHMGTurret/ComplexHMGTurret_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <AccuracyTouch>0.32</AccuracyTouch>
+      <AccuracyShort>0.42</AccuracyShort>
+      <AccuracyMedium>0.4</AccuracyMedium>
+      <AccuracyLong>0.28</AccuracyLong>
+      <RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>80</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>VFES_Bullet_HMG</defaultProjectile>
+        <warmupTime>1.033</warmupTime>
+        <range>32.9</range>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <burstShotCount>8</burstShotCount>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>VFES_Bullet_HMG</defName>
+    <label>HMG bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.22</armorPenetrationBase>
+      <stoppingPower>2</stoppingPower>
+      <speed>40</speed>
+    </projectile>
+  </ThingDef>
+
+  <!-- Minigun complex -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Complex_Minigun</defName>
+    <label>minigun complex</label>
+    <description>A multi-barrel machine gun mounted on sandbags to grant cover and provide stability. Where most self-loading guns are powered by the energy from the gunpowder, the minigun uses an electric motor to rapidly cycle cartridges through the weapon. Needs to be manned in order to fire. Requires steel to refurbish its barrels after heavy use.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Linked/Sandbags_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Sandbags</li>
+      </linkFlags>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <uiIconPath>NewThings/Security/ComplexMinigunTurret/ComplexMinigunTurret_MenuIcon</uiIconPath>
+    <uiIconScale>0.95</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>true</rotatable>
+    <size>(1,1)</size>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0.0</Flammability>
+      <WorkToBuild>35000</WorkToBuild>
+      <Mass>300</Mass>
+      <Beauty>-10</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+        <planetLayerWhitelist>
+          <li>Surface</li>
+        </planetLayerWhitelist>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>120</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold> 
+        <fuelMultiplier>2</fuelMultiplier> <!-- 0.5 stel per burst, 60 per full reload  -->
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.55</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
+    <costList>
+      <Steel>140</Steel>
+      <ComponentIndustrial>14</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>VFES_ComplexMinigun_Top</turretGunDef>
+      <turretBurstCooldownTime>1.5</turretBurstCooldownTime>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>MultibarrelWeapons</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>VFES_ComplexMinigun_Top</defName>
+    <label>minigun</label>
+    <description>A self-loading minigun designed to be attached to a turret.</description>
+    <graphicData>
+      <texPath>NewThings/Security/ComplexMinigunTurret/ComplexMinigunTurret_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <AccuracyTouch>0.26</AccuracyTouch>
+      <AccuracyShort>0.31</AccuracyShort>
+      <AccuracyMedium>0.31</AccuracyMedium>
+      <AccuracyLong>0.24</AccuracyLong>
+      <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>80</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_LMG</defaultProjectile>
+        <warmupTime>2.5</warmupTime>
+        <range>30.9</range>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <burstShotCount>12</burstShotCount>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+
   <!-- Minigun turret -->
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_Minigun</defName>
@@ -1208,6 +1498,7 @@
         <offset>(0,0,-0.05)</offset>
       </shadowData>
     </graphicData>
+    <techLevel>Industrial</techLevel>
     <uiIconPath>NewThings/Security/TurretMinigun/TurretMinigun_MenuIcon</uiIconPath>
     <uiIconScale>0.95</uiIconScale>
     <minifiedDef>MinifiedThing</minifiedDef>
@@ -1793,6 +2084,153 @@
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
     </verbs>
+  </ThingDef>
+
+  <!-- Charge complex -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Complex_Charge</defName>
+    <label>charge complex</label>
+    <description>A heavy, pulse-charged rapid-fire blaster mounted on a barricade to grant cover. Needs to be manned in order to fire. Requires plasteel to refurbish its barrel after heavy use.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Linked/Barricade_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Barricades</li>
+      </linkFlags>
+      <color>(139,122,87)</color>
+    </graphicData>
+    <techLevel>Spacer</techLevel>
+    <uiIconPath>NewThings/Security/ComplexChargeBlasterTurret/ComplexChargeBlasterTurret_MenuIcon</uiIconPath>
+    <uiIconScale>0.95</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>true</rotatable>
+    <size>(1,1)</size>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0.0</Flammability>
+      <WorkToBuild>36000</WorkToBuild>
+      <Mass>300</Mass>
+      <Beauty>-6</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+        <planetLayerWhitelist>
+          <li>Surface</li>
+        </planetLayerWhitelist>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <fuelFilter><thingDefs><li>Plasteel</li></thingDefs></fuelFilter>
+        <fuelCapacity>120</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <fuelMultiplier>2</fuelMultiplier> <!-- 0.5 plasteel per burst, 60 per full rearm -->
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.55</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
+    <costList>
+      <Plasteel>70</Plasteel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>VFES_ComplexCharge_Top</turretGunDef>
+      <turretBurstCooldownTime>3.7</turretBurstCooldownTime>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>ChargedShot</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>VFES_ComplexCharge_Top</defName>
+    <label>minigun</label>
+    <description>A self-loading minigun designed to be attached to a turret.</description>
+    <graphicData>
+      <texPath>NewThings/Security/ComplexChargeBlasterTurret/ComplexChargeBlasterTurret_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <AccuracyTouch>0.26</AccuracyTouch>
+      <AccuracyShort>0.32</AccuracyShort>
+      <AccuracyMedium>0.32</AccuracyMedium>
+      <AccuracyLong>0.26</AccuracyLong>
+      <RangedWeapon_Cooldown>3.7</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>80</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>VFES_Bullet_ChargeComplex</defaultProjectile>
+        <warmupTime>1.25</warmupTime>
+        <range>29.9</range>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <burstShotCount>12</burstShotCount>
+        <soundCast>Shot_ChargeBlaster</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>11</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>VFES_Bullet_ChargeComplex</defName>
+    <label>charge shot</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Charge_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <armorPenetrationBase>0.22</armorPenetrationBase>
+      <speed>90</speed>
+    </projectile>
   </ThingDef>
 
 </Defs>

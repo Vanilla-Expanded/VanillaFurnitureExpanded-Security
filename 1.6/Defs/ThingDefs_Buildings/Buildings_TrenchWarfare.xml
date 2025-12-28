@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Barbed wire -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_BarbedWire</defName>
+    <label>razor wire</label>
+    <description>A razor wire fence consisting of sharp edges and points arranged at intervals. Not only does it slow down movement of enemies, it also inflicts cuts and puncture wounds. Razor wire will block certain kinds of animals the same way that fences do.</description>
+    <thingClass>Building_TrapDamager</thingClass>
+    <graphicData>
+      <texPath>NewThings/Security/Linked/RazorWire/RazorWire_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Custom8</li>
+      </linkFlags>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>NewThings/Security/Linked/RazorWire/Razorwire_MenuIcon</uiIconPath>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
+    <castEdgeShadows>false</castEdgeShadows>
+    <statBases>
+      <Mass>1</Mass>
+      <MaxHitPoints>30</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>-10</Beauty>
+      <Cleanliness>-5</Cleanliness>
+      <TrapMeleeDamage>20</TrapMeleeDamage>
+      <TrapSpringChance>1.0</TrapSpringChance>
+    </statBases>
+    <passability>PassThroughOnly</passability>
+    <!--    <blockWind>false</blockWind>-->
+    <!--    <holdsRoof>false</holdsRoof>-->
+    <drawStyleCategory>Defenses</drawStyleCategory>
+    <pathCost>42</pathCost>
+    <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>20</costStuffCount>
+    <designationCategory>Security</designationCategory>
+    <canOverlapZones>false</canOverlapZones>
+    <fertility>0</fertility>
+    <building>
+      <isInert>true</isInert>
+      <isFence>true</isFence>
+      <isTrap>true</isTrap>
+      <trapDestroyOnSpring>false</trapDestroyOnSpring>
+      <trapDamageCategory>Sharp</trapDamageCategory>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+      <ai_chillDestination>false</ai_chillDestination>
+      <blueprintGraphicData>
+        <texPath>NewThings/Security/Linked/RazorWire/RazorWire_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+    <repairEffect>ConstructMetal</repairEffect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <researchPrerequisites>
+      <li>VWE_TrenchWarfare</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- Dugout -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Dugout</defName>
+    <label>dugout</label>
+    <description>A long, narrow ditch dug into the ground. Crossing it requires climbing up and down, therefore it significantly slows down movement speed. People inside the dugout suffer weapon range penalty, but gain significant cover and protection from explosive damage.</description>
+    <graphicData>
+      <texPath>NewThings/Security/Linked/Dugout/Dugout_Atlas_Raw</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Custom6</li>
+      </linkFlags>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <uiIconPath>NewThings/Security/Linked/Dugout/Dugout_MenuIcon</uiIconPath>
+    <altitudeLayer>Floor</altitudeLayer>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
+    <castEdgeShadows>false</castEdgeShadows>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>-20</Beauty>
+      <Cleanliness>-5</Cleanliness>
+      <TrapMeleeDamage>20</TrapMeleeDamage>
+      <TrapSpringChance>1.0</TrapSpringChance>
+    </statBases>
+    <passability>Standable</passability>
+    <!--    <blockWind>false</blockWind>-->
+    <!--    <holdsRoof>false</holdsRoof>-->
+    <drawStyleCategory>Defenses</drawStyleCategory>
+    <pathCost>88</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <designationCategory>Security</designationCategory>
+    <canOverlapZones>false</canOverlapZones>
+    <fertility>0</fertility>
+    <building>
+      <isInert>true</isInert>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+      <ai_chillDestination>false</ai_chillDestination>
+      <blueprintGraphicData>
+        <texPath>NewThings/Security/Linked/Dugout/Dugout_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <constructEffect>ConstructDirt</constructEffect>
+    <repairEffect>ConstructDirt</repairEffect>
+    <terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+    <modExtensions>
+      <li Class="VFESecurity.HediffOnBuildingExtension">
+        <hediff>VFES_TrenchTerrain</hediff>
+      </li>
+    </modExtensions>
+    <damageMultipliers>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>2</multiplier>
+      </li>
+    </damageMultipliers>
+    <researchPrerequisites>
+      <li>VWE_TrenchWarfare</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- Trench -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Trench</defName>
+    <label>trench</label>
+    <description>A long, damage-resistant reinforced trench. Crossing it requires climbing up and down, therefore it significantly slows down movement speed. People inside the trench suffer a weapon range penalty, but gain significant cover and protection from explosive damage.</description>
+    <graphicData>
+      <texPath>NewThings/Security/Linked/Trench/Trench_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Custom6</li>
+      </linkFlags>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <uiIconPath>NewThings/Security/Linked/Trench/Trench_MenuIcon</uiIconPath>
+    <altitudeLayer>Floor</altitudeLayer>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
+    <castEdgeShadows>false</castEdgeShadows>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>5000</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>-10</Beauty>
+      <Cleanliness>-5</Cleanliness>
+      <TrapMeleeDamage>20</TrapMeleeDamage>
+      <TrapSpringChance>1.0</TrapSpringChance>
+    </statBases>
+    <passability>Standable</passability>
+    <!--    <blockWind>false</blockWind>-->
+    <!--    <holdsRoof>false</holdsRoof>-->
+    <drawStyleCategory>Defenses</drawStyleCategory>
+    <pathCost>88</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <stuffCategories>
+      <li>Woody</li>
+      <li>Stony</li>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
+    <designationCategory>Security</designationCategory>
+    <canOverlapZones>false</canOverlapZones>
+    <fertility>0</fertility>
+    <building>
+      <isInert>true</isInert>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+      <ai_chillDestination>false</ai_chillDestination>
+      <blueprintGraphicData>
+        <texPath>NewThings/Security/Linked/Trench/Trench_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+    <modExtensions>
+      <li Class="VFESecurity.HediffOnBuildingExtension">
+        <hediff>VFES_TrenchTerrain</hediff>
+      </li>
+    </modExtensions>
+    <researchPrerequisites>
+      <li>VWE_TrenchWarfare</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!-- Platform -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Platform</defName>
+    <label>platform</label>
+    <description>A long, narrow platform. Crossing it requires climbing up and down, therefore it significantly slows down movement speed. People on the platform receive a bonus to weapon range, but suffer from lower cover.</description>
+    <graphicData>
+      <texPath>NewThings/Security/Linked/Platform/Platform_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Custom9</li>
+      </linkFlags>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <uiIconPath>NewThings/Security/Linked/Platform/Platform_MenuIcon</uiIconPath>
+    <altitudeLayer>Floor</altitudeLayer>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <stealable>false</stealable>
+    <castEdgeShadows>false</castEdgeShadows>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>5000</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>-20</Beauty>
+      <Cleanliness>-5</Cleanliness>
+      <TrapMeleeDamage>20</TrapMeleeDamage>
+      <TrapSpringChance>1.0</TrapSpringChance>
+    </statBases>
+    <passability>Standable</passability>
+    <!--    <blockWind>false</blockWind>-->
+    <!--    <holdsRoof>false</holdsRoof>-->
+    <drawStyleCategory>Defenses</drawStyleCategory>
+    <pathCost>88</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <stuffCategories>
+      <li>Woody</li>
+      <li>Stony</li>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
+    <designationCategory>Security</designationCategory>
+    <canOverlapZones>false</canOverlapZones>
+    <fertility>0</fertility>
+    <building>
+      <isInert>true</isInert>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+      <ai_chillDestination>false</ai_chillDestination>
+      <blueprintGraphicData>
+        <texPath>NewThings/Security/Linked/Platform/Platform_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+    <modExtensions>
+      <li Class="VFESecurity.HediffOnBuildingExtension">
+        <hediff>VFES_PlatformTerrain</hediff>
+      </li>
+    </modExtensions>
+    <researchPrerequisites>
+      <li>VWE_TrenchWarfare</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+</Defs>
