@@ -65,4 +65,100 @@
     </placeWorkers>
   </ThingDef>
 
+  <ThingDef ParentName="TrapIEDBase">
+    <defName>VEFS_TrapLandmine</defName>
+    <label>landmine</label>
+    <description>A sophisticated explosive charge connected to a pressure plate trigger which detonates immediately on touch. Since it is hidden in the surrounding terrain, it cannot be placed adjacent to other traps. Animals can sense these when calm.</description>
+    <graphicData>
+      <texPath>NewThings/Security/Landmine</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>2</Mass>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Flammability>1</Flammability>
+      <Beauty>-4</Beauty>
+      <TrapSpringChance>1.0</TrapSpringChance>
+    </statBases>
+    <costList>
+      <Shell_HighExplosive>2</Shell_HighExplosive>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
+        <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+        <wickTicks>0</wickTicks>
+        <startWickOnDamageTaken>
+          <li>Bullet</li>
+          <li>Arrow</li>
+          <li>ArrowHighVelocity</li>
+        </startWickOnDamageTaken>
+      </li>
+    </comps>
+    <!-- Vanilla IEDs go from 40 to 46, and the next thing is at 2999 (default). Use 50 in case vanilla ever adds more, but try to be before anything else. -->
+    <uiOrder>50</uiOrder>
+    <specialDisplayRadius>5.9</specialDisplayRadius>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  </ThingDef>
+
+  <ThingDef ParentName="TrapIEDBase">
+    <defName>VEFS_TrapShockmine</defName>
+    <label>shockmine</label>
+    <description>A concealed high-tech trap that releases a localized EMP pulse when triggered. It resets automatically after a short cooldown. Since it is hidden in the surrounding terrain, it cannot be placed adjacent to other traps. Animals can sense these when calm.</description>
+    <thingClass>VFESecurity.Building_TrapExplosive_SelfStun</thingClass>
+    <graphicData>
+      <texPath>NewThings/Security/Shockmine</texPath>
+    </graphicData>
+    <statBases>
+      <Mass>2.5</Mass>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToBuild>2500</WorkToBuild>
+      <Flammability>1</Flammability>
+      <Beauty>-2</Beauty>
+      <TrapSpringChance>1.0</TrapSpringChance>
+    </statBases>
+    <costList>
+      <ComponentIndustrial>1</ComponentIndustrial>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>4.5</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+<!--        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>-->
+        <wickTicks>0</wickTicks>
+        <startWickOnDamageTaken>
+          <li>Bullet</li>
+          <li>Arrow</li>
+          <li>ArrowHighVelocity</li>
+        </startWickOnDamageTaken>
+        <!-- Don't destroy when exploded by only destroying on impossibly high explosion size. Could probablye just slap "PositiveInfinity" here? -->
+        <destroyThingOnExplosionSize>1000000</destroyThingOnExplosionSize>
+      </li>
+      <!-- CompProperties_StunnableCodeTrigger - same as CompProperties_Stunnable, but doesn't report config errors for no damage defs. -->
+      <li Class="VFESecurity.CompProperties_StunnableCodeTrigger">
+        <!-- Exactly same as CompStunnable, but with inspect string themed as cooldown. -->
+        <!-- Neither the CompProps nor the compClass rely on one another. You can use basic CompStunnable, or CompProperties_Stunnable instead, and it'll work fine. -->
+        <compClass>VFESecurity.CompStunnableAsCooldown</compClass>
+      </li>
+    </comps>
+    <!-- Vanilla IEDs go from 40 to 46, and the next thing is at 2999 (default). Use 50 in case vanilla ever adds more, but try to be before anything else. -->
+    <uiOrder>50</uiOrder>
+    <specialDisplayRadius>4.5</specialDisplayRadius>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <modExtensions>
+      <!-- Used by Building_TrapExplosive_SelfStun when applying the self stun. -->
+      <!-- Since the building relies on this, but not the custom CompProps, they are separate. -->
+      <li Class="VFESecurity.SelfStunTrapExtension">
+        <!-- Stun duration -->
+        <stunTicks>10000</stunTicks>
+        <!-- If the "Stunned" text mode should appear -->
+        <showMote>false</showMote>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
 </Defs>
