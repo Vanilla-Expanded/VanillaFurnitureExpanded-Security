@@ -35,8 +35,6 @@
       <TrapSpringChance>1.0</TrapSpringChance>
     </statBases>
     <passability>PassThroughOnly</passability>
-    <!--    <blockWind>false</blockWind>-->
-    <!--    <holdsRoof>false</holdsRoof>-->
     <drawStyleCategory>Defenses</drawStyleCategory>
     <pathCost>42</pathCost>
     <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
@@ -86,7 +84,6 @@
     <uiIconPath>NewThings/Security/Linked/Dugout/Dugout_MenuIcon</uiIconPath>
     <altitudeLayer>Floor</altitudeLayer>
     <rotatable>false</rotatable>
-    <tickerType>Normal</tickerType>
     <stealable>false</stealable>
     <castEdgeShadows>false</castEdgeShadows>
     <statBases>
@@ -99,8 +96,6 @@
       <TrapSpringChance>1.0</TrapSpringChance>
     </statBases>
     <passability>Standable</passability>
-    <!--    <blockWind>false</blockWind>-->
-    <!--    <holdsRoof>false</holdsRoof>-->
     <drawStyleCategory>Defenses</drawStyleCategory>
     <pathCost>88</pathCost>
     <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
@@ -153,7 +148,6 @@
     <uiIconPath>NewThings/Security/Linked/Trench/Trench_MenuIcon</uiIconPath>
     <altitudeLayer>Floor</altitudeLayer>
     <rotatable>false</rotatable>
-    <tickerType>Normal</tickerType>
     <stealable>false</stealable>
     <castEdgeShadows>false</castEdgeShadows>
     <statBases>
@@ -166,8 +160,6 @@
       <TrapSpringChance>1.0</TrapSpringChance>
     </statBases>
     <passability>Standable</passability>
-    <!--    <blockWind>false</blockWind>-->
-    <!--    <holdsRoof>false</holdsRoof>-->
     <drawStyleCategory>Defenses</drawStyleCategory>
     <pathCost>88</pathCost>
     <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
@@ -218,7 +210,6 @@
     <uiIconPath>NewThings/Security/Linked/Platform/Platform_MenuIcon</uiIconPath>
     <altitudeLayer>Floor</altitudeLayer>
     <rotatable>false</rotatable>
-    <tickerType>Normal</tickerType>
     <stealable>false</stealable>
     <castEdgeShadows>false</castEdgeShadows>
     <statBases>
@@ -231,8 +222,6 @@
       <TrapSpringChance>1.0</TrapSpringChance>
     </statBases>
     <passability>Standable</passability>
-    <!--    <blockWind>false</blockWind>-->
-    <!--    <holdsRoof>false</holdsRoof>-->
     <drawStyleCategory>Defenses</drawStyleCategory>
     <pathCost>88</pathCost>
     <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
@@ -255,7 +244,7 @@
         <texPath>NewThings/Security/Linked/Platform/Platform_Blueprint_Atlas</texPath>
       </blueprintGraphicData>
     </building>
-    <terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
     <modExtensions>
       <li Class="VFESecurity.HediffOnBuildingExtension">
         <hediff>VFES_PlatformTerrain</hediff>
