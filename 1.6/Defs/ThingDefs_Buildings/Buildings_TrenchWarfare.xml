@@ -255,4 +255,56 @@
     </researchPrerequisites>
   </ThingDef>
 
+  <!-- Ammo crate -->
+  <ThingDef ParentName="FurnitureBase">
+    <defName>VFES_AmmoCrate</defName>
+    <label>ammo box</label>
+    <description>A small ammunition box that improves the reload speed of everyone nearby. Will explode if damaged.</description>
+    <graphicData>
+      <texPath>NewThings/Security/AmmoBox</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>5</Mass>
+      <WorkToBuild>3600</WorkToBuild>
+      <Flammability>0.6</Flammability>
+      <Beauty>-10</Beauty>
+    </statBases>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.3</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <costList>
+      <Steel>40</Steel>
+      <Chemfuel>20</Chemfuel>
+    </costList>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>3.9</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <damageAmountBase>10</damageAmountBase>
+        <startWickHitPointsPercent>0.33</startWickHitPointsPercent>
+        <chanceNeverExplodeFromDamage>0.3</chanceNeverExplodeFromDamage>
+        <wickTicks>
+          <min>70</min>
+          <max>150</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <pathCost>42</pathCost>
+    <rotatable>false</rotatable>
+    <size>(1,1)</size>
+    <staticSunShadowHeight>0.3</staticSunShadowHeight>
+    <canOverlapZones>false</canOverlapZones>
+    <specialDisplayRadius>1.9</specialDisplayRadius>
+    <researchPrerequisites>
+      <li>Gunsmithing</li>
+    </researchPrerequisites>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+  </ThingDef>
+
 </Defs>
