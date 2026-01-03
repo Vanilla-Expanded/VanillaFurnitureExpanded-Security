@@ -579,7 +579,7 @@
     <label>military turret gun</label>
     <description>A refined automatic gun made to be mounted on a turret.</description>
     <graphicData>
-      <texPath>NewThings/Security/MilitaryTurret/MilitaryTurret_Top</texPath>
+      <texPath>NewThings/Security/ArmoredTurret/ArmoredTurret_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Rifle</soundInteract>
@@ -1263,6 +1263,12 @@
       <li>Fabric</li>
       <li>Leathery</li>
     </stuffCategories>
+    <colorPerStuff>
+      <li>
+        <stuff>Cloth</stuff>
+        <color>(139,122,87)</color>
+      </li>
+    </colorPerStuff>
     <costStuffCount>5</costStuffCount>
     <costList>
       <Steel>90</Steel>
@@ -1275,6 +1281,9 @@
       <turretGunDef>VFES_ComplexHmg_Top</turretGunDef>
       <turretBurstCooldownTime>2</turretBurstCooldownTime>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Linked/Sandbags_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -1418,6 +1427,12 @@
       <li>Fabric</li>
       <li>Leathery</li>
     </stuffCategories>
+    <colorPerStuff>
+      <li>
+        <stuff>Cloth</stuff>
+        <color>(139,122,87)</color>
+      </li>
+    </colorPerStuff>
     <costStuffCount>5</costStuffCount>
     <costList>
       <Steel>140</Steel>
@@ -1430,6 +1445,9 @@
       <turretGunDef>VFES_ComplexMinigun_Top</turretGunDef>
       <turretBurstCooldownTime>1.5</turretBurstCooldownTime>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Linked/Sandbags_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -1917,8 +1935,8 @@
         <range>45.9</range>
         <ticksBetweenBurstShots>38</ticksBetweenBurstShots>
         <burstShotCount>3</burstShotCount>
-        <soundCast>Shot_ChargeRifle</soundCast>
-        <soundCastTail>GunTail_Medium</soundCastTail>
+        <soundCast>ChargeLance_Fire</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
       </li>
@@ -2145,7 +2163,7 @@
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
-        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+        <fuelIconPath>UI/Overlays/PlasteelBarrel</fuelIconPath>
       </li>
     </comps>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>

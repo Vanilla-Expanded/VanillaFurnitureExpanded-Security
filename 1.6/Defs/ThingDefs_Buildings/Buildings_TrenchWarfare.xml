@@ -75,7 +75,7 @@
     <graphicData>
       <texPath>NewThings/Security/Linked/Dugout/Dugout_Atlas_Raw</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <linkType>Basic</linkType>
+      <linkType>CornerFiller</linkType>
       <linkFlags>
         <li>Custom6</li>
       </linkFlags>
@@ -139,7 +139,7 @@
     <graphicData>
       <texPath>NewThings/Security/Linked/Trench/Trench_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <linkType>Basic</linkType>
+      <linkType>CornerFiller</linkType>
       <linkFlags>
         <li>Custom6</li>
       </linkFlags>
@@ -201,7 +201,7 @@
     <graphicData>
       <texPath>NewThings/Security/Linked/Platform/Platform_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <linkType>Basic</linkType>
+      <linkType>CornerFiller</linkType>
       <linkFlags>
         <li>Custom9</li>
       </linkFlags>
