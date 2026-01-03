@@ -125,10 +125,16 @@
       <ComponentSpacer>1</ComponentSpacer>
     </costList>
     <comps>
-      <li Class="CompProperties_Explosive">
-        <explosiveRadius>4.5</explosiveRadius>
+      <li Class="VFESecurity.CompProperties_ExplosiveExtraDamage">
+        <!-- CompProperties_ExplosiveExtraDamage uses the same comp as CompProperties_Explosive, but supports a few extra values. -->
         <explosiveDamageType>EMP</explosiveDamageType>
-<!--        <startWickHitPointsPercent>0.2</startWickHitPointsPercent>-->
+
+        <!-- Extra damage/explosion stats. Supports its own armor penetration, chance to start fire, and damage falloff. -->
+        <!-- All use the same names as normal explosive properties for the same things, but first letter capitalized and prepended with "extra". -->
+        <extraExplosiveDamageType>Burn</extraExplosiveDamageType>
+        <extraDamageAmountBase>5</extraDamageAmountBase>
+
+        <explosiveRadius>4.5</explosiveRadius>
         <wickTicks>0</wickTicks>
         <startWickOnDamageTaken>
           <li>Bullet</li>
