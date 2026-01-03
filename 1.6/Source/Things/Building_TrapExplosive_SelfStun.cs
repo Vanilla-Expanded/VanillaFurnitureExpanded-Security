@@ -5,12 +5,49 @@ namespace VFESecurity;
 
 public class Building_TrapExplosive_SelfStun : Building_TrapExplosive
 {
+    private const string OffGraphicSuffix = "_Off";
+
     private SelfStunTrapExtension selfStunTrapExtension;
+
+    private Graphic offGraphic;
+    private bool stunnedLastTick = false;
+
+    public override Graphic Graphic
+    {
+        get
+        {
+            if (stunner is not { Stunned: true } || !Spawned)
+                return base.Graphic;
+    
+            if (offGraphic == null)
+            {
+                offGraphic = GraphicDatabase.Get(def.graphicData.graphicClass, def.graphicData.texPath + OffGraphicSuffix, def.graphicData.shaderType.Shader, def.graphicData.drawSize, DrawColor, DrawColorTwo);
+                if (offGraphic == BaseContent.BadGraphic)
+                    return offGraphic;
+            }
+    
+            return offGraphic;
+        }
+    }
+
+    public override void TickInterval(int delta)
+    {
+        base.TickInterval(delta);
+
+        // Need to dirty map mesh to have the graphic change after stun runs out
+        var stunned = IsStunned;
+        if (stunnedLastTick != stunned)
+        {
+            stunnedLastTick = stunned;
+            if (!stunned && graphicInt != offGraphic && Spawned)
+                DirtyMapMesh(Map);
+        }
+    }
 
     public override void SpringSub(Pawn p)
     {
         base.SpringSub(p);
-        
+
         if (selfStunTrapExtension == null)
             stunner.StunFor(10000, null, false, false);
         else
@@ -22,7 +59,7 @@ public class Building_TrapExplosive_SelfStun : Building_TrapExplosive
         base.SpawnSetup(map, respawningAfterLoad);
 
         // Initialize stunner
-        _ = IsStunned;
+        stunnedLastTick = IsStunned;
     }
 
     public override void PostMake()
