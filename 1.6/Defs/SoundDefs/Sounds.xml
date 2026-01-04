@@ -98,4 +98,29 @@
     </subSounds>
   </SoundDef>
 
+  <SoundDef>
+    <defName>VFES_Shot_HMG</defName>
+    <context>MapOnly</context>
+    <eventNames/>
+    <maxVoices>8</maxVoices>
+    <maxSimultaneous>4</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Things/VWE_Shot_HMG</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>53.52942</min>
+          <max>73.52942</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.8770592</min>
+          <max>1.014706</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
 </Defs>

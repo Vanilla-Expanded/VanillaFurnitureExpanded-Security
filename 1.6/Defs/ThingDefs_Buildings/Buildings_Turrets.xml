@@ -76,6 +76,7 @@
       <buildingTags>
         <li>Artillery</li>
       </buildingTags>
+      <playTargetAcquiredSound>false</playTargetAcquiredSound>
     </building>
     <placeWorkers>
       <li>PlaceWorker_NotUnderRoof</li>
@@ -304,7 +305,6 @@
         <minRange>4.9</minRange>
         <range>85.5</range>
         <soundCast>VFES_Shot_Ballista</soundCast>
-        <soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>0</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
       </li>
@@ -328,7 +328,7 @@
       <armorPenetrationBase>0.25</armorPenetrationBase>
       <speed>49</speed>
       <screenShakeFactor>0</screenShakeFactor>
-      <soundExplode>BulletImpact_Wood</soundExplode>
+      <soundExplode>BuildingDestroyed_Wood_Big</soundExplode>
       <explosionRadius>1.9</explosionRadius>
     </projectile>
   </ThingDef>
@@ -867,7 +867,7 @@
         <warmupTime>0</warmupTime>
         <range>16.9</range>
         <burstShotCount>1</burstShotCount>
-        <soundCast>VFES_Shot_Flamethrower</soundCast>
+        <soundCast>InfernoCannon_Fire</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>14</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
@@ -1323,7 +1323,7 @@
         <range>32.9</range>
         <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
         <burstShotCount>8</burstShotCount>
-        <soundCast>Shot_Minigun</soundCast>
+        <soundCast>VFES_Shot_HMG</soundCast>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>12</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
