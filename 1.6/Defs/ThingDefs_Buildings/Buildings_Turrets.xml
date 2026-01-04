@@ -259,6 +259,7 @@
       <turretBurstWarmupTime>1.9</turretBurstWarmupTime>
       <turretTopDrawSize>3</turretTopDrawSize>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <playTargetAcquiredSound>false</playTargetAcquiredSound>
     </building>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
     <researchPrerequisites>

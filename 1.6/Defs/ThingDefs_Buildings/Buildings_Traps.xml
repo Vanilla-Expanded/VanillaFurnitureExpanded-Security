@@ -119,6 +119,7 @@
     </researchPrerequisites>
     <rotatable>true</rotatable>
     <pathCost>10</pathCost>
+    <fillPercent>0.1</fillPercent>
     <passability>PassThroughOnly</passability>
     <constructEffect>ConstructWood</constructEffect>
     <repairEffect>ConstructWood</repairEffect>
