@@ -78,7 +78,9 @@ namespace VFESecurity
                 p.stances.stagger.StaggerFor(90);
 
                 var partHeight = p.BodySize >= LowerHeightBodySizeThreshold ? BodyPartHeight.Bottom : BodyPartHeight.Undefined;
-                for (int i = 0; (float)i < 5f; i++)
+                var hits = this.GetStatValue(DefsOf.VFES_TrapMeleeHits, cacheStaleAfterTicks: 1);
+
+                for (int i = 0; (float)i < hits; i++)
                 {
                     float damage = this.GetStatValue(RimWorld.StatDefOf.TrapMeleeDamage, true) * BearTrapDamageRandomFactorRange.RandomInRange;
                     float armourPen = damage * VerbProperties.DefaultArmorPenetrationPerDamage;

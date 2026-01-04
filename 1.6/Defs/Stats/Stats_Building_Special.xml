@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <StatDef>
+    <!-- Make sure to use a supported Building_Trap type. -->
+    <!-- Currently, only RimWorld.Building_TrapDamager and VFESecurity.Building_TrapBear support custom hit amount. -->
+    <defName>VFES_TrapMeleeHits</defName>
+    <label>trap melee hits</label>
+    <description>How many times does this trap hit its targets.\n\nThe total trap damage is spread evenly across all the hits.</description>
+    <category>Building</category>
+    <defaultBaseValue>5</defaultBaseValue>
+    <minValue>1</minValue>
+    <toStringStyle>Integer</toStringStyle>
+    <showIfUndefined>false</showIfUndefined>
+    <displayPriorityInCategory>5001</displayPriorityInCategory>
+    <roundValue>true</roundValue>
+    <!-- Technically immutable at the moment, so this won't do anything. If any mod makes it mutable, then the code currently uses caching. -->
+    <!-- The caching only lasts for a single tick, but generally you'll only use it a few times on a single tick (at least twice on trigger) and that's it. -->
+    <cacheable>true</cacheable>
+    <!-- Tied to the trap itself and displayed on the damage stat, no point displaying. -->
+    <!-- If a mod ever wants to do so, they can just change/remove this property. -->
+    <alwaysHide>true</alwaysHide>
+  </StatDef>
+
+</Defs>

@@ -65,6 +65,66 @@
     </placeWorkers>
   </ThingDef>
 
+  <!-- Cavalry Spikes -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_CavalrySpikes</defName>
+    <label>cavalry spikes</label>
+    <description>A row of sharpened spikes laid low across the ground. Designed to maim or cripple those who attempt to charge through, especially fast-moving animals or mounted units. Can be placed next to other cavalry spikes. Upon being triggered, cavalry spikes will need to be rebuilt.</description>
+    <thingClass>Building_TrapDamager</thingClass>
+    <graphicData>
+      <texPath>NewThings/Security/CavalrySpikes</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3,2)</drawSize>
+      <damageData>
+        <rect>(0,0,1,0.15)</rect>
+      </damageData>
+    </graphicData>
+    <size>(2,1)</size>
+    <!--    <uiIconPath>NewThings/Security/CavalrySpikes_south</uiIconPath>-->
+    <altitudeLayer>Building</altitudeLayer>
+    <tickerType>Normal</tickerType>
+    <category>Building</category>
+    <stealable>false</stealable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <!--    <uiOrder>30</uiOrder>-->
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <costList>
+      <WoodLog>75</WoodLog>
+    </costList>
+    <statBases>
+      <Mass>3.0</Mass>
+      <Beauty>-10</Beauty>
+      <Cleanliness>-5</Cleanliness>
+      <MaxHitPoints>40</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <WorkToBuild>5450</WorkToBuild>
+      <!-- Not stuffable, so compensate the damage to what damage from a normal wooden spike trap would be. -->
+      <TrapMeleeDamage>40</TrapMeleeDamage>
+      <TrapSpringChance>1</TrapSpringChance>
+      <VFES_TrapMeleeHits>6</VFES_TrapMeleeHits>
+    </statBases>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <isTrap>true</isTrap>
+      <trapDestroyOnSpring>true</trapDestroyOnSpring>
+      <trapDamageCategory>Sharp</trapDamageCategory>
+      <expandHomeArea>false</expandHomeArea>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>VFES_SiegeEquipment</li>
+    </researchPrerequisites>
+    <rotatable>true</rotatable>
+    <pathCost>10</pathCost>
+    <passability>PassThroughOnly</passability>
+    <constructEffect>ConstructWood</constructEffect>
+    <repairEffect>ConstructWood</repairEffect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+  </ThingDef>
+
   <ThingDef ParentName="TrapIEDBase">
     <defName>VEFS_TrapLandmine</defName>
     <label>landmine</label>
