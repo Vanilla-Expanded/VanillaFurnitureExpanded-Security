@@ -17,5 +17,8 @@ namespace VFESecurity
         public static JobDef VFES_ManSecondary;
         public static WorldObjectDef VFES_ArtilleryProjectile;
         public static StatDef VFES_TrapMeleeHits;
+        public static ThingDef VFES_Complex_Charge;
+        public static ThingDef VFES_Complex_Minigun;
+        public static ThingDef VFES_Complex_Hmg;
     }
 }

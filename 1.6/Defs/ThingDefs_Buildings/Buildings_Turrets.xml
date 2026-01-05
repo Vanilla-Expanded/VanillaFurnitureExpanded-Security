@@ -2205,6 +2205,9 @@
       <turretGunDef>VFES_ComplexCharge_Top</turretGunDef>
       <turretBurstCooldownTime>3.7</turretBurstCooldownTime>
       <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Linked/Barricade_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
