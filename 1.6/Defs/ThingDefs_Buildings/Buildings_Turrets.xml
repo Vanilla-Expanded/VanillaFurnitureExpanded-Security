@@ -269,6 +269,11 @@
       <li>PlaceWorker_ShowTurretRadius</li>
       <li>PlaceWorker_TurretTop</li>
     </placeWorkers>
+    <modExtensions>
+      <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
+        <reloadsMoreThanSingleItem>true</reloadsMoreThanSingleItem>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BaseWeaponTurret">
@@ -1294,6 +1299,11 @@
     <researchPrerequisites>
       <li>VWE_TrenchWarfare</li>
     </researchPrerequisites>
+    <modExtensions>
+      <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
+        <reloadsMoreThanSingleItem>true</reloadsMoreThanSingleItem>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BaseWeaponTurret">
@@ -1458,6 +1468,11 @@
     <researchPrerequisites>
       <li>MultibarrelWeapons</li>
     </researchPrerequisites>
+    <modExtensions>
+      <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
+        <reloadsMoreThanSingleItem>true</reloadsMoreThanSingleItem>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BaseWeaponTurret">
@@ -2199,6 +2214,11 @@
     <researchPrerequisites>
       <li>ChargedShot</li>
     </researchPrerequisites>
+    <modExtensions>
+      <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
+        <reloadsMoreThanSingleItem>true</reloadsMoreThanSingleItem>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BaseWeaponTurret">
