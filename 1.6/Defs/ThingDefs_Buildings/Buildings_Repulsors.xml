@@ -79,6 +79,16 @@
         <shieldRadiusStat>VEF_EnergyShieldRadiusBuilding</shieldRadiusStat>
         <shieldEnergyMaxStat>VEF_EnergyShieldEnergyMaxBuilding</shieldEnergyMaxStat>
         <rechargeRateStat>VEF_EnergyShieldRechargeRateBuilding</rechargeRateStat>
+        <healthColorPoints>
+          <li>
+            <healthPercent>0.1</healthPercent>
+            <color>(1.0, 0.0, 0.0, 0.4)</color>
+          </li>
+          <li>
+            <healthPercent>0.5</healthPercent>
+            <color>(1.0, 0.65, 0.0, 0.35)</color>
+          </li>
+        </healthColorPoints>
       </li>
     </comps>
     <fillPercent>0.25</fillPercent>
@@ -138,6 +148,16 @@
         <shieldRadiusStat>VEF_EnergyShieldRadiusBuilding</shieldRadiusStat>
         <shieldEnergyMaxStat>VEF_EnergyShieldEnergyMaxBuilding</shieldEnergyMaxStat>
         <rechargeRateStat>VEF_EnergyShieldRechargeRateBuilding</rechargeRateStat>
+        <healthColorPoints>
+          <li>
+            <healthPercent>0.1</healthPercent>
+            <color>(1.0, 0.0, 0.0, 0.4)</color>
+          </li>
+          <li>
+            <healthPercent>0.5</healthPercent>
+            <color>(1.0, 0.65, 0.0, 0.35)</color>
+          </li>
+        </healthColorPoints>
       </li>
     </comps>
     <fillPercent>0.4</fillPercent>

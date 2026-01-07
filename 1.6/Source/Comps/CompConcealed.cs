@@ -84,6 +84,9 @@ namespace VFESecurity
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
+            var selectedConcealedComps = Find.Selector.SelectedObjects.OfType<Building>().Select(b => b.GetComp<CompConcealed>()).Where(c => c != null);
+            var anySelectedCanTransition = selectedConcealedComps.Any(c => !c.IsOnCooldown() && !c.IsPowerOff() && !c.InTransition);
+            
             if (submerged)
             {
                 var deploy = new Command_Action
@@ -92,14 +95,14 @@ namespace VFESecurity
                     defaultDesc = "VFES_DeployDesc".Translate(),
                     icon = DeployIcon,
                     action = () => StartTransition(false),
-                    disabled = IsOnCooldown() || IsPowerOff() || InTransition,
+                    disabled = IsOnCooldown() || (IsPowerOff() && !anySelectedCanTransition) || InTransition,
                     groupKey = 2173836
                 };
                 if (IsOnCooldown())
                 {
                     deploy.disabledReason = "VFES_OnCooldown".Translate(CooldownTimeLeft().ToStringSecondsFromTicks());
                 }
-                else if (IsPowerOff())
+                else if (IsPowerOff() && !anySelectedCanTransition)
                 {
                     deploy.disabledReason = "NoPower".Translate();
                 }
@@ -117,14 +120,14 @@ namespace VFESecurity
                     defaultDesc = "VFES_SubmergeDesc".Translate(),
                     icon = SubmergeIcon,
                     action = () => StartTransition(true),
-                    disabled = IsOnCooldown() || IsPowerOff() || InTransition,
+                    disabled = IsOnCooldown() || (IsPowerOff() && !anySelectedCanTransition) || InTransition,
                     groupKey = 2173837
                 };
                 if (IsOnCooldown())
                 {
                     submerge.disabledReason = "VFES_OnCooldown".Translate(CooldownTimeLeft().ToStringSecondsFromTicks());
                 }
-                else if (IsPowerOff())
+                else if (IsPowerOff() && !anySelectedCanTransition)
                 {
                     submerge.disabledReason = "NoPower".Translate();
                 }
@@ -141,9 +144,16 @@ namespace VFESecurity
             var things = Find.Selector.SelectedObjects.OfType<Building>().Select(b => b.GetComp<CompConcealed>()).Where(c => c != null);
             foreach (var comp in things)
             {
-                comp.transitionDuration = submerge ? comp.Props.submergeSeconds * 60 : comp.Props.deploySeconds * 60;
-                comp.transitionTicks = comp.transitionDuration;
-                comp.progressBar = EffecterDefOf.ProgressBar.Spawn();
+                if (!comp.IsPowerOff())
+                {
+                    comp.transitionDuration = submerge ? comp.Props.submergeSeconds * 60 : comp.Props.deploySeconds * 60;
+                    comp.transitionTicks = comp.transitionDuration;
+                    comp.progressBar = EffecterDefOf.ProgressBar.Spawn();
+                    if (submerge)
+                    {
+                        SoundDefOf.Door_OpenPowered.PlayOneShot(comp.parent);
+                    }
+                }
             }
         }
 

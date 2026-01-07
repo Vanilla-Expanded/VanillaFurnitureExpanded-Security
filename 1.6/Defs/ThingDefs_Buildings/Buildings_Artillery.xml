@@ -266,6 +266,7 @@
       <turretGunDef>VFES_Artillery_ArtilleryGun</turretGunDef>
       <turretBurstCooldownTime>36.0</turretBurstCooldownTime>
       <turretBurstWarmupTime>4</turretBurstWarmupTime>
+      <turretTopDrawSize>4</turretTopDrawSize>
       <buildingTags>
         <li>Artillery_BaseDestroyer</li>
         <li>Artillery_MannedMortar</li>
@@ -304,7 +305,7 @@
         <minRange>29.9</minRange>
         <range>500</range>
         <burstShotCount>1</burstShotCount>
-        <soundCast>Mortar_LaunchA</soundCast>
+        <soundCast>VFES_Shot_Artillery</soundCast>
         <muzzleFlashScale>16</muzzleFlashScale>
         <consumeFuelPerShot>1</consumeFuelPerShot>
         <targetParams>

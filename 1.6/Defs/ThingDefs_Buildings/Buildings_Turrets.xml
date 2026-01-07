@@ -152,7 +152,7 @@
       <texPath>Things/Projectile/Proj_Boulder</texPath>
       <graphicClass>Graphic_Flicker</graphicClass>
     </graphicData>
-    <thingClass>Projectile_Explosive</thingClass>
+    <thingClass>VFESecurity.Projectile_Catapult</thingClass>
     <projectile>
       <speed>28</speed>
       <explosionRadius>2.9</explosionRadius>
@@ -2108,6 +2108,7 @@
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_TeslaBlaster</defaultProjectile>
         <warmupTime>4.0</warmupTime>
         <range>32.9</range>
