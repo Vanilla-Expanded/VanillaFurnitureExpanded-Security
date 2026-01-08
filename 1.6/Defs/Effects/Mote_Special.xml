@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>VFES_Mote_SpotLight</defName>
+    <thingClass>VFESecurity.MoteSpotLight</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <!-- Turret resets the mote's lifetime, and this is the time after which the mote will disappear if lifetime is not reset. -->
+      <solidTime>1.25</solidTime>
+    </mote>
+    <graphicData>
+      <texPath>Things/Mote/SpotLight_Mote</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+  </ThingDef>
+
+</Defs>

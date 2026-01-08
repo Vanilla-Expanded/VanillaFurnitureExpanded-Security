@@ -621,7 +621,7 @@
     <defName>VFES_Turret_Searchlight</defName>
     <label>searchlight</label>
     <description>An apparatus combining an extremely luminous lamp and a mirrored parabolic reflector, useful for lighting up and dazzling targets.</description>
-    <thingClass>Building_TurretGun</thingClass>
+    <thingClass>VFESecurity.Building_TurretSearchlight</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <drawHighlight>true</drawHighlight>
     <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
@@ -690,7 +690,7 @@
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_Searchlight</turretGunDef>
-      <turretBurstCooldownTime>0.17</turretBurstCooldownTime>
+      <turretBurstCooldownTime>0.25</turretBurstCooldownTime>
     </building>
 <!--    <specialDisplayRadius>24.9</specialDisplayRadius>-->
     <placeWorkers>
@@ -711,30 +711,27 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
-      <RangedWeapon_Cooldown>0.17</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>0.25</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>5</Mass>
       <Flammability>0</Flammability>
     </statBases>
     <verbs>
       <li>
-        <!-- TODO: Temporary -->
-        <verbClass>Verb_Shoot</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>VFES_Bullet_FlameTurret</defaultProjectile>
-<!--        <verbClass>VFESecurity.Verb_Dazzle</verbClass>-->
+        <verbClass>VFESecurity.Verb_Dazzle</verbClass>
         <range>24.9</range>
         <muzzleFlashScale>0</muzzleFlashScale>
-<!--        <consumeFuelPerShot>1</consumeFuelPerShot>-->
         <drawAimPie>false</drawAimPie>
       </li>
     </verbs>
-<!--    <modExtensions>-->
-<!--      <li Class="VFESecurity.ExtendedVerbProperties">-->
-<!--        <illuminatedRadius>3.9</illuminatedRadius>-->
-<!--        <dazzleDurationTicks>300</dazzleDurationTicks>-->
-<!--      </li>-->
-<!--    </modExtensions>-->
+    <modExtensions>
+      <li Class="VFESecurity.DazzleVerbProperties">
+        <bodyPartDef>Eye</bodyPartDef>
+        <moteDef>VFES_Mote_SpotLight</moteDef>
+        <hediffDef>VFES_Dazzled</hediffDef>
+        <illuminatedRadius>3.9</illuminatedRadius>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <!-- Flame Turret -->

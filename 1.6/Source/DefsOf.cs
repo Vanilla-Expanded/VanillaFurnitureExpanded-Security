@@ -20,5 +20,7 @@ namespace VFESecurity
         public static ThingDef VFES_Complex_Charge;
         public static ThingDef VFES_Complex_Minigun;
         public static ThingDef VFES_Complex_Hmg;
+        public static HediffDef VFES_Dazzled;
+        public static ThingDef VFES_Mote_SpotLight;
     }
 }
