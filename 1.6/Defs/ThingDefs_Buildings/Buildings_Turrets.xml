@@ -1201,7 +1201,7 @@
     <drawHighlight>true</drawHighlight>
     <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
     <graphicData>
-      <texPath>Things/Building/Linked/Sandbags_Atlas</texPath>
+      <texPath>NewThings/Security/Linked/SandbagsUpscaled_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <linkType>Basic</linkType>
       <linkFlags>
@@ -1365,7 +1365,7 @@
     <drawHighlight>true</drawHighlight>
     <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
     <graphicData>
-      <texPath>Things/Building/Linked/Sandbags_Atlas</texPath>
+      <texPath>NewThings/Security/Linked/SandbagsUpscaled_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <linkType>Basic</linkType>
       <linkFlags>

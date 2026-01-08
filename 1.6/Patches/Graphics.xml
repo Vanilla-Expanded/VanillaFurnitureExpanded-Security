@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Change sandbags graphic to the upscaled one -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Sandbags"]/graphicData/texPath/text()</xpath>
+    <value>NewThings/Security/Linked/SandbagsUpscaled_Atlas</value>
+  </Operation>
+
+</Patch>
