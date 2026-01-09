@@ -1979,7 +1979,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>VFES_Turret_TeslaBlaster</defName>
     <label>tesla blaster</label>
-    <description>A cutting-edge utility turret designed to counter mechanoid advances. Four capacitors are charged to release a bolt of electricity that is carefully modulated by the internal targeting system before release. Upon impact, the power surge affects the unit's power module and siphons off any reserves before seeking to jump to a nearby machine, gradually weakening. This can occur twice before the initially modulated current becomes too similar to hosts, upon which safety overrides ground the excess power. Will only target mechanoids.</description>
+    <description>A cutting-edge utility turret designed to counter the mechanoid advances. Four capacitors are charged to release a bolt of electricity. Upon impact, the power surge stuns affected mechanoid, before seeking to jump to another. Will only target mechanoids.</description>
     <thingClass>Building_TurretGun</thingClass>
     <techLevel>Spacer</techLevel>
     <drawerType>MapMeshAndRealTime</drawerType>
