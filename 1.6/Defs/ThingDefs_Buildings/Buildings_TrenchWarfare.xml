@@ -11,6 +11,7 @@
       <texPath>NewThings/Security/Linked/RazorWire/RazorWire_Atlas</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <linkType>Basic</linkType>
+      <shaderType>CutoutComplex</shaderType>
       <linkFlags>
         <li>Custom8</li>
       </linkFlags>
