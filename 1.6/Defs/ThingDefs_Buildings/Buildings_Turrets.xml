@@ -1300,6 +1300,18 @@
       <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
         <reloadsMoreThanSingleItem>true</reloadsMoreThanSingleItem>
       </li>
+      <li Class="VEF.Buildings.GhostGraphicExtension">
+        <ghostMode>CustomGraphicPath</ghostMode>
+        <customGraphicData>
+          <texPath>NewThings/Security/ComplexSandbags_Base</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(3,3)</drawSize>
+          <drawRotated>false</drawRotated>
+          <allowFlip>false</allowFlip>
+        </customGraphicData>
+
+        <extraGraphicGhostMode>VanillaNoLinking</extraGraphicGhostMode>
+      </li>
     </modExtensions>
   </ThingDef>
 
@@ -1468,6 +1480,18 @@
     <modExtensions>
       <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
         <reloadsMoreThanSingleItem>true</reloadsMoreThanSingleItem>
+      </li>
+      <li Class="VEF.Buildings.GhostGraphicExtension">
+        <ghostMode>CustomGraphicPath</ghostMode>
+        <customGraphicData>
+          <texPath>NewThings/Security/ComplexSandbags_Base</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(3,3)</drawSize>
+          <drawRotated>false</drawRotated>
+          <allowFlip>false</allowFlip>
+        </customGraphicData>
+
+        <extraGraphicGhostMode>VanillaNoLinking</extraGraphicGhostMode>
       </li>
     </modExtensions>
   </ThingDef>
@@ -2218,6 +2242,18 @@
     <modExtensions>
       <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
         <reloadsMoreThanSingleItem>true</reloadsMoreThanSingleItem>
+      </li>
+      <li Class="VEF.Buildings.GhostGraphicExtension">
+        <ghostMode>CustomGraphicPath</ghostMode>
+        <customGraphicData>
+          <texPath>NewThings/Security/ComplexBarricade_Base</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(3,3)</drawSize>
+          <drawRotated>false</drawRotated>
+          <allowFlip>false</allowFlip>
+        </customGraphicData>
+
+        <extraGraphicGhostMode>VanillaNoLinking</extraGraphicGhostMode>
       </li>
     </modExtensions>
   </ThingDef>
