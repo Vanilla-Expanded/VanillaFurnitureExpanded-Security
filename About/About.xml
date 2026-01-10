@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Vanilla Furniture Expanded - Security</name>
-  <author>Oskar Potocki, Trunken, XeoNovaDan</author>
+  <author>Oskar Potocki, Sokyran, Taranchuk</author>
   <supportedVersions>
    
     <li>1.3</li>
@@ -11,10 +11,19 @@
   </supportedVersions>
   <modIconPath IgnoreIfNoMatchingField="True">UI/VELogo</modIconPath>
   <packageId>VanillaExpanded.VFESecurity</packageId>
-  <description>
-Vanilla Furniture Expanded - Security module is a result of hours upon hours of hard work. It has been a long time since we began working on this mod, and with a team of brilliant programmers, I am not honored to present to you a Vanilla Expanded approach to base defenses. Every word and every stat in this mod have been carefully prepared to be as balanced and as “vanilla” as possible. 
+  <description>Vanilla Furniture Expanded - Security is a complete overhaul and rebalance of the original security module, addressing outdated balance and vastly expanding defensive options from early to late game.
+The mod introduces new defenses across all tech levels:
 
-This module introduces 27 new defense structures, all neatly filling up the Security tab in the Architect menu. With research technologies spread out across all stages of the game, this mod itself is enough to provide you with hours of entertainment.
+- Medieval: Adds the catapults, cavalry spikes, ballistas and re-armable bear traps.
+
+- Industrial: Expands automated turrets with the military turrets, flamer turrets, concealed barriers, shotgun turrets and more.
+
+- Trench Warfare: Dugouts, trenches, platforms, razor wire and HMG and minigun complexes!
+
+- Spacer: Charge turrets, charge complexes, railguns, tesla blasters and shockmines.
+
+All original structures are rebalanced or reimplemented. Outstanding issues have been fixed. Existing content got new mechanics added, and new content has been implemented.
+Your beloved security mod is back, and better than ever!
   </description>
   <modDependencies>
     <li>
