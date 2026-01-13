@@ -91,7 +91,7 @@
       <li>BuildingsSecurity</li>
     </thingCategories>
     <costList>
-      <WoodLog>75</WoodLog>
+      <WoodLog>40</WoodLog>
     </costList>
     <statBases>
       <Mass>3.0</Mass>

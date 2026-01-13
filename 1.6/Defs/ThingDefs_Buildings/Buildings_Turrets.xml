@@ -1317,8 +1317,8 @@
 
   <ThingDef ParentName="BaseWeaponTurret">
     <defName>VFES_ComplexHmg_Top</defName>
-    <label>minigun</label>
-    <description>A self-loading minigun designed to be attached to a turret.</description>
+    <label>HMG</label>
+    <description>A self-loading HMG designed to be attached to a turret.</description>
     <graphicData>
       <texPath>NewThings/Security/ComplexHMGTurret/ComplexHMGTurret_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -1666,6 +1666,7 @@
         <defaultProjectile>Bullet_LMG</defaultProjectile>
         <warmupTime>0</warmupTime>
         <range>30.9</range>
+        <minRange>4.9</minRange>
         <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
         <burstShotCount>12</burstShotCount>
         <soundCast>Shot_Minigun</soundCast>
@@ -1970,6 +1971,7 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>VFES_Bullet_ChargeRailgunShot</defaultProjectile>
         <range>45.9</range>
+        <minRange>8.9</minRange>
         <ticksBetweenBurstShots>38</ticksBetweenBurstShots>
         <burstShotCount>3</burstShotCount>
         <soundCast>ChargeLance_Fire</soundCast>

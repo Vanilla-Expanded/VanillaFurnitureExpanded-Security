@@ -44,7 +44,7 @@
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>20</costStuffCount>
+    <costStuffCount>10</costStuffCount>
     <designationCategory>Security</designationCategory>
     <canOverlapZones>false</canOverlapZones>
     <fertility>0</fertility>
