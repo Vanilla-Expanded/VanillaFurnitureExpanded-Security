@@ -1,7 +1,21 @@
 <loadFolders>
+  <v1.3>
+    <li>/</li>
+    <li>1.3</li>
+  </v1.3>
+  <v1.4>
+    <li>/</li>
+    <li>1.4</li>
+  </v1.4>
+  <v1.5>
+    <li>/</li>
+    <li>1.5</li>
+  </v1.5>
 	<v1.6>
 		<li>/</li>
 		<li>1.6</li>
-		<li IfModActive="VanillaExpanded.VWENL">1.6/Mods/VWE_NonLethal</li>
+    <li IfModActive="Ludeon.RimWorld.Anomaly">1.6/Mods/Anomaly</li>
+    <li IfModActive="Ludeon.RimWorld.Biotech">1.6/Mods/Biotech</li>
+    <li IfModActive="VanillaExpanded.VWENL">1.6/Mods/VWE_NonLethal</li>
 	</v1.6>
 </loadFolders>

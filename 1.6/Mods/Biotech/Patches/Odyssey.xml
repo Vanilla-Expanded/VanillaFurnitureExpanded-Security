@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Change ultra mechtech research prerequisite to beam weapons -->
+  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Odyssey">
+    <xpath>Defs/ThingDef[defName="VFES_Complex_GraserCannon"]/researchPrerequisites/li[text()="UltraMechtech"]/text()</xpath>
+    <value>BeamWeapons</value>
+  </Operation>
+
+</Patch>

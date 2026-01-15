@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Graser cannon complex -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Complex_GraserCannon</defName>
+    <label>graser cannon complex</label>
+    <description>A devastating gamma ray laser mounted on a barricade to grant cover. It fires a sweeping beam capable of piercing armor and igniting targets. Needs to be manned in order to fire. Requires plasteel to refurbish its emitter array after heavy use.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Linked/Barricade_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Barricades</li>
+      </linkFlags>
+      <color>(139,122,87)</color>
+    </graphicData>
+    <techLevel>Spacer</techLevel>
+    <uiIconPath>NewThings/Security/ComplexGraserCannon/ComplexGraserCannonTurret_MenuIcon</uiIconPath>
+    <uiIconScale>0.95</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>true</rotatable>
+    <size>(1,1)</size>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0.0</Flammability>
+      <WorkToBuild>40000</WorkToBuild>
+      <Mass>300</Mass>
+      <Beauty>-6</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+        <planetLayerWhitelist>
+          <li>Surface</li>
+        </planetLayerWhitelist>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <fuelFilter><thingDefs><li>Plasteel</li></thingDefs></fuelFilter>
+        <fuelCapacity>20</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <fuelMultiplier>0.25</fuelMultiplier> <!-- 4 plasteel per burst, 80 per full rearm -->
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelIconPath>UI/Overlays/PlasteelBarrel</fuelIconPath>
+      </li>
+    </comps>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.55</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
+    <costList>
+      <Plasteel>100</Plasteel>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>VFES_ComplexGraserCannon_Top</turretGunDef>
+      <turretBurstCooldownTime>6</turretBurstCooldownTime>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Linked/Barricade_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>VEF.Weapons.PlaceWorker_ExpandedShowTurretRadius</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <!-- Ultra mechtech unlocks tesserons, who use beam grasers. In case of Odyssey we have a patch to replace this with beam weapons research. -->
+      <li>UltraMechtech</li>
+    </researchPrerequisites>
+    <modExtensions>
+      <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
+        <reloadsMoreThanSingleItem>true</reloadsMoreThanSingleItem>
+      </li>
+      <li Class="VEF.Buildings.GhostGraphicExtension">
+        <ghostMode>CustomGraphicPath</ghostMode>
+        <customGraphicData>
+          <texPath>NewThings/Security/ComplexBarricade_Base</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(3,3)</drawSize>
+          <drawRotated>false</drawRotated>
+          <allowFlip>false</allowFlip>
+        </customGraphicData>
+
+        <extraGraphicGhostMode>VanillaNoLinking</extraGraphicGhostMode>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>VFES_ComplexGraserCannon_Top</defName>
+    <label>graser cannon</label>
+    <description>A graser cannon designed to be attached to a turret.</description>
+    <graphicData>
+      <texPath>NewThings/Security/ComplexGraserCannon/ComplexGraserCannonTurret_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <AccuracyTouch>0.6</AccuracyTouch>
+      <AccuracyShort>0.7</AccuracyShort>
+      <AccuracyMedium>0.65</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>6</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>4</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_ShootBeam</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.333333</warmupTime>
+        <range>29.9</range>
+        <minRange>3.9</minRange>
+        <beamFullWidthRange>8.9</beamFullWidthRange>
+        <burstShotCount>8</burstShotCount>
+        <showBurstShotStats>false</showBurstShotStats>
+        <beamWidth>8</beamWidth>
+        <ticksBetweenBurstShots>22</ticksBetweenBurstShots>
+        <beamDamageDef>Beam</beamDamageDef>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+        <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+        <beamFleckChancePerTick>0.45</beamFleckChancePerTick>
+        <beamMaxDeviation>1.5</beamMaxDeviation>
+        <beamCurvature>0.6</beamCurvature>
+        <beamMoteDef>VFES_Mote_WideGraserBeamBase</beamMoteDef>
+        <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
+        <beamChanceToStartFire>1</beamChanceToStartFire>
+        <beamChanceToAttachFire>1</beamChanceToAttachFire>
+        <beamFireSizeRange>0.8~1.1</beamFireSizeRange>
+        <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+        <beamStartOffset>0.8</beamStartOffset>
+        <beamLineFleckChanceCurve>
+          <points>
+            <li>(0, 0)</li>
+            <li>(0.65, 0.5)</li>
+            <li>(1, 0.9)</li>
+          </points>
+        </beamLineFleckChanceCurve>
+        <consumeFuelPerBurst>1</consumeFuelPerBurst>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>VFES_Mote_WideGraserBeamBase</defName>
+    <thingClass>MoteDualAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.2</fadeInTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>True</scaleToConnectTargets>
+      <fadeOutUnmaintained>True</fadeOutUnmaintained>
+    </mote>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Mote/GraserBeam</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteBeam</shaderType>
+      <shaderParameters>
+        <_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
+        <_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
+        <_ScrollSpeedA>-4</_ScrollSpeedA>
+        <_ScrollSpeedB>3</_ScrollSpeedB>
+        <_Intensity>2</_Intensity>
+      </shaderParameters>
+      <drawSize>(2,1)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+</Defs>
