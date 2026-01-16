@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Heavy incinerator complex -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>VFES_Complex_HeavyIncineratorComplex</defName>
+    <label>heavy incinerator complex</label>
+    <description>A heavy incinerator mounted on a barricade to grant cover. Needs to be manned in order to fire. It is equipped with a powerful mega-burner that requires bioferrite to reload.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Linked/Barricade_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Barricades</li>
+      </linkFlags>
+      <color>(139,122,87)</color>
+    </graphicData>
+    <techLevel>Spacer</techLevel>
+    <uiIconPath>NewThings/Security/ComplexHeavyIncinerator/ComplexHeavyIncineratorTurret_MenuIcon</uiIconPath>
+    <uiIconScale>0.95</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>true</rotatable>
+    <size>(1,1)</size>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0.0</Flammability>
+      <WorkToBuild>40000</WorkToBuild>
+      <Mass>300</Mass>
+      <Beauty>-6</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+        <planetLayerWhitelist>
+          <li>Surface</li>
+        </planetLayerWhitelist>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Remaining bioferrite</fuelLabel>
+        <fuelGizmoLabel>Remaining bioferrite</fuelGizmoLabel>
+        <fuelFilter><thingDefs><li>Bioferrite</li></thingDefs></fuelFilter>
+        <fuelCapacity>20</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <fuelMultiplier>0.16666666666666666666666666666667</fuelMultiplier> <!-- 6 bioferrite per burst, 60 per full rearm -->
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Needs bioferrite</outOfFuelMessage>
+        <fuelIconPath>Things/Item/Resource/Bioferrite/Bioferrite_c</fuelIconPath>
+      </li>
+    </comps>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.55</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
+    <costList>
+      <Plasteel>100</Plasteel>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>VFES_ComplexHeavyIncinerator_Top</turretGunDef>
+      <turretBurstCooldownTime>5</turretBurstCooldownTime>
+      <turretTopOffset>(0, 0.05)</turretTopOffset>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Linked/Barricade_Blueprint_Atlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>VEF.Weapons.PlaceWorker_ExpandedShowTurretRadius</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <!-- Ultra mechtech unlocks tesserons, who use beam grasers. In case of Odyssey we have a patch to replace this with beam weapons research. -->
+      <li>UltraMechtech</li>
+    </researchPrerequisites>
+    <modExtensions>
+      <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
+        <reloadsMoreThanSingleItem>true</reloadsMoreThanSingleItem>
+      </li>
+      <li Class="VEF.Buildings.GhostGraphicExtension">
+        <ghostMode>CustomGraphicPath</ghostMode>
+        <customGraphicData>
+          <texPath>NewThings/Security/ComplexBarricade_Base</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(3,3)</drawSize>
+          <drawRotated>false</drawRotated>
+          <allowFlip>false</allowFlip>
+        </customGraphicData>
+
+        <extraGraphicGhostMode>VanillaNoLinking</extraGraphicGhostMode>
+      </li>
+      <li Class="VEF.Weapons.ExpandedShowTurretRadiusExtension">
+        <allowedVerbClass>VFESecurity.Verb_BurnerFireSpew</allowedVerbClass>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>VFES_ComplexHeavyIncinerator_Top</defName>
+    <label>heavy incinerator</label>
+    <description>A heavy incinerator designed to be attached to a turret.</description>
+    <graphicData>
+      <texPath>NewThings/Security/ComplexHeavyIncinerator/ComplexHeavyIncineratorTurret_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <statBases>
+      <RangedWeapon_Cooldown>5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>4</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <!-- Verb requires "VFESecurity.BurnerFireSpewExtension" def mod extension for data. -->
+        <verbClass>VFESecurity.Verb_BurnerFireSpew</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.5</warmupTime>
+        <range>11.9</range>
+        <consumeFuelPerBurst>1</consumeFuelPerBurst>
+        <soundCast>FireSpew_Resolve</soundCast>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <flammabilityAttachFireChanceCurve>
+          <points>
+            <li>(0.2, 0)</li>
+            <li>(1, 1)</li>
+          </points>
+        </flammabilityAttachFireChanceCurve>
+      </li>
+    </verbs>
+    <modExtensions>
+      <li Class="VFESecurity.BurnerFireSpewExtension">
+        <!-- Data for Verb_BurnerFireSpew. -->
+
+        <!-- Shares properties from CompProperties_AbilityFireSpew, mostly. -->
+        <!-- No range, we use the verb's range here. -->
+        <lineWidthEnd>5</lineWidthEnd>
+        <filthDef>Filth_Ash</filthDef>
+        <canHitFilledCells>true</canHitFilledCells>
+        <!-- No effecterDef for the fire spew effect, since we use burner effecterDef.. -->
+
+        <!-- Shares properties from CompProperties_AbilityBurner. -->
+        <numStreams>15</numStreams>
+        <!-- Range refers to the effect's range, rather than the ability's range. -->
+        <range>13</range>
+        <coneSizeDegrees>12</coneSizeDegrees>
+        <moteDef>Mote_IncineratorBurst</moteDef>
+        <barrelOffsetDistance>6</barrelOffsetDistance>
+        <sizeReductionDistanceThreshold>8</sizeReductionDistanceThreshold>
+        <lifespanNoise>40</lifespanNoise>
+        <rangeNoise>.4</rangeNoise>
+        <effecterDef>BurnerUsed</effecterDef>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+</Defs>
