@@ -1,5 +1,6 @@
 using RimWorld;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Verse;
@@ -11,6 +12,7 @@ namespace VFESecurity
     {
         public float interceptionRadius;
         public int interceptionAttemptInterval = 5;
+        public List<string> blacklistedProjectileDefs = new List<string>();
 
         public CompProperties_PointDefense()
         {
@@ -74,7 +76,15 @@ namespace VFESecurity
 
         private bool IsValidProjectile(Thing t)
         {
-            return t is Projectile projectile && projectile.def.projectile.explosionRadius > 0 && projectile.launcher.HostileTo(parent.Faction);
+            if (!(t is Projectile projectile))
+            {
+                return false;
+            }
+            if (Props.blacklistedProjectileDefs.Contains(projectile.def.defName))
+            {
+                return false;
+            }
+            return projectile.def?.projectile?.explosionRadius > 0 && projectile.launcher != null && projectile.launcher.HostileTo(parent.Faction);
         }
 
         private bool IsValidTransporter(Thing t)
