@@ -64,6 +64,11 @@
       <li Class="VFESecurity.CompProperties_PointDefense">
         <interceptionRadius>19.9</interceptionRadius>
         <interceptionAttemptInterval>5</interceptionAttemptInterval>
+        <blacklistedProjectileDefs>
+          <li>Bullet_HellsphereCannonGun</li>
+          <li>Bullet_InfernoCannon</li>
+          <li>Bullet_Heatspike</li>
+        </blacklistedProjectileDefs>
       </li>
       <li Class="CompProperties_Stunnable">
         <affectedDamageDefs>

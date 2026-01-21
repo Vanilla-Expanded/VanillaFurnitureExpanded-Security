@@ -267,10 +267,6 @@
       <turretBurstCooldownTime>36.0</turretBurstCooldownTime>
       <turretBurstWarmupTime>4</turretBurstWarmupTime>
       <turretTopDrawSize>4</turretTopDrawSize>
-      <buildingTags>
-        <li>Artillery_BaseDestroyer</li>
-        <li>Artillery_MannedMortar</li>
-      </buildingTags>
     </building>
     <placeWorkers>
       <li>PlaceWorker_NotUnderRoof</li>
