@@ -33,7 +33,7 @@
     <statBases>
       <MaxHitPoints>300</MaxHitPoints>
       <Flammability>0.0</Flammability>
-      <WorkToBuild>40000</WorkToBuild>
+      <WorkToBuild>36000</WorkToBuild>
       <Mass>300</Mass>
       <Beauty>-6</Beauty>
     </statBases>
@@ -76,8 +76,9 @@
     </stuffCategories>
     <costStuffCount>5</costStuffCount>
     <costList>
-      <Plasteel>100</Plasteel>
-      <ComponentSpacer>5</ComponentSpacer>
+      <Steel>100</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+      <Bioferrite>60</Bioferrite>
     </costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
@@ -96,8 +97,7 @@
     </placeWorkers>
     <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
     <researchPrerequisites>
-      <!-- Ultra mechtech unlocks tesserons, who use beam grasers. In case of Odyssey we have a patch to replace this with beam weapons research. -->
-      <li>UltraMechtech</li>
+      <li>BioferriteIgnition</li>
     </researchPrerequisites>
     <modExtensions>
       <li Class="VEF.Weapons.AutoRefuelMannedTurrets">
