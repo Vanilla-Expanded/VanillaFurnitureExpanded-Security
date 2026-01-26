@@ -42,9 +42,6 @@
       <li Class="CompProperties_Forbiddable" />
       <li Class="CompProperties_Mannable">
         <manWorkType>Violent</manWorkType>
-        <planetLayerWhitelist>
-          <li>Surface</li>
-        </planetLayerWhitelist>
       </li>
       <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Refuelable">
