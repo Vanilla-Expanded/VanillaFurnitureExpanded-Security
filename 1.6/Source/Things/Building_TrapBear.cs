@@ -10,7 +10,7 @@ namespace VFESecurity
     public class Building_TrapBear : Building_TrapDamager
     {
         private static readonly FloatRange BearTrapDamageRandomFactorRange = new FloatRange(0.8f, 1.2f);
-        private static readonly FloatRange AffectableBodySizeRange = new FloatRange(0.25f, 2.99f);
+        private const float MinimumBodySizeTreshold = 0.25f;
         private const float LowerHeightBodySizeThreshold = 0.35f;
 
         public override Graphic Graphic
@@ -36,7 +36,7 @@ namespace VFESecurity
             {
                 return 0f;
             }
-            if (p.BodySize <= 0.25f)
+            if (p.BodySize <= MinimumBodySizeTreshold)
             {
                 return 0f;
             }
@@ -73,16 +73,22 @@ namespace VFESecurity
                 Map.mapDrawer.SectionAt(Position).RegenerateAllLayers();
                 if (!def.building.trapDestroyOnSpring && this.autoRearm)
                     Map.designationManager.AddDesignation(new Designation(this, DefsOf.VFES_RearmTrap));
-                if (p == null || !AffectableBodySizeRange.Includes(p.BodySize))
+                if (p == null || p.BodySize <= MinimumBodySizeTreshold)
                     return;
-                p.stances.stagger.StaggerFor(90);
+
+                // Linearly scale from 1 to 0 at body size 3 to 4 
+                var strength = Mathf.Clamp01(4 - p.BodySize);
+                if (strength <= 0.01f)
+                    return;
+
+                p.stances.stagger.StaggerFor(Mathf.CeilToInt(90 * strength));
 
                 var partHeight = p.BodySize >= LowerHeightBodySizeThreshold ? BodyPartHeight.Bottom : BodyPartHeight.Undefined;
                 var hits = this.GetStatValue(DefsOf.VFES_TrapMeleeHits, cacheStaleAfterTicks: 1);
 
-                for (int i = 0; (float)i < hits; i++)
+                for (int i = 0; i < hits; i++)
                 {
-                    float damage = this.GetStatValue(RimWorld.StatDefOf.TrapMeleeDamage, true) * BearTrapDamageRandomFactorRange.RandomInRange;
+                    float damage = this.GetStatValue(StatDefOf.TrapMeleeDamage) * BearTrapDamageRandomFactorRange.RandomInRange * strength;
                     float armourPen = damage * VerbProperties.DefaultArmorPenetrationPerDamage;
                     BodyPartRecord hitPart = p.health.hediffSet.GetRandomNotMissingPart(DamageDefOf.Stab, partHeight);
                     var dinfo = new DamageInfo(DamageDefOf.Stab, damage, armourPen, instigator: this, hitPart: hitPart);
