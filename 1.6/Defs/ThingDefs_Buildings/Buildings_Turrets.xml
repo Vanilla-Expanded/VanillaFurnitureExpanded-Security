@@ -352,6 +352,7 @@
       <texPath>NewThings/Security/TurretMedium_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,-0.11)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
@@ -434,6 +435,7 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_MilitaryTurret</turretGunDef>
       <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+      <turretTopOffset>(0, -0.097)</turretTopOffset>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -494,6 +496,7 @@
       <texPath>NewThings/Security/TurretMedium_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,-0.11)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
@@ -570,6 +573,7 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_ArmoredTurret</turretGunDef>
       <turretBurstCooldownTime>4.8</turretBurstCooldownTime>
+      <turretTopOffset>(0, -0.097)</turretTopOffset>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -747,6 +751,7 @@
       <texPath>NewThings/Security/TurretMedium_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,-0.11)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
@@ -829,6 +834,7 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_FlameTurret</turretGunDef>
       <turretBurstCooldownTime>5</turretBurstCooldownTime>
+      <turretTopOffset>(0, -0.097)</turretTopOffset>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -919,6 +925,7 @@
       <texPath>NewThings/Security/TurretMedium_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,-0.11)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
@@ -1000,6 +1007,7 @@
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>VFES_Gun_ShotgunTurret</turretGunDef>
       <turretBurstCooldownTime>3.15</turretBurstCooldownTime>
+      <turretTopOffset>(0, -0.097)</turretTopOffset>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -1058,7 +1066,8 @@
     <graphicData>
       <texPath>NewThings/Security/TurretAutocannon_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.5, 1.5)</drawSize>
+      <drawSize>(1.53, 1.53)</drawSize>
+      <drawOffset>(0,0,-0.1)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
@@ -1538,7 +1547,8 @@
     <graphicData>
       <texPath>NewThings/Security/TurretAutocannon_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.5, 1.5)</drawSize>
+      <drawSize>(1.53, 1.53)</drawSize>
+      <drawOffset>(0,0,-0.1)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
@@ -1684,6 +1694,7 @@
       <texPath>NewThings/Security/TurretSpacer_Base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,0.023)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
