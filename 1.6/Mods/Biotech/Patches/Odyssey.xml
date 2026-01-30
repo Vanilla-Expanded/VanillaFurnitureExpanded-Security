@@ -2,9 +2,14 @@
 <Patch>
 
   <!-- Change ultra mechtech research prerequisite to beam weapons -->
-  <Operation Class="PatchOperationReplace" MayRequire="Ludeon.RimWorld.Odyssey">
-    <xpath>Defs/ThingDef[defName="VFES_Complex_GraserCannon"]/researchPrerequisites/li[text()="UltraMechtech"]/text()</xpath>
-    <value>BeamWeapons</value>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Odyssey</li>
+    </mods>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="VFES_Complex_GraserCannon"]/researchPrerequisites/li[text()="UltraMechtech"]/text()</xpath>
+      <value>BeamWeapons</value>
+    </match>
   </Operation>
 
 </Patch>
