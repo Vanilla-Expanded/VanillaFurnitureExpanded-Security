@@ -47,7 +47,8 @@ namespace VFESecurity
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
-            armed = Props.initiallyArmed;
+            if (!respawningAfterLoad)
+                armed = Props.initiallyArmed;
             base.PostSpawnSetup(respawningAfterLoad);
         }
 
