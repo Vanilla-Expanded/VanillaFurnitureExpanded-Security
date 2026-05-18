@@ -37,10 +37,9 @@ namespace VFESecurity
 
         public static float GetAdjustedHeightForBuilding(Building building)
         {
-            if (building != null)
+            if (building is IConcealedBuilding concealed)
             {
-                var comp = building.GetComp<CompConcealed>();
-                if (comp != null && comp.Submerged)
+                if (concealed.ConcealedComp != null && concealed.ConcealedComp.Submerged)
                 {
                     return 0f;
                 }

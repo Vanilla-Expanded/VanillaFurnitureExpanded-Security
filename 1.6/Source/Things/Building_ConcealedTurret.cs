@@ -4,16 +4,15 @@ using Verse.AI;
 
 namespace VFESecurity
 {
-    public class Building_ConcealedTurret : Building_TurretGun
+    public class Building_ConcealedTurret : Building_TurretGun, IConcealedBuilding
     {
-        private CompConcealed concealedComp;
+        public CompConcealed ConcealedComp { get; private set; }
 
         public override bool IsEverThreat
         {
             get
             {
-                var comp = GetComp<CompConcealed>();
-                if (comp != null && comp.Submerged)
+                if (ConcealedComp != null && ConcealedComp.Submerged)
                 {
                     return false;
                 }
@@ -21,20 +20,33 @@ namespace VFESecurity
             }
         }
 
-        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        public override void PostMake()
         {
-            base.SpawnSetup(map, respawningAfterLoad);
-            concealedComp = GetComp<CompConcealed>();
+            base.PostMake();
+            InitComps();
         }
 
+        public override void ExposeData()
+        {
+            base.ExposeData();
+
+            if (Scribe.mode == LoadSaveMode.LoadingVars)
+                InitComps();
+        }
+
+        private void InitComps()
+        {
+            // Init comps from PostMake and ExposeData (LoadingVars) to handle minified buildings, just in case
+            ConcealedComp = GetComp<CompConcealed>();
+        }
 
         public override Graphic Graphic
         {
             get
             {
-                if (concealedComp != null && concealedComp.Submerged && concealedComp.Props.submergedGraphic != null)
+                if (ConcealedComp != null && ConcealedComp.Submerged && ConcealedComp.Props.submergedGraphic != null)
                 {
-                    return concealedComp.Props.submergedGraphic.Graphic;
+                    return ConcealedComp.Props.submergedGraphic.Graphic;
                 }
                 return base.Graphic;
             }

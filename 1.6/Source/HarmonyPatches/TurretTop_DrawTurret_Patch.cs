@@ -11,8 +11,7 @@ namespace VFESecurity
         [HarmonyPriority(Priority.First)]
         public static bool Prefix(TurretTop __instance)
         {
-            var comp = __instance.parentTurret.GetComp<CompConcealed>();
-            if (comp != null && comp.Submerged)
+            if (__instance.parentTurret is IConcealedBuilding concealed && concealed.ConcealedComp != null && concealed.ConcealedComp.Submerged)
             {
                 return false;
             }

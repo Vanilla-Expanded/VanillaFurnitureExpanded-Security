@@ -12,14 +12,10 @@ namespace VFESecurity
             var things = __instance.map.thingGrid.ThingsListAt(c);
             for (int i = 0; i < things.Count; i++)
             {
-                if (things[i] is Building building)
+                if (things[i] is IConcealedBuilding concealed && concealed.ConcealedComp != null && concealed.ConcealedComp.Submerged)
                 {
-                    var comp = building.GetComp<CompConcealed>();
-                    if (comp != null && comp.Submerged)
-                    {
-                        __result = 0;
-                        return;
-                    }
+                    __result = 0;
+                    return;
                 }
             }
         }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -9,14 +10,8 @@ namespace VFESecurity
     {
         public static void Postfix(Building_TurretGun __instance, ref bool __result)
         {
-            if (__result)
-            {
-                var comp = __instance.GetComp<CompConcealed>();
-                if (comp != null && comp.Submerged)
-                {
-                    __result = false;
-                }
-            }
+            if (__result && __instance is IConcealedBuilding concealed && concealed.ConcealedComp != null && concealed.ConcealedComp.Submerged)
+                __result = false;
         }
     }
 }

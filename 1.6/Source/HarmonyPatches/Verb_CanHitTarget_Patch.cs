@@ -9,13 +9,9 @@ namespace VFESecurity
     {
         public static void Postfix(Verb __instance, ref bool __result, LocalTargetInfo targ)
         {
-            if (__result)
+            if (__result && __instance.caster is IConcealedBuilding concealed && concealed.ConcealedComp != null && concealed.ConcealedComp.Submerged)
             {
-                var comp = __instance.caster.TryGetComp<CompConcealed>();
-                if (comp != null && comp.Submerged)
-                {
-                    __result = false;
-                }
+                __result = false;
             }
         }
     }
