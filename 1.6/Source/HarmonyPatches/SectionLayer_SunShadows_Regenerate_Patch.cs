@@ -43,9 +43,8 @@ namespace VFESecurity
                 {
                     return 0f;
                 }
-                return building.def.staticSunShadowHeight;
             }
-            return 0f;
+            return building.def.staticSunShadowHeight;
         }
     }
 }
