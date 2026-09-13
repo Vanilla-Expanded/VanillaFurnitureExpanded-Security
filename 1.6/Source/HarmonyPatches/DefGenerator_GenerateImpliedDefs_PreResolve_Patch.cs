@@ -20,23 +20,27 @@ namespace VFESecurity
                     .Where(td => td.IsShell).ToList())
                 {
                     var projectile = shell.projectileWhenLoaded;
-                    var newProjectileDef = new ThingDef
+
+                    if (!shellProjectileMap.ContainsKey(projectile))
                     {
-                        defName = "VFES_WorldArtillery_" + projectile.defName,
-                        label = projectile.label,
-                        description = projectile.description,
-                        thingClass = typeof(Projectile_Artillery),
-                        category = projectile.category,
-                        altitudeLayer = projectile.altitudeLayer,
-                        neverMultiSelect = projectile.neverMultiSelect,
-                        useHitPoints = projectile.useHitPoints,
-                        tickerType = projectile.tickerType,
-                        graphicData = projectile.graphicData,
-                        projectile = projectile.projectile
-                    };
-                    newProjectileDef.PostLoad();
-                    DefGenerator.AddImpliedDef(newProjectileDef, hotReload);
-                    shellProjectileMap[projectile] = newProjectileDef;
+                        var newProjectileDef = new ThingDef
+                        {
+                            defName = "VFES_WorldArtillery_" + projectile.defName,
+                            label = projectile.label,
+                            description = projectile.description,
+                            thingClass = typeof(Projectile_Artillery),
+                            category = projectile.category,
+                            altitudeLayer = projectile.altitudeLayer,
+                            neverMultiSelect = projectile.neverMultiSelect,
+                            useHitPoints = projectile.useHitPoints,
+                            tickerType = projectile.tickerType,
+                            graphicData = projectile.graphicData,
+                            projectile = projectile.projectile
+                        };
+                        newProjectileDef.PostLoad();
+                        DefGenerator.AddImpliedDef(newProjectileDef, hotReload);
+                        shellProjectileMap[projectile] = newProjectileDef;
+                    }
                 }
             }
         }
